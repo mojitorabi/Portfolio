@@ -30,8 +30,8 @@
     });
   }
 
-  // Intersection observer for project cards (scroll-in animation)
-  var cards = document.querySelectorAll('.project-card');
+  // Intersection observer for project cards and testimonial cards (scroll-in animation)
+  var cards = document.querySelectorAll('.project-card, .testimonial-card');
   if (cards.length && 'IntersectionObserver' in window) {
     var observer = new IntersectionObserver(
       function (entries) {
