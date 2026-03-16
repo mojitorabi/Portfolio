@@ -12,60 +12,85 @@
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
   <a href="#site-nav" class="skip-link skip-nav">Skip to navigation</a>
-
   <header class="header" role="banner">
-    <nav id="site-nav" class="nav" aria-label="Main">
-      <a href="./" class="logo">Mojtaba Torabi</a>
-      <ul class="nav-list">
-        <li><a href="./#work">Work</a></li>
-        <li><a href="my-story.html">My Story ;)</a></li>
-        <li><a href="resume.html">Resume</a></li>
-        <li><a href="ux-notes.html" aria-current="page">UX Notes</a></li>
-      </ul>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
-  </header>
-
-  <main id="main" class="main">
-    <div class="page-header">
-      <p class="page-kicker">UX Notes</p>
-      <h1>UX Notes</h1>
+    <div class="page-shell">
+      <nav id="site-nav" class="nav" aria-label="Main">
+        <a href="./" class="logo">Mojtaba Torabi</a>
+        <ul class="nav-list">
+          <li><a href="./#work">Work</a></li>
+          <li><a href="my-story.html">My Story ;)</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="ux-notes.html" aria-current="page">UX Notes</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
     </div>
-    <div class="page-content">
-      <section class="prose-block">
-        <h2>5 Day UX Challange - Case Study</h2>
-        <p>The Scenario is that you are a UX/UI designer in ebay joining the team responsible for the Seller Portal. The portal is a central hub for business sellers, providing access to promotions, and key performance business ...</p>
-        <p><a href="https://drive.google.com/file/d/1asSjP9p_wrd-YcwXKyWk6d-xLl8chOdt/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="link-arrow">Case Study</a></p>
+  </header>
+  <main id="main" class="main">
+    <div class="page-shell">
+      <section class="page-hero">
+        <div class="reveal">
+          <span class="page-kicker">UX Notes</span>
+          <h1>Case studies, research thinking, and practical process notes.</h1>
+          <p class="page-lead">This section keeps the original UX Notes content, reframed in a cleaner editorial layout inspired by modern product websites.</p>
+        </div>
+        <div class="story-visual reveal">
+          <div class="story-card-visual">
+            <img src="assets/illustrations/story-illustration.png" alt="Abstract illustration of systems thinking, interface design, and interaction flows.">
+          </div>
+        </div>
       </section>
-      <section class="prose-block">
-        <h2>A research plan for :</h2>
-        <p>Imagine we're building a digital product that enables people with toddlers to share their kids' clothes and equipments so they can save on buying everything. Instead, they borrow theitems for a specific period ...</p>
-        <p><a href="https://drive.google.com/file/d/1QyDcFxdHmVOuQOfL1Jkk8KpXWCE0wrmC/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="link-arrow">Read more</a></p>
-      </section>
-      <h2>Other Experiences</h2>
-      <ul>
-        <li><a href="work/baloot.html">Launched Iran's first micro-saving & investment platfo [...]</a></li>
-        <li><a href="work/torob.html">E-commerce platform, that helps +30 millions of users...</a></li>
-        <li><a href="work/shams-ol-emareh.html">An AR guidance platform for the museums that was..</a></li>
-        <li><a href="work/amanj.html">Enhance the freelancing projects ...</a></li>
-      </ul>
-      <p><a href="resume.html">MY RESUME</a></p>
+      <div class="note-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+        <article class="note-card reveal">
+          <h3>5 Day UX Challange - Case Study</h3>
+          <p>The scenario places you in ebay's Seller Portal team, focused on promotions, business performance visibility, and central workflow clarity.</p>
+          <a class="text-link" href="https://drive.google.com/file/d/1asSjP9p_wrd-YcwXKyWk6d-xLl8chOdt/view?usp=sharing" target="_blank" rel="noopener noreferrer">Open case study <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="note-card reveal">
+          <h3>A research plan for :</h3>
+          <p>A research plan for a digital product that helps families share toddler clothes and equipment instead of buying everything from scratch.</p>
+          <a class="text-link" href="https://drive.google.com/file/d/1QyDcFxdHmVOuQOfL1Jkk8KpXWCE0wrmC/view?usp=sharing" target="_blank" rel="noopener noreferrer">Read more <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+      <div class="page-grid" style="margin-top: 1.5rem;">
+        <div class="page-content">
+          <section class="page-panel reveal">
+            <h3>Other Experiences</h3>
+            <p><a class="text-link" href="work/baloot.html">Baloot <span aria-hidden="true">→</span></a></p>
+            <p><a class="text-link" href="work/torob.html">Torob <span aria-hidden="true">→</span></a></p>
+            <p><a class="text-link" href="work/shams-ol-emareh.html">Shams-ol-Emareh <span aria-hidden="true">→</span></a></p>
+            <p><a class="text-link" href="work/amanj.html">Amanj <span aria-hidden="true">→</span></a></p>
+          </section>
+        </div>
+        <aside class="page-content">
+          <section class="page-panel reveal">
+            <h3>Related</h3>
+            <p><a class="text-link" href="resume.html">My Resume <span aria-hidden="true">→</span></a></p>
+            <p><a class="text-link" href="my-story.html">My Story <span aria-hidden="true">→</span></a></p>
+          </section>
+        </aside>
+      </div>
     </div>
   </main>
-
   <footer class="footer" role="contentinfo">
-    <div class="footer-links">
-      <a href="https://www.linkedin.com/in/mojtabat" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
-      <a href="https://twitter.com/mojtabat" target="_blank" rel="noopener noreferrer" aria-label="Twitter">Twitter</a>
-      <a href="https://soundcloud.com/mojtabat" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud">SoundCloud</a>
-      <a href="https://github.com/MojtabaTorabiii" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
-      <a href="https://www.instagram.com/mojtabat" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+    <div class="page-shell">
+      <div class="footer-shell">
+        <div class="footer-brand">
+          <strong>Mojtaba Torabi</strong>
+          <p class="footer-copy">Thoughts, methods, and notes behind the work.</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/mojtabat" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://twitter.com/mojtabat" target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href="https://soundcloud.com/mojtabat" target="_blank" rel="noopener noreferrer">SoundCloud</a>
+          <a href="https://github.com/MojtabaTorabiii" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.instagram.com/mojtabat" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </div>
     </div>
-    <p class="footer-copy">© 2023–present Mojtaba Torabi. All rights reserved.</p>
   </footer>
-
   <script src="js/main.js"></script>
 </body>
 </html>

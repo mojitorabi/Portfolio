@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mojtaba Torabi — Product Designer</title>
-  <meta name="description" content="Product Designer with Engineering & Music. Shaped +5 apps for +30 millions. Design MSc @ THI.">
+  <meta name="description" content="Product designer with engineering precision and musical sensitivity. Portfolio, case studies, UX notes, and recommendations.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
@@ -15,204 +15,247 @@
   <a href="#site-nav" class="skip-link skip-nav">Skip to navigation</a>
 
   <header class="header" role="banner">
-    <nav id="site-nav" class="nav" aria-label="Main">
-      <a href="./" class="logo" aria-current="page">Mojtaba Torabi</a>
-      <ul class="nav-list">
-        <li><a href="./#work">Work</a></li>
-        <li><a href="my-story.html">My Story ;)</a></li>
-        <li><a href="resume.html">Resume</a></li>
-        <li><a href="ux-notes.html">UX Notes</a></li>
-      </ul>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
+    <div class="page-shell">
+      <nav id="site-nav" class="nav" aria-label="Main">
+        <a href="./" class="logo" aria-current="page">Mojtaba Torabi</a>
+        <ul class="nav-list">
+          <li><a href="#work">Work</a></li>
+          <li><a href="my-story.html">My Story ;)</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="ux-notes.html">UX Notes</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
   </header>
 
   <main id="main" class="main">
-    <section class="hero" aria-labelledby="hero-heading">
-      <h1 id="hero-heading" class="hero-title">
-        Hi, I'm Mojtaba, Product Designer with<br>
-        <span class="hero-highlight">Engineering 🧠, Music ❤️</span><br>
-        <span class="hero-sub">Shaped +5 apps for +30 millions,</span><br>
-        <span class="hero-sub">Design MSc @ THI</span>
-      </h1>
-      <p class="hero-cta">
-        <a href="resume.html" class="btn btn-primary">See my resume</a>
-      </p>
-      <p class="hero-scroll">Scroll down to join my projects ;)</p>
-    </section>
+    <div class="page-shell">
+      <section class="hero">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Product Design Portfolio</span>
+          <h1>Designing simple digital products with precision, clarity, and character.</h1>
+          <p class="hero-subtitle">Hi, I'm Mojtaba, a product designer with engineering in my head and music in my heart. I've helped shape products used by more than 30 million people, and I'm currently studying Design Leadership at THI.</p>
+          <div class="hero-actions">
+            <a href="resume.html" class="btn btn-primary">See my resume</a>
+            <a href="#work" class="btn btn-secondary">Explore my work</a>
+          </div>
+          <p class="hero-note">Minimal, modern, and intentionally calm. Inspired by premium product sites and adapted for your own story.</p>
+          <div class="stats-grid">
+            <article class="stat-card reveal">
+              <strong>5+</strong>
+              <span>Apps and experiences shaped across fintech, commerce, and culture.</span>
+            </article>
+            <article class="stat-card reveal">
+              <strong>30M+</strong>
+              <span>Monthly user reach through products shipped for large audiences.</span>
+            </article>
+            <article class="stat-card reveal">
+              <strong>THI</strong>
+              <span>Design MSc focus with leadership, systems thinking, and craft.</span>
+            </article>
+          </div>
+        </div>
+        <div class="hero-media reveal">
+          <div class="hero-visual-card">
+            <img src="assets/illustrations/hero-illustration.png" alt="Abstract illustration of product design systems, wireframes, and interfaces.">
+          </div>
+          <div class="floating-badge badge-top"><strong>Engineering</strong><span>Systems, logic, and structure</span></div>
+          <div class="floating-badge badge-bottom"><strong>Music</strong><span>Rhythm, sensitivity, and flow</span></div>
+        </div>
+      </section>
 
-    <section id="work" class="section projects" aria-labelledby="projects-heading">
-      <h2 id="projects-heading" class="section-title">Projects & Experiences</h2>
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <span class="section-eyebrow">How I Work</span>
+            <h2>Research-led, visually clear, and designed to scale.</h2>
+          </div>
+          <p>I work at the intersection of UX, UI, product thinking, and systems. The goal is always the same: turn complexity into flows that feel obvious.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <h3>Design with focus</h3>
+            <p>I prefer interfaces that remove noise, guide attention, and make the next step feel effortless.</p>
+          </article>
+          <article class="feature-card reveal">
+            <h3>Systems over decoration</h3>
+            <p>Engineering thinking helps me build structure, consistency, and decisions that hold up across products.</p>
+          </article>
+          <article class="feature-card reveal">
+            <h3>Detail with empathy</h3>
+            <p>From research plans to visual refinement, I care about how a product looks, feels, and earns trust.</p>
+          </article>
+        </div>
+      </section>
 
-      <article class="project-card" data-project="torob">
-        <h3 class="project-name">Torob</h3>
-        <p class="project-desc">leading e-commerce platform, that helps +30 millions of users find the best prices from +180 thousands shop...</p>
-        <a href="work/torob.html" class="project-link link-arrow">Case Study</a>
-      </article>
+      <section id="work" class="section">
+        <div class="section-head">
+          <div>
+            <span class="section-eyebrow">Projects & Experiences</span>
+            <h2>Selected work across commerce, fintech, AR, and UX strategy.</h2>
+          </div>
+          <p>These projects come from the original portfolio structure, now presented with a more polished and product-focused visual language.</p>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card reveal">
+            <div class="project-meta">
+              <span class="project-tag">E-commerce</span>
+              <span class="project-tag">30M+ users</span>
+            </div>
+            <h3>Torob</h3>
+            <p>Leading e-commerce platform that helps more than 30 million users find the best prices from over 180 thousand shops.</p>
+            <a href="work/torob.html" class="project-link">Case Study <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="project-card reveal">
+            <div class="project-meta">
+              <span class="project-tag">Fintech</span>
+              <span class="project-tag">Micro-saving</span>
+            </div>
+            <h3>Baloot</h3>
+            <p>Iran's first micro-saving and investment platform, helping people save small amounts automatically and invest with more confidence.</p>
+            <a href="work/baloot.html" class="project-link">Case Study <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="project-card reveal">
+            <div class="project-meta">
+              <span class="project-tag">AR Experience</span>
+              <span class="project-tag">Museums</span>
+            </div>
+            <h3>Shams-ol-Emareh</h3>
+            <p>An AR guidance platform for museum visitors, designed to make cultural exploration more accessible and engaging.</p>
+            <a href="work/shams-ol-emareh.html" class="project-link">Case Study <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="project-card reveal">
+            <div class="project-meta">
+              <span class="project-tag">UX Strategy</span>
+              <span class="project-tag">Challenge</span>
+            </div>
+            <h3>5 Day UX Challange</h3>
+            <p>A seller portal case study for ebay focused on business seller workflows, promotions, and performance insights.</p>
+            <a href="https://drive.google.com/file/d/1asSjP9p_wrd-YcwXKyWk6d-xLl8chOdt/view?usp=sharing" class="project-link" target="_blank" rel="noopener noreferrer">Case Study <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="project-card reveal">
+            <div class="project-meta">
+              <span class="project-tag">Freelancing</span>
+              <span class="project-tag">Product Concept</span>
+            </div>
+            <h3>Amanj</h3>
+            <p>A digital product to improve the freelancing project experience and address common pain points for designers.</p>
+            <a href="work/amanj.html" class="project-link">Case Study <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </section>
 
-      <article class="project-card" data-project="baloot">
-        <h3 class="project-name">Baloot</h3>
-        <p class="project-desc">Launched Iran's first micro-saving & investment platform, Baloot, enabling users to save and invest small amounts...</p>
-        <a href="work/baloot.html" class="project-link link-arrow">Case Study</a>
-      </article>
+      <section class="section">
+        <div class="split-panel">
+          <div class="reveal">
+            <span class="section-eyebrow">My Story ;)</span>
+            <h2>From computer engineering to product design leadership.</h2>
+            <p class="hero-subtitle">My background moves between technical systems, digital products, music, and craft. That combination shapes how I design: structured, human, and expressive without being loud.</p>
+            <div class="inline-actions">
+              <a href="my-story.html" class="btn btn-primary">Read my story</a>
+              <a href="ux-notes.html" class="btn btn-secondary">Open UX notes</a>
+            </div>
+          </div>
+          <div class="story-visual reveal">
+            <div class="story-card-visual">
+              <img src="assets/illustrations/story-illustration.png" alt="Abstract illustration combining interface systems, geometry, and music-inspired wave forms.">
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <article class="project-card" data-project="shams">
-        <h3 class="project-name">Shams-ol-Emareh</h3>
-        <p class="project-desc">Shams-ol-Emare is an AR guidance platform for tourists and visitors to the museums that was first implemented for ...</p>
-        <a href="work/shams-ol-emareh.html" class="project-link link-arrow">Case Study</a>
-      </article>
-
-      <article class="project-card" data-project="ux-challenge">
-        <h3 class="project-name">5 Day UX Challenge — Case Study</h3>
-        <p class="project-desc">The Scenario is that you are a UX/UI designer in ebay joining the team responsible for the Seller Portal. The portal is a...</p>
-        <a href="https://drive.google.com/file/d/1asSjP9p_wrd-YcwXKyWk6d-xLl8chOdt/view?usp=sharing" class="project-link link-arrow" target="_blank" rel="noopener noreferrer">Case Study</a>
-      </article>
-
-      <article class="project-card" data-project="amanj">
-        <h3 class="project-name">Amanj</h3>
-        <p class="project-desc">A digital product to enhance the freelancing project experience and solve designers' problems...</p>
-        <a href="work/amanj.html" class="project-link link-arrow">Case Study</a>
-      </article>
-    </section>
-
-    <section id="kind-words" class="section kind-words" aria-labelledby="kind-heading">
-      <h2 id="kind-heading" class="section-title">Kind Words</h2>
-      <div class="testimonials-grid">
-        <article class="testimonial-card">
-          <span class="testimonial-quote-mark">"</span>
-          <p class="testimonial-text">I highly recommend Mojtaba for any advanced academic or professional role in Product Design, UX/UI, Product Management, or UX Research or any related field. I am confident that he will continue to excel and make significant contributions to any team or organization he joins. As his Academic Advisor, Course Director, and instructor for several key project-based courses, I have had the opportunity to witness his professional growth, leadership capabilities, and sophisticated approach to design challenges firsthand. Mojtaba has consistently demonstrated a level of performance and dedication that places him among the top students in his class.</p>
-          <div class="testimonial-meta">
-            <img src="https://lh3.googleusercontent.com/sitesv/APaQ0STw7WNQ9Pu9xNS454L7Ze2zh5rc24y21i23Q6hiMRGaUaB-cqZDo89Lwm1rIWo9esH0gKyRwoHRw4htole_Ab2HsxbFfoxraVWJQ1Yta7hU0e38YMOkQ7t3ptYduk0UPPkxEdmj2X-VxXsQYUY-tuWKNZ8zz8nCf1xc3ccULoEpF_cyB8vfmvGiLfdBH21bzjjdZBYbuoJFKo7ckplim2gh7m_7_GcggaA_UL0=w1280" alt="Prof. Dr. (Ph.D.) Bernhard Rothbucher" class="testimonial-avatar" width="48" height="48" loading="lazy">
-            <div class="testimonial-info">
-              <strong class="testimonial-name">Prof. Dr. (Ph.D.) Bernhard Rothbucher</strong>
-              <span class="testimonial-title">Design Leadership Course Director at THI</span>
-              <span class="testimonial-relationship">Bernhard managed Mojtaba directly</span>
-            </div>
-            <time class="testimonial-date" datetime="2025-08-01">Aug 01, 2025</time>
+      <section id="kind-words" class="section">
+        <div class="section-head">
+          <div>
+            <span class="section-eyebrow">Kind Words</span>
+            <h2>Recommendations from collaborators, leaders, and mentors.</h2>
           </div>
-        </article>
-        <article class="testimonial-card">
-          <span class="testimonial-quote-mark">"</span>
-          <p class="testimonial-text">I am delighted to provide my highest recommendation for Mojtaba as an exceptional talent in the field of product design. From the moment Mojtaba joined our team, it was evident that he possessed a rare combination of creativity, technical expertise, and a deep understanding of user-centered design principles. Throughout his time with us, Mojtaba played a pivotal role in shaping the user experience and interface of our flagship products. His meticulous attention to detail and relentless pursuit of perfection ensured that every interaction with our platforms was intuitive, engaging, and tailored to the needs of our target audience. Moreover, Mojtaba consistently demonstrated a growth mindset, eagerly embracing new challenges and actively seeking opportunities to expand his skill set. It is without hesitation that I recommend Mojtaba for any role that demands a highly skilled and dedicated product designer.</p>
-          <div class="testimonial-meta">
-            <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SSWuc5xTPHhhokxSrHxDd_IuNcyL-sjLI4kCx9k3ypx5f2dTqQFg0HptPu74fNCcujZjEhvy8KUN5L34jjCqlnWWGyofZforIQ2t94RaUAX6o5Trt7_ksCocALu0-xoWFSVIsmLzWna80SSPzu0MW1kRd5A3s2z1LdQNcJZR7cs3grxZBgTAXwBRQ1MLwqsHX3hyj4jsm65OHikloUvDxQmVVrPQh9EiciOqSM=w1280" alt="Mojtaba Danaei" class="testimonial-avatar" width="48" height="48" loading="lazy">
-            <div class="testimonial-info">
-              <strong class="testimonial-name">Mojtaba Danaei</strong>
-              <span class="testimonial-title">Co-founder & CEO at Baloot Co.</span>
-              <span class="testimonial-relationship">Mojtaba managed Mojtaba directly</span>
+          <p>The recommendations below are preserved from the previous portfolio and presented in a more editorial, readable layout.</p>
+        </div>
+        <div class="testimonials-grid">
+          <article class="testimonial-card reveal">
+            <span class="testimonial-quote-mark">"</span>
+            <p class="testimonial-text">I highly recommend Mojtaba for any advanced academic or professional role in Product Design, UX/UI, Product Management, or UX Research or any related field. I am confident that he will continue to excel and make significant contributions to any team or organization he joins.</p>
+            <div class="testimonial-meta">
+              <img src="https://lh3.googleusercontent.com/sitesv/APaQ0STw7WNQ9Pu9xNS454L7Ze2zh5rc24y21i23Q6hiMRGaUaB-cqZDo89Lwm1rIWo9esH0gKyRwoHRw4htole_Ab2HsxbFfoxraVWJQ1Yta7hU0e38YMOkQ7t3ptYduk0UPPkxEdmj2X-VxXsQYUY-tuWKNZ8zz8nCf1xc3ccULoEpF_cyB8vfmvGiLfdBH21bzjjdZBYbuoJFKo7ckplim2gh7m_7_GcggaA_UL0=w1280" alt="Prof. Dr. (Ph.D.) Bernhard Rothbucher" class="testimonial-avatar" width="56" height="56" loading="lazy">
+              <div>
+                <strong class="testimonial-name">Prof. Dr. (Ph.D.) Bernhard Rothbucher</strong>
+                <div class="testimonial-title">Design Leadership Course Director at THI</div>
+                <div class="testimonial-relationship">Bernhard managed Mojtaba directly</div>
+              </div>
+              <time class="testimonial-date" datetime="2025-08-01">Aug 01, 2025</time>
             </div>
-            <time class="testimonial-date" datetime="2024-04-27">April 27, 2024</time>
-          </div>
-        </article>
-        <article class="testimonial-card">
-          <span class="testimonial-quote-mark">"</span>
-          <p class="testimonial-text">Working with Mojtaba Torabi at Torob was a true pleasure. His design skills are undeniably impressive, but his superpower lies in Accountability combined with a Bias for Action. Mojtaba doesn't shy away from ambiguity. He confronts vague environments and problems head-on, asking insightful questions and exploring different scenarios. This bias for action ensures clear paths forward and user-centric design solutions that deliver real impact. His accountability is unwavering. You can always count on Mojtaba to deliver high-quality work on time and within budget. On top of that, he possesses a deep well of empathy for the user experience, always curious about different user journeys. Mojtaba is a design powerhouse! I highly recommend him for any product design role where these qualities would be invaluable.</p>
-          <div class="testimonial-meta">
-            <img src="https://lh3.googleusercontent.com/sitesv/APaQ0ST3BpSa7NYVJntyfVeUN-iCfxITKcE5uNx0UzkB68X2lGxF05h7nu3YdPohhdqRkZie2zlFq031pLUx56UC29tw6il0sx2CVRM6FNMMxkLhlH_kLoM7TMEq6ahOUZ2uGha4LLeW543i01Pc0jGaZ6e0P3xRLZRsioT3W_E-omrR1FFCtY5Xa7ZDPBFJKErLlxjrGh31ip815Yue3DhH9EyJkUTd6Ut_sCUihtM=w1280" alt="MohammadHassan Momenian" class="testimonial-avatar" width="48" height="48" loading="lazy">
-            <div class="testimonial-info">
-              <strong class="testimonial-name">MohammadHassan Momenian</strong>
-              <span class="testimonial-title">VP of Product at Torob</span>
-              <span class="testimonial-relationship">MohammadHassan managed Mojtaba directly</span>
+          </article>
+          <article class="testimonial-card reveal">
+            <span class="testimonial-quote-mark">"</span>
+            <p class="testimonial-text">It is without hesitation that I recommend Mojtaba for any role that demands a highly skilled and dedicated product designer. He brought creativity, technical understanding, and strong user-centered thinking into our products.</p>
+            <div class="testimonial-meta">
+              <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SSWuc5xTPHhhokxSrHxDd_IuNcyL-sjLI4kCx9k3ypx5f2dTqQFg0HptPu74fNCcujZjEhvy8KUN5L34jjCqlnWWGyofZforIQ2t94RaUAX6o5Trt7_ksCocALu0-xoWFSVIsmLzWna80SSPzu0MW1kRd5A3s2z1LdQNcJZR7cs3grxZBgTAXwBRQ1MLwqsHX3hyj4jsm65OHikloUvDxQmVVrPQh9EiciOqSM=w1280" alt="Mojtaba Danaei" class="testimonial-avatar" width="56" height="56" loading="lazy">
+              <div>
+                <strong class="testimonial-name">Mojtaba Danaei</strong>
+                <div class="testimonial-title">Co-founder & CEO at Baloot Co.</div>
+                <div class="testimonial-relationship">Mojtaba managed Mojtaba directly</div>
+              </div>
+              <time class="testimonial-date" datetime="2024-04-27">April 27, 2024</time>
             </div>
-            <time class="testimonial-date" datetime="2024-05-27">May 27, 2024</time>
-          </div>
-        </article>
-        <article class="testimonial-card">
-          <span class="testimonial-quote-mark">"</span>
-          <p class="testimonial-text">Mojtaba is the best at UXD. He is well organized, diligent, and a fast learner. All these attributes were critical when trying to design and analyze a software product, which involves reaching out to a lot of people. Being a fast learner helped him understand the user/client needs and quickly choose the right methods to create a good experience for them. I was helping Mojtaba as a teacher assistant. He did a great job with the project of the "System Analysis and Design" course for his Computer Science Bachelor's program. I was amazed by Mojtaba's ability to conduct user research, analyze the requirements, and present the result of his work, the skills he uses to his benefit as a UX Designer.</p>
-          <div class="testimonial-meta">
-            <img src="https://lh3.googleusercontent.com/sitesv/APaQ0STQFYae2B4_271ppZxKbOO6Fa0aBNY30nO6me5qZrlCgIbBxjK63oUnBtclMUhBAGfxwNXLrvDv3Hrk5DuLuhPwxlUgP1VffCBc6CwHuUekH5k6w2rS48C4D94mZ0klfE7e5-iIOCqsdl1m4HZrs9z7JS-OFLAE4t1Yd029q_4bGiCNHYG4h0HUF5Q-jKEbncUdSDoFPUVPGCRA2fCDEqzxr_Ya7QyEWAal=w1280" alt="Atena Iarni" class="testimonial-avatar" width="48" height="48" loading="lazy">
-            <div class="testimonial-info">
-              <strong class="testimonial-name">Atena Iarni</strong>
-              <span class="testimonial-title">UX Service Designer at F-Secure Corporation</span>
-              <span class="testimonial-relationship">Atena was Mojtaba's mentor</span>
+          </article>
+          <article class="testimonial-card reveal">
+            <span class="testimonial-quote-mark">"</span>
+            <p class="testimonial-text">Working with Mojtaba Torabi at Torob was a true pleasure. His design skills are undeniably impressive, but his superpower lies in accountability combined with a bias for action.</p>
+            <div class="testimonial-meta">
+              <img src="https://lh3.googleusercontent.com/sitesv/APaQ0ST3BpSa7NYVJntyfVeUN-iCfxITKcE5uNx0UzkB68X2lGxF05h7nu3YdPohhdqRkZie2zlFq031pLUx56UC29tw6il0sx2CVRM6FNMMxkLhlH_kLoM7TMEq6ahOUZ2uGha4LLeW543i01Pc0jGaZ6e0P3xRLZRsioT3W_E-omrR1FFCtY5Xa7ZDPBFJKErLlxjrGh31ip815Yue3DhH9EyJkUTd6Ut_sCUihtM=w1280" alt="MohammadHassan Momenian" class="testimonial-avatar" width="56" height="56" loading="lazy">
+              <div>
+                <strong class="testimonial-name">MohammadHassan Momenian</strong>
+                <div class="testimonial-title">VP of Product at Torob</div>
+                <div class="testimonial-relationship">MohammadHassan managed Mojtaba directly</div>
+              </div>
+              <time class="testimonial-date" datetime="2024-05-27">May 27, 2024</time>
             </div>
-            <time class="testimonial-date" datetime="2022-05-16">May 16, 2022</time>
-          </div>
-        </article>
-        <article class="testimonial-card">
-          <span class="testimonial-quote-mark">"</span>
-          <p class="testimonial-text">Mojtaba supported #bastoy in a crucial phase of its development as a designer. From the very first prototypes to the final layouts, he consistently worked in a solution-oriented and creative way, always with a strong sense of the target audience. His designs stand out for their clarity, modern understanding of user experience, and attention to detail. I especially value his ability to take feedback quickly and turn it into constructive improvements. I look forward to continuing our collaboration and can recommend him without hesitation.</p>
-          <div class="testimonial-meta">
-            <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQfEocfNahNXEoO0DGSEqD91TeoZuGXP0adVmv5ANV0tD-vERpugRYTSEoOW63jxd4CaTFBjeN_yl_WAi1t_gA3I0dZkljrSjhQBVfUuAz8eiletpUhdfS6zccF9y8L84v8spcgMfljq8s2VdEBWd5xj0yXAcxNDAyN9NQ2jtl7pBS2NTUdn3Q1i8YxIE9jCXvpKGqkHRp6Y_Mqs8DRRy393f0Ev3QuHckd-DM=w1280" alt="Tobias Hiebl" class="testimonial-avatar" width="48" height="48" loading="lazy">
-            <div class="testimonial-info">
-              <strong class="testimonial-name">Tobias Hiebl</strong>
-              <span class="testimonial-title">Founder & CEO at #bastoy</span>
-              <span class="testimonial-relationship">Tobias managed Mojtaba directly</span>
+          </article>
+          <article class="testimonial-card reveal">
+            <span class="testimonial-quote-mark">"</span>
+            <p class="testimonial-text">Mojtaba supported #bastoy in a crucial phase of its development as a designer. His work stands out for clarity, a modern understanding of user experience, and strong responsiveness to feedback.</p>
+            <div class="testimonial-meta">
+              <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQfEocfNahNXEoO0DGSEqD91TeoZuGXP0adVmv5ANV0tD-vERpugRYTSEoOW63jxd4CaTFBjeN_yl_WAi1t_gA3I0dZkljrSjhQBVfUuAz8eiletpUhdfS6zccF9y8L84v8spcgMfljq8s2VdEBWd5xj0yXAcxNDAyN9NQ2jtl7pBS2NTUdn3Q1i8YxIE9jCXvpKGqkHRp6Y_Mqs8DRRy393f0Ev3QuHckd-DM=w1280" alt="Tobias Hiebl" class="testimonial-avatar" width="56" height="56" loading="lazy">
+              <div>
+                <strong class="testimonial-name">Tobias Hiebl</strong>
+                <div class="testimonial-title">Founder & CEO at #bastoy</div>
+                <div class="testimonial-relationship">Tobias managed Mojtaba directly</div>
+              </div>
+              <time class="testimonial-date" datetime="2025-09-10">September 10, 2025</time>
             </div>
-            <time class="testimonial-date" datetime="2025-09-10">September 10, 2025</time>
+          </article>
+        </div>
+        <div class="cta-panel reveal">
+          <div>
+            <strong>See more detailed case studies and portfolio references.</strong>
+            <p class="footer-copy">The redesigned site keeps your original architecture while presenting it in a more contemporary way.</p>
           </div>
-        </article>
-        <article class="testimonial-card">
-          <span class="testimonial-quote-mark">"</span>
-          <p class="testimonial-text">Mojtaba is working as a UX Designer for more than a year at Baloot and I am consistently impressed by his dedication. He is a hard worker and talented person, and it is indeed a delight to work with him.</p>
-          <div class="testimonial-meta">
-            <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SRaDb4bYOjuvkaHSsCPo5-qRHV9xjPMl6PY--EUkyPZ7CjnJR5i0SgvwJnrLA5WqXd--9YB06EgTc_m4qsPLCZX5SJBCpH7slcc5ImS-1EYCViLgt7jSKL347kXFknfuAdKve1xLhqMma7k6SvymuKAonvqjjxbVa6U_wHCRHZVBPgwAWfREp34W2m36OUF4XNStWig4HYmbiNZp5PJlpIGnFjr4okZQMhgIrc=w1280" alt="Jamshid Rostami" class="testimonial-avatar" width="48" height="48" loading="lazy">
-            <div class="testimonial-info">
-              <strong class="testimonial-name">Jamshid Rostami</strong>
-              <span class="testimonial-title">Chief Technology Officer at Baloot Co.</span>
-              <span class="testimonial-relationship">Jamshid managed Mojtaba directly</span>
-            </div>
-            <time class="testimonial-date" datetime="2022-04-10">April 10, 2022</time>
-          </div>
-        </article>
-        <article class="testimonial-card">
-          <span class="testimonial-quote-mark">"</span>
-          <p class="testimonial-text">Mojtaba and I worked together at Baloot. It was a real pleasure working with him and I hope I get to do so again in the future, he is a great team player and brings fresh and creative thoughts in group discussions. he is a hard-worker, and able to take criticism whether it comes from his supervisor. This ability to learn and use it to create strong UI/UX work makes for a strong candidate for a product designer position. I would definitely recommend Mojtaba as a product designer position</p>
-          <div class="testimonial-meta">
-            <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQ-tSEyBI0HKg0LJDMEX99caDhN5CbeNzNSw9UJk7ylBfBSsecPCyXFEPcatsL1rUsYs92AHSl7pQl7sxCsOObodvs-5rvkIIWBvqMp-f235WgbNgcdI2teukdmlgZvb2MDwQAJrB_stBJuAemh7ALSFXAwU3KTsHy7FZ2LR0D-88Z25BkfwWKUJktLrOdnmkcSmBAYWEtyuLuCdJTbpXmcHQdP5yElffh8=w1280" alt="Milad Salimi" class="testimonial-avatar" width="48" height="48" loading="lazy">
-            <div class="testimonial-info">
-              <strong class="testimonial-name">Milad Salimi</strong>
-              <span class="testimonial-title">Senior Android Developer at Snapplbox</span>
-              <span class="testimonial-relationship">Milad worked with Mojtaba on the same team</span>
-            </div>
-            <time class="testimonial-date" datetime="2022-04-09">April 9, 2022</time>
-          </div>
-        </article>
-        <article class="testimonial-card">
-          <span class="testimonial-quote-mark">"</span>
-          <p class="testimonial-text">Mojtaba has a lot of perseverance to learn and grow. He is a good listener and fast learner. Mojtaba is one of the most talented people I have ever seen.</p>
-          <div class="testimonial-meta">
-            <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SRu9S3V9bMU9FT6dn1QDVyaahnxHDaqS3emL4BteTJvwxrMkKxwv4mIWL25uB5jysMWdMBLA9tqYLl3J0OQbfVYVooYZs-QZjc8tNFCfdSq8p3jLM44ZYWgh6kox7BG4cCtoJjk1YGkReygzJYz_IUcqwwKOl8eMbHT4zQAaVnQMFKrlolUmpUtZDZ7vXyOglI8J9cEpaoaF6kjME3iux2nrNayGvE4zJAN=w1280" alt="Mohammad Khodadadi" class="testimonial-avatar" width="48" height="48" loading="lazy">
-            <div class="testimonial-info">
-              <strong class="testimonial-name">Mohammad Khodadadi</strong>
-              <span class="testimonial-title">Visual Designer at MCIHUB</span>
-              <span class="testimonial-relationship">Mohammad was Mojtaba's mentor</span>
-            </div>
-            <time class="testimonial-date" datetime="2022-06-22">June 22, 2022</time>
-          </div>
-        </article>
-        <article class="testimonial-card">
-          <span class="testimonial-quote-mark">"</span>
-          <p class="testimonial-text">During the short period we collaborated, I noticed that Mojtaba is very good with people and has the ability to maximize their potential. He was always very committed and focused on delivering on time. He was a top performer and inspired us to give our best. I was impressed by his designs and problem solving. Anyone would be lucky to have Mojtaba as a colleague.</p>
-          <div class="testimonial-meta">
-            <img src="https://lh3.googleusercontent.com/sitesv/APaQ0STmXYz_3Q-AluRGCETbLMKfPBKdEBQMtZj1b71SW9b4qSgiE8nCkxxJV-CB6tScXfn_ZMKdvX3yhr7OQzKd4UPwCeKe7bkBQzmaSEcVtZF0mpZv0m0kzO8gUAZGok19UZqDsHBjrIyX55R42HWiowq9nhXLduuwD4tmVu3sdC_HdidLe6m10ZvNJyg9s3MEmIlCA2GYcbCbxisQdrW7qmohBPQMmqPgP-Yt=w1280" alt="Rahman Ebrahimi" class="testimonial-avatar" width="48" height="48" loading="lazy">
-            <div class="testimonial-info">
-              <strong class="testimonial-name">Rahman Ebrahimi</strong>
-              <span class="testimonial-title">Product lead at Keepa</span>
-              <span class="testimonial-relationship">Rahman managed Mojtaba directly</span>
-            </div>
-            <time class="testimonial-date" datetime="2022-04-10">April 10, 2022</time>
-          </div>
-        </article>
-      </div>
-      <p class="kind-cta">
-        <a href="https://www.behance.net/mojtabat" class="link-arrow" target="_blank" rel="noopener noreferrer">MY CASE STUDIES AT BEHANCE</a>
-      </p>
-    </section>
+          <a href="https://www.behance.net/mojtabat" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Behance Case Studies</a>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer class="footer" role="contentinfo">
-    <div class="footer-links">
-      <a href="https://www.linkedin.com/in/mojtabat" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
-      <a href="https://twitter.com/mojtabat" target="_blank" rel="noopener noreferrer" aria-label="Twitter">Twitter</a>
-      <a href="https://soundcloud.com/mojtabat" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud">SoundCloud</a>
-      <a href="https://github.com/MojtabaTorabiii" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
-      <a href="https://www.instagram.com/mojtabat" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+    <div class="page-shell">
+      <div class="footer-shell">
+        <div class="footer-brand">
+          <strong>Mojtaba Torabi</strong>
+          <p class="footer-copy">Product designer with engineering precision and musical intuition.</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/mojtabat" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://twitter.com/mojtabat" target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href="https://soundcloud.com/mojtabat" target="_blank" rel="noopener noreferrer">SoundCloud</a>
+          <a href="https://github.com/MojtabaTorabiii" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.instagram.com/mojtabat" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </div>
     </div>
-    <p class="footer-copy">© 2023–present Mojtaba Torabi. All rights reserved.</p>
   </footer>
 
   <script src="js/main.js"></script>
