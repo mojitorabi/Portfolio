@@ -686,8 +686,8 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
 }
 
 .home-hero .hero-copy h1 {
-  font-size: clamp(1.35rem, 2.8vw, 2.2rem);
-  line-height: 1.08;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.06;
 }
 
 .hero-headline {
@@ -711,11 +711,17 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
 }
 
 .hero-lead {
-  font-family: var(--font-serif);
-  font-size: 1.08rem;
-  line-height: 1.72;
-  color: color-mix(in srgb, var(--text) 78%, var(--muted));
-  margin-top: var(--space-5);
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--text) 72%, var(--muted));
+  margin-top: var(--space-4);
+  max-width: 32rem;
+}
+
+.home-hero .hero-lead {
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  line-height: 1.45;
 }
 
 .section-heading h2 {
@@ -1787,7 +1793,11 @@ html[data-theme="dark"] .stat-card:hover {
   }
 
   .home-hero .hero-copy h1 {
-    font-size: clamp(1.2rem, 5vw, 1.85rem);
+    font-size: clamp(1.6rem, 6vw, 2.4rem);
+  }
+
+  .home-hero .hero-lead {
+    font-size: 0.95rem;
   }
 
   .section-heading h2,
