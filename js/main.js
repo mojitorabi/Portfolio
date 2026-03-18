@@ -118,6 +118,27 @@
   applyTheme(getStoredTheme());
   syncThemeToggle(getStoredTheme());
 
+  function syncHeroVisualHeight() {
+    var heroCopy = document.querySelector(".home-hero .hero-copy");
+    var heroVisual = document.querySelector(".home-hero .hero-visual");
+    if (!heroCopy || !heroVisual || window.innerWidth <= 1024) {
+      heroVisual && heroVisual.style.removeProperty("height");
+      return;
+    }
+    heroVisual.style.height = heroCopy.offsetHeight + "px";
+  }
+
+  if (document.querySelector(".home-hero")) {
+    syncHeroVisualHeight();
+    window.addEventListener("resize", syncHeroVisualHeight);
+    if ("ResizeObserver" in window) {
+      var heroCopy = document.querySelector(".home-hero .hero-copy");
+      if (heroCopy) {
+        new ResizeObserver(syncHeroVisualHeight).observe(heroCopy);
+      }
+    }
+  }
+
   function showMobileChrome() {
     root.classList.remove("mobile-top-chrome-hidden");
     root.classList.remove("mobile-dock-hidden");
