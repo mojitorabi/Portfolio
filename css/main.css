@@ -27,9 +27,9 @@
   --radius-lg: 12px;
   --radius-xl: 16px;
   --wrap: 1160px;
-  /* HIG 8pt grid: 8, 16, 24, 32, 40, 48, 64, 80 */
+  /* Apple.com: 8pt grid, generous section spacing */
   --shell-gutter: clamp(16px, 2.4vw, 24px);
-  --section-gap: clamp(48px, 9vw, 64px);
+  --section-gap: clamp(64px, 8vw, 96px);
   --card-gap: 16px;
   --card-padding: clamp(16px, 2vw, 24px);
   /* HIG: min 44pt touch target for buttons */
@@ -48,7 +48,7 @@
   --space-8: 80px;
   --space-9: 96px;
   --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
-  /* HIG typography scale (pt → px, 1pt ≈ 1.33px at 96dpi; use 1:1 for consistency) */
+  /* Apple.com typography scale */
   --text-caption2: 11px;
   --text-caption1: 12px;
   --text-footnote: 13px;
@@ -59,7 +59,9 @@
   --text-title3: 20px;
   --text-title2: 22px;
   --text-title1: 28px;
-  --text-large-title: 34px;
+  --text-large-title: 40px;
+  --text-display: 48px;
+  --text-hero: 64px;
 }
 
 html[data-theme="dark"] {
@@ -684,7 +686,7 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
 .split-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
-  gap: var(--space-7);
+  gap: var(--space-8);
   align-items: center;
 }
 
@@ -699,7 +701,7 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
 
 .hero-copy .eyebrow,
 .page-intro .eyebrow {
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
 }
 
 .hero-copy h1,
@@ -715,13 +717,13 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
 
 .hero-copy h1,
 .page-intro h1 {
-  font-size: clamp(var(--text-title1), 4.2vw, var(--text-large-title));
-  line-height: 1.02;
+  font-size: clamp(3rem, 1.5vw + 2.6rem, 4rem);
+  line-height: 1.05;
 }
 
 .home-hero .hero-copy h1 {
-  font-size: clamp(var(--text-title1), 4.5vw, var(--text-large-title));
-  line-height: 1.06;
+  font-size: clamp(3rem, 1.6vw + 2.6rem, 4rem);
+  line-height: 1.05;
 }
 
 .hero-headline {
@@ -746,15 +748,15 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
 
 .hero-lead {
   font-family: var(--font-sans);
-  font-size: var(--text-callout);
-  line-height: 1.5;
+  font-size: var(--text-body);
+  line-height: 1.47;
   color: var(--muted);
   margin-top: var(--space-4);
   max-width: 32rem;
 }
 
 .home-hero .hero-lead {
-  font-size: clamp(var(--text-subhead), 1.8vw, var(--text-body));
+  font-size: var(--text-body);
   line-height: 1.47;
 }
 
@@ -788,13 +790,13 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
 .page-intro p {
   max-width: 42rem;
   color: var(--muted);
-  font-size: var(--text-callout);
-  line-height: 1.5;
+  font-size: var(--text-body);
+  line-height: 1.47;
 }
 
 .hero-copy p + p,
 .page-intro p + p {
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
 }
 
 .button-row,
@@ -986,8 +988,8 @@ html[data-theme="dark"] .button-gradient {
 
 .hero-copy .stat-stack {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: var(--space-6);
-  gap: 0.9rem;
+  margin-top: var(--space-5);
+  gap: var(--space-2);
   perspective: 800px;
 }
 
@@ -1115,11 +1117,11 @@ html[data-theme="dark"] .stat-card:hover {
 
 .section-heading {
   max-width: 42rem;
-  margin-bottom: var(--space-7);
+  margin-bottom: var(--space-6);
 }
 
 .section-heading p {
-  margin: var(--space-4) 0 0;
+  margin: var(--space-3) 0 0;
 }
 
 .design-grid,
@@ -1157,10 +1159,10 @@ html[data-theme="dark"] .stat-card:hover {
 .resume-card h3,
 .writing-card h3,
 .roadmap-step h3 {
-  margin: 0.8rem 0 0.45rem;
+  margin: var(--space-3) 0 var(--space-1);
   font-family: var(--font-display);
   font-size: var(--text-title3);
-  line-height: 1.08;
+  line-height: 1.1;
   letter-spacing: -0.03em;
 }
 
@@ -1860,11 +1862,13 @@ html[data-theme="dark"] .stat-card:hover {
 
   .hero-copy h1,
   .page-intro h1 {
-    font-size: clamp(var(--text-title2), 8vw, var(--text-title1));
+    font-size: clamp(2.25rem, 6vw, 3rem);
+    line-height: 1.05;
   }
 
   .home-hero .hero-copy h1 {
-    font-size: clamp(var(--text-title2), 6vw, var(--text-title1));
+    font-size: clamp(2.25rem, 5.5vw, 3rem);
+    line-height: 1.05;
   }
 
   .home-hero .hero-lead {
@@ -1873,7 +1877,8 @@ html[data-theme="dark"] .stat-card:hover {
 
   .section-heading h2,
   .cta-band h2 {
-    font-size: clamp(var(--text-title2), 8vw, var(--text-title1));
+    font-size: clamp(var(--text-title2), 6vw, var(--text-title1));
+    line-height: 1.05;
   }
 
   .hero-copy p,
