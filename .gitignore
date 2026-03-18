@@ -1,4 +1,6 @@
 .DS_Store
+.venv
+.tools
 *.pdf
 # Include Baloot showcase PDF so the case study embed works when deployed
 !Baloot Presantation.pdf
