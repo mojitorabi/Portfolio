@@ -655,7 +655,7 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
   gap: var(--space-7);
-  align-items: center;
+  align-items: stretch;
 }
 
 .hero-copy,
@@ -908,6 +908,18 @@ html[data-theme="dark"] .button-gradient {
   width: 100%;
   align-self: stretch;
   padding: clamp(0.6rem, 1.2vw, 1rem);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.hero-portrait-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: inherit;
+  -webkit-overflow-scrolling: touch;
 }
 
 .hero-visual::before {
@@ -1040,11 +1052,11 @@ html[data-theme="dark"] .stat-card:hover {
   border-radius: 24px;
 }
 
-.hero-portrait {
-  display: block;
+.hero-portrait-scroll .hero-portrait {
+  border-radius: 22px;
   width: 100%;
-  height: 100%;
-  max-height: none;
+  height: auto;
+  min-height: 100%;
   object-fit: cover;
   object-position: top center;
 }
@@ -1366,8 +1378,13 @@ html[data-theme="dark"] .stat-card:hover {
 
 .roadmap-copy > span:not(.roadmap-range) {
   color: var(--muted);
-  font-size: 0.92rem;
-  line-height: 1.48;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .roadmap-description {
