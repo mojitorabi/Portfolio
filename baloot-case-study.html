@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Baloot – UX Case Study | Mojtaba Torabi</title>
+  <style>
+    :root {
+      --bg: #0b0b10;
+      --bg-elevated: #14141f;
+      --bg-soft: #1b1b2b;
+      --accent: #593be2;
+      --accent-soft: #c7bcf5;
+      --accent-muted: #dad3f8;
+      --accent-green: #1bc47d;
+      --accent-green-soft: #a5f3d2;
+      --accent-warm: #ffb958;
+      --accent-warm-soft: #ffe3a0;
+      --text: #f7f7f7;
+      --text-muted: #c2c2cc;
+      --border-subtle: #2b2b3a;
+      --chip: #2b2b3d;
+      --radius-xl: 24px;
+      --radius-l: 18px;
+      --radius-m: 12px;
+      --radius-s: 999px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
+      --shadow-subtle: 0 0 0 1px rgba(255, 255, 255, 0.02);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #15152a 0, #050509 55%, #000 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 32px 16px 64px;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 1120px;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .breadcrumbs span {
+      opacity: 0.7;
+    }
+
+    .hero {
+      background: radial-gradient(circle at top left, #2f179b 0, #151525 40%, #050509 110%);
+      border-radius: var(--radius-xl);
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow-soft), var(--shadow-subtle);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.5fr);
+      gap: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(89, 59, 226, 0.35), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(27, 196, 125, 0.28), transparent 55%);
+      opacity: 0.85;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-content,
+    .hero-meta {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(5, 5, 9, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+    }
+
+    .hero-kicker-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-green), var(--accent));
+      box-shadow: 0 0 0 4px rgba(27, 196, 125, 0.22);
+    }
+
+    .hero-title {
+      margin: 12px 0 14px;
+      font-size: clamp(30px, 4vw, 40px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #fff, #dad3f8);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      margin: 0 0 18px;
+      max-width: 36rem;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .tag {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(9, 9, 18, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      justify-content: space-between;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .meta-card {
+      padding: 10px 12px;
+      border-radius: var(--radius-m);
+      background: rgba(10, 10, 20, 0.74);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(18px);
+    }
+
+    .meta-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .meta-value {
+      font-size: 13px;
+    }
+
+    .meta-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .meta-pill {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(4, 4, 10, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--accent-soft);
+    }
+
+    .hero-credits {
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-credits span {
+      opacity: 0.9;
+    }
+
+    .hero-credits a {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 2px;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-end;
+      padding: 7px 12px;
+      border-radius: var(--radius-s);
+      background: rgba(4, 4, 12, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 12px;
+      color: var(--text-muted);
+      backdrop-filter: blur(20px);
+    }
+
+    .hero-pill strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .hero-pill-status {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--accent-green));
+      box-shadow: 0 0 0 4px rgba(27, 196, 125, 0.2);
+    }
+
+    /* Layout */
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.85fr) minmax(0, 0.9fr);
+      gap: 28px;
+    }
+
+    .content-column {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .sidebar-column {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* Sections */
+    .section {
+      background: linear-gradient(145deg, rgba(21, 21, 35, 0.98), rgba(9, 9, 18, 0.98));
+      border-radius: var(--radius-l);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      box-shadow: var(--shadow-subtle);
+      padding: 18px 18px 16px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    h3 {
+      margin: 12px 0 4px;
+      font-size: 15px;
+    }
+
+    p {
+      margin: 4px 0 10px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    ul, ol {
+      margin: 0 0 10px 18px;
+      padding: 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    li + li {
+      margin-top: 2px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 6px 0 10px;
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--chip);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .pill--accent {
+      background: rgba(89, 59, 226, 0.12);
+      border-color: rgba(199, 188, 245, 0.65);
+      color: var(--accent-soft);
+    }
+
+    .pill--success {
+      background: rgba(27, 196, 125, 0.12);
+      border-color: rgba(165, 243, 210, 0.65);
+      color: var(--accent-green-soft);
+    }
+
+    /* Two-column content inside a section */
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .split-alt {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    }
+
+    .callout {
+      padding: 10px 12px;
+      border-radius: var(--radius-m);
+      background: var(--bg-soft);
+      border: 1px solid var(--border-subtle);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .callout strong {
+      color: #fff;
+    }
+
+    .callout--accent {
+      background: rgba(89, 59, 226, 0.09);
+      border-color: rgba(199, 188, 245, 0.6);
+    }
+
+    .callout--success {
+      background: rgba(27, 196, 125, 0.09);
+      border-color: rgba(165, 243, 210, 0.6);
+    }
+
+    /* Timeline / journey */
+    .timeline {
+      display: grid;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .timeline-step {
+      display: grid;
+      grid-template-columns: 16px minmax(0, 1fr);
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .timeline-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      margin-top: 4px;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--accent-soft));
+      box-shadow: 0 0 0 3px rgba(89, 59, 226, 0.18);
+    }
+
+    .timeline-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .timeline-title {
+      color: #fff;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    /* Grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .stat-card {
+      padding: 10px 12px;
+      border-radius: var(--radius-m);
+      background: var(--bg-soft);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .stat-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .stat-caption {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Sidebar specific */
+    .toc-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 4px;
+      font-size: 13px;
+    }
+
+    .toc-list a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+    }
+
+    .toc-list a span {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.65;
+    }
+
+    .toc-badge {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      opacity: 0.65;
+    }
+
+    .toc-list a:hover {
+      border-color: rgba(199, 188, 245, 0.65);
+      background: rgba(89, 59, 226, 0.08);
+      color: #fff;
+    }
+
+    .persona-grid {
+      display: grid;
+      gap: 8px;
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .persona-tagline {
+      font-style: italic;
+      margin-bottom: 3px;
+    }
+
+    .design-system-swatches {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin: 8px 0 6px;
+    }
+
+    .swatch {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: #111;
+    }
+
+    .swatch-color {
+      height: 30px;
+    }
+
+    .swatch-meta {
+      padding: 4px 7px 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .swatch-meta strong {
+      display: block;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .footer {
+      margin-top: 28px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .footer strong {
+      color: #fff;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-pill {
+        align-self: flex-start;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        padding: 20px 12px 40px;
+      }
+
+      .hero {
+        padding: 20px 18px 18px;
+      }
+
+      .section {
+        padding: 14px 12px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="shell">
+      <header>
+        <div class="breadcrumbs">
+          <span>Portfolio</span>
+          <span>›</span>
+          <span>Case Studies</span>
+          <span>›</span>
+          <span>Baloot – Micro‑Saving Platform</span>
+        </div>
+
+        <section class="hero">
+          <div class="hero-content">
+            <div class="hero-kicker">
+              <span class="hero-kicker-dot"></span>
+              <span>UX Case Study</span>
+              <span>• Baloot Micro‑Saving Platform</span>
+            </div>
+            <h1 class="hero-title">
+              <span>Baloot</span> – building trust in micro‑savings and investment
+            </h1>
+            <p class="hero-subtitle">
+              Baloot is an Iranian micro‑saving and investment platform that helps people
+              preserve the value of their money despite high inflation. Over one and a half
+              years, we designed and iterated on the product across research, UX, UI and
+              design system – with a focus on automation, trust and accessibility for users
+              with low financial literacy.
+            </p>
+
+            <div class="hero-tags">
+              <span class="tag"><span class="tag-dot"></span>Fintech</span>
+              <span class="tag"><span class="tag-dot"></span>Micro‑saving &amp; Investment</span>
+              <span class="tag"><span class="tag-dot"></span>Mobile App UX</span>
+              <span class="tag"><span class="tag-dot"></span>Product Design</span>
+            </div>
+
+            <div class="hero-credits">
+              <span><strong>Team</strong> – Melika Besharati, Mitra Mohammadi, Mojtaba Torabi</span>
+              <span><strong>Role</strong> – UX / UI, research, design system</span>
+            </div>
+          </div>
+
+          <div class="hero-meta">
+            <div class="meta-grid">
+              <div class="meta-card">
+                <div class="meta-label">Problem</div>
+                <div class="meta-value">
+                  People struggle to save consistently and fear losing purchasing power due to inflation.
+                </div>
+              </div>
+              <div class="meta-card">
+                <div class="meta-label">Solution</div>
+                <div class="meta-value">
+                  Automated&nbsp;/ manual micro‑savings and investment in stable funds and stocks.
+                </div>
+              </div>
+            </div>
+            <div class="meta-grid">
+              <div class="meta-card">
+                <div class="meta-label">Timeline</div>
+                <div class="meta-value">18+ months</div>
+                <div class="meta-pill-row">
+                  <span class="meta-pill">Discovery</span>
+                  <span class="meta-pill">Delivery</span>
+                </div>
+              </div>
+              <div class="meta-card">
+                <div class="meta-label">Key outcomes</div>
+                <div class="meta-value">+20% conversion</div>
+                <div class="stat-caption">
+                  Increase in automatic investment activation after UX redesign.
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-pill">
+              <span class="hero-pill-status"></span>
+              <span><strong>Impact</strong> · 30B Toman saved · 120K+ users</span>
+            </div>
+          </div>
+        </section>
+      </header>
+
+      <main>
+        <div class="content-column">
+          <!-- Problem & goal -->
+          <section class="section" id="overview">
+            <div class="section-header">
+              <div class="section-title">01 · Overview</div>
+              <div class="section-kicker">Problem &amp; product goal</div>
+            </div>
+
+            <h3>Problem statement</h3>
+            <p>
+              Many people intend to save a portion of their monthly income for future goals but
+              struggle to do so consistently. They often forget to put money aside, or more
+              importantly, fear that inflation will erode the value of their savings over time.
+              Without simple, trustworthy tools, saving and investing remains complex, risky and
+              emotionally stressful.
+            </p>
+            <p>
+              Baloot’s goal is to remove this friction: help users save and invest even small
+              amounts of money, automatically or manually, while preserving their purchasing
+              power in valid, stable investment funds and stocks.
+            </p>
+
+            <h3>Product goal</h3>
+            <p>
+              Make micro‑savings and investment effortless and trustworthy:
+            </p>
+            <ul>
+              <li>Allow users to save small amounts automatically on a daily, weekly or monthly basis.</li>
+              <li>Keep their savings invested in stable funds and stocks to stay ahead of inflation.</li>
+              <li>Provide a clear, simple interface for users with low financial literacy.</li>
+              <li>Build trust through transparency, education and strong institutional partnerships.</li>
+            </ul>
+          </section>
+
+          <!-- Design process -->
+          <section class="section" id="process">
+            <div class="section-header">
+              <div class="section-title">02 · Design process</div>
+              <div class="section-kicker">From research to evaluation</div>
+            </div>
+
+            <div class="split">
+              <div>
+                <h3>Approach</h3>
+                <p>
+                  Over ~1.5 years, the team followed a user‑centered, iterative process:
+                </p>
+                <ul>
+                  <li><strong>Empathy &amp; discovery</strong> – user interviews, surveys, competitive analysis.</li>
+                  <li><strong>Ideation</strong> – user flows, information architecture, card sorting, brainstorming.</li>
+                  <li><strong>Design</strong> – sketches, wireframes, visual design, illustration, interaction design, design system.</li>
+                  <li><strong>Evaluation</strong> – moderated usability tests, surveys, interviews, and data analysis.</li>
+                  <li><strong>Implementation support</strong> – design‑dev handoff, coordination and iteration.</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Methods used</h3>
+                <div class="pill-row">
+                  <span class="pill pill--accent">User interviews</span>
+                  <span class="pill pill--accent">Surveys</span>
+                  <span class="pill pill--accent">Competitive analysis</span>
+                  <span class="pill pill--accent">Card sorting</span>
+                  <span class="pill pill--accent">Usability testing</span>
+                  <span class="pill pill--accent">Data analysis (4,895+ samples)</span>
+                </div>
+                <div class="callout callout--accent">
+                  <strong>Data sources</strong><br />
+                  We collected behavioral and attitudinal data from social media (Instagram, LinkedIn)
+                  and lifestyle influencers, resulting in 4,895 data points across income and occupation
+                  segments – with at least 115 responses per segment and over 400 in most, ensuring
+                  reliable insights.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Research insights -->
+          <section class="section" id="research">
+            <div class="section-header">
+              <div class="section-title">03 · Research insights</div>
+              <div class="section-kicker">Pain points, needs &amp; trust</div>
+            </div>
+
+            <h3>Key interview questions</h3>
+            <p>
+              We explored users’ mental models around saving and investing:
+            </p>
+            <ul>
+              <li>How did you start investing, from first interest to first investment?</li>
+              <li>How familiar are you with stock market concepts and investment methods?</li>
+              <li>Why do you save and why do you invest? What percentage of your income?</li>
+              <li>How do you research financial topics and which devices do you use?</li>
+              <li>How do you evaluate and trust investment applications?</li>
+            </ul>
+
+            <h3>Pain points</h3>
+            <div class="pill-row">
+              <span class="pill">Lack of financial information</span>
+              <span class="pill">Instability of financial markets</span>
+              <span class="pill">Fear of losing savings</span>
+              <span class="pill">Low income &amp; small amounts</span>
+              <span class="pill">Lack of trust in investment methods</span>
+              <span class="pill">Complex financial apps</span>
+            </div>
+
+            <h3>User needs</h3>
+            <ul>
+              <li>Invest with small amounts of money, without advanced knowledge.</li>
+              <li>Protect the financial value of their money from inflation.</li>
+              <li>Simple, guided flows and explanations for funds and investment options.</li>
+              <li>Insurance‑like safety around value stability.</li>
+              <li>Automatic saving so they don’t need to remember every time.</li>
+            </ul>
+
+            <div class="split">
+              <div>
+                <h3>Why people save</h3>
+                <p>
+                  Motivations vary by income level and life stage, but common reasons include:
+                </p>
+                <ul>
+                  <li>Buying or renting a house (especially for incomes above 8–12M).</li>
+                  <li>Travel and migration.</li>
+                  <li>Children’s expenses and education.</li>
+                  <li>Unpredictable incidents and emergencies.</li>
+                  <li>Buying personal items.</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Trust in investment apps</h3>
+                <p>
+                  Trust levels in savings/investment apps are mostly <strong>medium</strong>:
+                </p>
+                <ul>
+                  <li>Users with no familiarity with finance show the highest distrust.</li>
+                  <li>Users who are “completely proficient” are polarized – very trusting or very distrustful.</li>
+                  <li>Getting to know financial and investment topics has a direct relationship with app trust.</li>
+                </ul>
+                <div class="callout">
+                  <strong>Opportunity:</strong> educating users and increasing transparency are key levers to build trust in Baloot.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Personas & journey -->
+          <section class="section" id="personas">
+            <div class="section-header">
+              <div class="section-title">04 · Personas &amp; journey</div>
+              <div class="section-kicker">Who we design for</div>
+            </div>
+
+            <h3>Primary persona</h3>
+            <p>
+              Instead of multiple separate personas, we created a comprehensive persona that captures common traits:
+            </p>
+            <div class="persona-grid">
+              <div>
+                <div class="persona-tagline">“I want to invest for my future, but I don’t know where to start.”</div>
+                <ul>
+                  <li>18+ years old, typically middle‑class.</li>
+                  <li>Low financial education and low to medium income.</li>
+                  <li>Lazy or forgetful about saving and investing.</li>
+                  <li>Feels small amounts are “not worth” investing.</li>
+                </ul>
+              </div>
+              <div>
+                <ul>
+                  <li>Struggles with complex UI in financial apps.</li>
+                  <li>Worries about losing savings and doesn’t fully trust apps.</li>
+                  <li>Wants simple, automatic investment and basic financial literacy training.</li>
+                  <li>Goals include preserving money value, investing for children, and accessing services like life insurance and cashback.</li>
+                </ul>
+              </div>
+            </div>
+
+            <h3>User segments by risk &amp; knowledge</h3>
+            <p>
+              Baloot users fall into four broad groups:
+            </p>
+            <ol>
+              <li>Low income, low knowledge, low–moderate risk tolerance (often students).</li>
+              <li>Low income &amp; low knowledge; mainly low to moderate investment level.</li>
+              <li>Medium risk‑taking, income from low to high, investment from low to high.</li>
+              <li>Intermediate to high stock‑market knowledge, moderate to high income and investment.</li>
+            </ol>
+            <p>
+              Groups 3 and 4 generally have higher confidence in markets and are more risk‑taking. Baloot supports both users who want
+              automated investment and those who prefer manual control.
+            </p>
+
+            <h3>High‑level journey</h3>
+            <div class="timeline">
+              <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div>
+                  <div class="timeline-label">Stimulus</div>
+                  <div class="timeline-title">Inflation &amp; unstable economy</div>
+                  <p>
+                    Severe inflation, unstable economic situation, fear of decreasing money value, exposure to
+                    social‑network trading and fraud push users to look for safer ways to save.
+                  </p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div>
+                  <div class="timeline-label">Discovery</div>
+                  <div class="timeline-title">Seeking trustworthy options</div>
+                  <p>
+                    Users ask friends, follow financial influencers, compare banks, funds, brokerage and digital
+                    currency options; they feel confused by contradictory information and low financial awareness.
+                  </p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div>
+                  <div class="timeline-label">Onboarding</div>
+                  <div class="timeline-title">First contact with Baloot</div>
+                  <p>
+                    They reach Baloot via website, social media, Google ads or partner agencies, then go through
+                    app onboarding, legal verification and account setup. Registration complexity, unfamiliar
+                    concepts and infrastructure issues can create friction.
+                  </p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div>
+                  <div class="timeline-label">Saving &amp; investing</div>
+                  <div class="timeline-title">Activating automatic and manual flows</div>
+                  <p>
+                    Users explore automatic saving, automatic investment (smart / periodic) and manual fund
+                    purchase. Clear guidance, transparent status and smooth flows are critical for trust and
+                    repeat use.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Solution: flows -->
+          <section class="section" id="solution">
+            <div class="section-header">
+              <div class="section-title">05 · Solution</div>
+              <div class="section-kicker">Key flows &amp; main pages</div>
+            </div>
+
+            <h3>Automatic investment: periodic &amp; smart</h3>
+            <p>
+              One of the most important UX challenges was connecting automatic savings with actual investment.
+              In the old version, many users activated automatic saving but never moved to investment.
+            </p>
+
+            <div class="split split-alt">
+              <div>
+                <h4>New model</h4>
+                <ul>
+                  <li>
+                    <strong>Periodic investment</strong> – users choose their bank, investment fund, amount and time
+                    interval; Baloot automatically withdraws and invests on the chosen schedule.
+                  </li>
+                  <li>
+                    <strong>Smart investment</strong> – users activate automatic saving and select a target fund
+                    and units. When the wallet balance reaches the price of one unit, Baloot automatically buys it.
+                  </li>
+                </ul>
+                <div class="callout callout--success">
+                  <strong>Design decision:</strong> automatic saving became a tool for automatic investment, not
+                  a separate prerequisite. This reduced dead‑end states and aligned flows with user expectations.
+                </div>
+              </div>
+              <div>
+                <h4>Core scenarios</h4>
+                <ol>
+                  <li><strong>Automatic investment</strong> – select auto‑invest, read onboarding, choose smart/periodic, pick fund, amount and bank, confirm.</li>
+                  <li><strong>Automatic saving</strong> – open auto saving, adjust default amount and interval, choose bank, connect to direct debit.</li>
+                  <li><strong>Manual investment</strong> – pick a fund, review information, choose units or amount, pay via banking gateway.</li>
+                </ol>
+              </div>
+            </div>
+
+            <h3>Main app pages</h3>
+            <ul>
+              <li><strong>Home</strong> – portfolio value, account balance, “next step” guidance card, banners for auto saving / auto investment / fund purchase, booklet, invite friends.</li>
+              <li><strong>Automatic investment</strong> – configure smart vs periodic investment, view current settings and edit easily.</li>
+              <li><strong>Manual &amp; quick fund purchase</strong> – choose account and fund, invest directly; clear entry points to automatic investment.</li>
+              <li><strong>Automatic saving</strong> – enable recurring saving from a chosen bank; reused funds for automatic or manual investing.</li>
+              <li><strong>My account</strong> – balance, withdrawals, bills, recent cash‑deposit profit, entry points to automatic saving and investment.</li>
+              <li><strong>Future prediction</strong> – forecast charts that show how savings and investments grow over time, based on user age and auto‑investment settings.</li>
+            </ul>
+          </section>
+
+          <!-- Trust & additional features -->
+          <section class="section" id="trust">
+            <div class="section-header">
+              <div class="section-title">06 · Trust &amp; ecosystem</div>
+              <div class="section-kicker">Partners, guidance &amp; safety nets</div>
+            </div>
+
+            <h3>Building trust</h3>
+            <p>
+              Because trust is central to investment behavior, we designed multiple reinforcing mechanisms:
+            </p>
+            <ul>
+              <li>
+                <strong>Institutional partnerships</strong> – cooperation with licensed brokerages
+                (e.g. Sahm Ashena, Mehrafrin) under supervision of the Securities and Exchange Organization.
+              </li>
+              <li>
+                <strong>Bank network</strong> – integration with 15+ banks (Bank Mellat, Melli, Keshavarzi, Ayandeh, etc.)
+                and Central Bank oversight for automated savings.
+              </li>
+              <li>
+                <strong>Transparent documentation</strong> – contracts and certificates of deposit are visible in‑app for every user.
+              </li>
+              <li>
+                <strong>Guided onboarding</strong> – onboarding slides, contextual help icons and a “Booklet” section explain concepts and flows in simple language.
+              </li>
+            </ul>
+
+            <h3>Complementary features</h3>
+            <p>
+              To support long‑term loyalty and more holistic financial behavior, Baloot explores:
+            </p>
+            <ul>
+              <li><strong>Life insurance</strong> – integrated flow to choose duration, payment method and beneficiaries.</li>
+              <li><strong>Cashback</strong> – contracts with partners (like Takhfifan) so part of card‑payment commission is automatically invested for users.</li>
+              <li><strong>Baloot card &amp; account</strong> – debit card linked to Baloot account, enabling round‑up savings, instant withdrawals and simpler everyday payments.</li>
+            </ul>
+          </section>
+
+          <!-- Results -->
+          <section class="section" id="results">
+            <div class="section-header">
+              <div class="section-title">07 · Results</div>
+              <div class="section-kicker">Impact &amp; learnings</div>
+            </div>
+
+            <div class="grid-3">
+              <div class="stat-card">
+                <div class="stat-label">Total savings</div>
+                <div class="stat-value">30B Toman</div>
+                <div class="stat-caption">Saved by users in the last year.</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Users</div>
+                <div class="stat-value">120K+</div>
+                <div class="stat-caption">People downloaded Baloot in a year.</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Conversion lift</div>
+                <div class="stat-value">+20%</div>
+                <div class="stat-caption">Increase in users activating automatic investment.</div>
+              </div>
+            </div>
+
+            <h3>User behavior breakdown</h3>
+            <div class="grid-2">
+              <div>
+                <ul>
+                  <li><strong>29%</strong> – use both automatic saving and automatic investment.</li>
+                  <li><strong>49%</strong> – invest manually only.</li>
+                  <li><strong>17%</strong> – use automatic saving only.</li>
+                  <li><strong>5%</strong> – save automatically and also purchase funds manually.</li>
+                </ul>
+              </div>
+              <div>
+                <div class="callout callout--success">
+                  <strong>72.14% of users</strong> who have automatic savings also continue to invest automatically
+                  (smart or periodic), showing a strong shift toward set‑and‑forget behavior once trust and flows
+                  are clear.
+                </div>
+              </div>
+            </div>
+
+            <h3>Competitor positioning</h3>
+            <p>
+              Compared to competitors like Daran and Kian Digital, Baloot differentiates through:
+            </p>
+            <ul>
+              <li>Automatic investment and automatic savings as first‑class features.</li>
+              <li>Flexible options for various risk levels and stable funds.</li>
+              <li>A UI tailored specifically to user pain points and mental models.</li>
+            </ul>
+            <p>
+              While some competitors focus more on advice, risk analysis or commodity funds, Baloot focuses on
+              practical automation and simplicity within an unstable economic environment, where online risk
+              scoring may not be reliable.
+            </p>
+          </section>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar-column">
+          <section class="section">
+            <div class="section-header">
+              <div class="section-title">Contents</div>
+              <div class="section-kicker">Quick navigation</div>
+            </div>
+            <ul class="toc-list">
+              <li><a href="#overview"><span>01</span><span class="toc-badge"></span>Overview</a></li>
+              <li><a href="#process"><span>02</span><span class="toc-badge"></span>Design process</a></li>
+              <li><a href="#research"><span>03</span><span class="toc-badge"></span>Research insights</a></li>
+              <li><a href="#personas"><span>04</span><span class="toc-badge"></span>Personas &amp; journey</a></li>
+              <li><a href="#solution"><span>05</span><span class="toc-badge"></span>Solution</a></li>
+              <li><a href="#trust"><span>06</span><span class="toc-badge"></span>Trust &amp; ecosystem</a></li>
+              <li><a href="#results"><span>07</span><span class="toc-badge"></span>Results</a></li>
+            </ul>
+          </section>
+
+          <section class="section">
+            <div class="section-header">
+              <div class="section-title">Design system</div>
+              <div class="section-kicker">Visual language</div>
+            </div>
+
+            <h3>Color palette</h3>
+            <div class="design-system-swatches">
+              <div class="swatch">
+                <div class="swatch-color" style="background: #593be2;"></div>
+                <div class="swatch-meta">
+                  <strong>#593BE2</strong>
+                  Primary purple
+                </div>
+              </div>
+              <div class="swatch">
+                <div class="swatch-color" style="background: #2f179b;"></div>
+                <div class="swatch-meta">
+                  <strong>#2F179B</strong>
+                  Deep accent
+                </div>
+              </div>
+              <div class="swatch">
+                <div class="swatch-color" style="background: #1bc47d;"></div>
+                <div class="swatch-meta">
+                  <strong>#1BC47D</strong>
+                  Success green
+                </div>
+              </div>
+              <div class="swatch">
+                <div class="swatch-color" style="background: #ffb958;"></div>
+                <div class="swatch-meta">
+                  <strong>#FFB958</strong>
+                  Warm highlight
+                </div>
+              </div>
+            </div>
+
+            <p>
+              The visual language uses soft neutrals (#FFFFFF to #1E1E1E), purple and green accents
+              from the original design (#DAD3F8, #C7BCF5, #593BE2, #2F179B, #128756, #1BC47D, #A5F3D2),
+              plus warm tones (#B36800, #FFB958, #FFE3A0, #FFF1D1) for financial highlights.
+            </p>
+
+            <h3>Typography &amp; components</h3>
+            <ul>
+              <li>Inspired by the original Baloot design system (Vazir family, multiple weights).</li>
+              <li>Hierarchy from Heading 1–5, tuned for readability on mobile and desktop.</li>
+              <li>Button variants for primary, secondary, outline and critical (red) actions.</li>
+              <li>Bottom sheets, snackbars and keyboard treatment to reduce cognitive load.</li>
+            </ul>
+          </section>
+
+          <section class="section">
+            <div class="section-header">
+              <div class="section-title">Usability testing</div>
+              <div class="section-kicker">What we improved</div>
+            </div>
+
+            <p>
+              Moderated usability tests with 24 participants uncovered issues in navigation, clarity of
+              balances, discoverability of manual and automatic investment, and crowded information
+              on transaction pages.
+            </p>
+            <ul>
+              <li>Added a “Your next step on Baloot” card to guide users toward account completion and investment.</li>
+              <li>Created the “Booklet” and inline help icons to explain complex concepts.</li>
+              <li>Removed a confusing “my account” progress bar and clarified labels and contrast.</li>
+              <li>Redesigned withdrawal cards with clearer hierarchy, color‑coded statuses and progressive disclosure.</li>
+              <li>Simplified automatic saving settings and split time/amount into separate, easier steps.</li>
+            </ul>
+          </section>
+        </aside>
+      </main>
+
+      <div class="footer">
+        <p>
+          <strong>Baloot – Micro‑Saving Platform</strong><br />
+          Case study based on product work by Melika Besharati · Mitra Mohammadi · Mojtaba Torabi.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

@@ -3,11 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Baloot — Mojtaba Torabi</title>
+  <title>Baloot — UX Case Study · Micro-Saving Platform — Mojtaba Torabi</title>
+  <meta name="description" content="Baloot UX case study: Iran's first micro-saving & investment platform. Research, design process, main pages, and app UI.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/main.css">
+  <style>
+    /* Case study showcase overrides */
+    .showcase { max-width: 900px; margin: 0 auto; padding: 0 var(--space-xl) var(--space-4xl); }
+    .showcase-hero {
+      text-align: center;
+      padding: var(--space-3xl) 0 var(--space-2xl);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .showcase-hero h1 { font-size: clamp(1.5rem, 4vw, 2rem); margin: 0 0 var(--space-sm); letter-spacing: -0.02em; }
+    .showcase-hero .kicker { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-text-muted); margin-bottom: var(--space-md); }
+    .showcase-hero .subtitle { font-size: 1.125rem; color: var(--color-text-muted); margin: 0 0 var(--space-lg); }
+    .showcase-team { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-md); font-size: 0.9375rem; color: var(--color-text-muted); }
+    .showcase-team span { display: block; }
+    .showcase-section {
+      padding: var(--space-2xl) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .showcase-section:last-of-type { border-bottom: none; }
+    .showcase-section h2 {
+      font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--color-text-muted); margin: 0 0 var(--space-lg);
+    }
+    .showcase-section h3 { font-size: 1.125rem; margin: var(--space-lg) 0 var(--space-sm); }
+    .showcase-section p, .showcase-section li { color: var(--color-text-muted); margin: 0 0 var(--space-md); font-size: 0.9375rem; line-height: 1.65; }
+    .showcase-section ul, .showcase-section ol { padding-left: 1.25rem; margin: 0 0 var(--space-md); }
+    .showcase-section ul { list-style: disc; }
+    .showcase-pills { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin: var(--space-md) 0; }
+    .showcase-pill { padding: var(--space-xs) var(--space-sm); border-radius: 999px; background: var(--color-border); font-size: 0.8125rem; color: var(--color-text-muted); }
+    .showcase-grid2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-lg); margin: var(--space-md) 0; }
+    .showcase-card { padding: var(--space-md); border-radius: 8px; border: 1px solid var(--color-border); background: rgba(0,0,0,0.02); }
+    .showcase-card .label { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-xs); }
+    .showcase-card .value { font-size: 0.9375rem; font-weight: 500; }
+    .pdf-embed-wrap {
+      margin: var(--space-2xl) 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      background: #f5f5f5;
+    }
+    .pdf-embed-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 80vh;
+      min-height: 600px;
+      border: 0;
+    }
+    .pdf-embed-caption {
+      padding: var(--space-md) var(--space-lg);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      background: var(--color-bg);
+      border-top: 1px solid var(--color-border);
+    }
+    .pdf-embed-caption a { color: var(--color-accent); }
+    .app-pages-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-sm); font-size: 0.875rem; color: var(--color-text-muted); margin: var(--space-md) 0; }
+    .app-pages-list span { display: block; padding: var(--space-xs) 0; }
+    .stat-row { display: flex; flex-wrap: wrap; gap: var(--space-xl); margin: var(--space-lg) 0; }
+    .stat-item { min-width: 140px; }
+    .stat-item .num { font-size: 1.5rem; font-weight: 600; color: var(--color-accent); }
+    .stat-item .cap { font-size: 0.8125rem; color: var(--color-text-muted); margin-top: var(--space-xs); }
+    .back-link { display: inline-block; margin-bottom: var(--space-xl); font-size: 0.9375rem; color: var(--color-accent); }
+    .back-link:hover { color: var(--color-text); }
+  </style>
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -25,12 +89,249 @@
   </header>
   <main id="main" class="main">
     <div class="page-header">
+      <a href="../#work" class="back-link">← Back to Work</a>
       <h1>Baloot</h1>
-      <p class="lead">Launched Iran's first micro-saving & investment platform, enabling users to save and invest small amounts.</p>
+      <p class="lead">UX Case Study — Iran's first micro-saving & investment platform.</p>
     </div>
-    <div class="page-content">
-      <p>Case study content can be added here or linked externally. Existing case study: <a href="https://www.mojtabat.com/work/baloot" target="_blank" rel="noopener noreferrer">mojtabat.com/work/baloot</a>.</p>
-      <p><a href="../#work" class="link-arrow">← Back to Work</a></p>
+
+    <div class="showcase">
+      <!-- Hero -->
+      <section class="showcase-hero" aria-labelledby="case-title">
+        <p class="kicker">UX Case Study</p>
+        <h1 id="case-title">Micro-Saving Platform</h1>
+        <p class="subtitle">Baloot is an automated micro-saving application for savings and investment, even with small amounts—automatically or manually.</p>
+        <div class="showcase-team">
+          <span><strong>Melika Besharati</strong></span>
+          <span><strong>Mitra Mohammadi</strong></span>
+          <span><strong>Mojtaba Torabi</strong></span>
+        </div>
+      </section>
+
+      <!-- Problem & goal -->
+      <section class="showcase-section" id="overview">
+        <h2>01 · Overview</h2>
+        <h3>Problem statement</h3>
+        <p>We all strive to set aside a portion of our monthly income for future use, pooling these savings towards specific goals. However, sometimes we forget to save, or more importantly, we worry that the value of our accumulated money might diminish over time due to inflation. The main goal of Baloot is to make these worries and troubles go away.</p>
+        <h3>Project goal</h3>
+        <p>Imagine that you want to save 100 Dollars each week. It's challenging to consistently do this and not forget. Baloot can assist you. You can save your desired amount automatically on a daily, weekly, or monthly basis. These funds will be held in your Baloot account, allowing you to use them for investment purposes.</p>
+        <p>Given the high rate of inflation, savings alone don't mean much—as time goes by the ability to buy more decreases. Baloot can aid you so that the sums of money in your savings account remain in valid, stable investment funds and stocks, invested while keeping their value. Baloot has this automatic quality to assist you in investing with ease.</p>
+      </section>
+
+      <!-- Design process -->
+      <section class="showcase-section" id="process">
+        <h2>02 · Design process</h2>
+        <h3>Empathy</h3>
+        <p>User research, surveys, interviews, competitive analysis. Highlighted issues, user persona, use case, user's journey map.</p>
+        <h3>Ideation</h3>
+        <p>User flow, information architecture, brainstorming sessions, card sorting, affinity diagram, primitive sketch.</p>
+        <h3>Designing</h3>
+        <p>Wireframe, prototype making, illustration, interaction design, design system, kit and guidelines.</p>
+        <h3>Evaluation</h3>
+        <p>Usability test, interview and survey, user and support team data. Coordination with implementation, on-time dispatch to software developer, examining coordination and compatibility of the design along with development.</p>
+      </section>
+
+      <!-- User research -->
+      <section class="showcase-section" id="research">
+        <h2>03 · User research</h2>
+        <p>In a year and a half's time, our team has carried out their work on the product. During the process of designing Baloot, a number of usability tests, surveys, interviews and card sorting along with many other methods have been performed; furthermore, user information has been extracted by the data team which we have included in the article.</p>
+        <h3>A few questions from our interviews</h3>
+        <ul>
+          <li>Can you explain step by step from when you decided to enter the stock market to when you invested?</li>
+          <li>How familiar are you with stock market concepts?</li>
+          <li>When you want to research something what device do you use?</li>
+          <li>Why do you invest? In your opinion, what are some ways to invest? What is the best way and why?</li>
+          <li>What percentage of your income do you save? And for what reasons do you do this?</li>
+          <li>How can you trust investment apps? What is your investment method? Can you trust apps in the investment field?</li>
+        </ul>
+        <h3>Data collection</h3>
+        <p>The main way to collect data is related to the study of social networks such as Instagram and LinkedIn. Lifestyle influencers are utilized to gather data; the total sum of the data is 4,895 cases. The total amount of data in each category of occupation and income is at least 115 cases, and in most cases above 400, leading to increased trustworthiness of the data.</p>
+        <h3>Abstract of the outcome</h3>
+        <ul>
+          <li>The amount of savings has a direct relationship with income.</li>
+          <li>People who have a stable salary save more than others.</li>
+          <li>People who have a stable income invest or save most of their salary in banks as well as gold funds.</li>
+          <li>"Purchasing personal items" along with "unpredictable incidents" are two central motives for different individuals to save.</li>
+          <li>For those who have an income of over 8 million, "buying or house rents" are the main reasons for saving.</li>
+          <li>93% of people in society do not use apps in the fields of investment and savings in various occupations.</li>
+          <li>The level of trust of different segments of society in investment apps is relatively low; building trust is one of the main tasks of these businesses.</li>
+        </ul>
+        <h3>Pain points & user needs</h3>
+        <div class="showcase-pills">
+          <span class="showcase-pill">Lack of financial information</span>
+          <span class="showcase-pill">Instability of financial markets</span>
+          <span class="showcase-pill">Concerns about losing savings</span>
+          <span class="showcase-pill">Lack of faith in investment methods</span>
+          <span class="showcase-pill">Complex user interfaces of financial apps</span>
+        </div>
+        <p><strong>User needs:</strong> Invest with small amounts; protect financial value from inflation; simple, guided flows; insurance-like safety around value stability; automatic saving so they don't need to remember.</p>
+        <h3>Competitive analysis</h3>
+        <p>Generally, Baloot has an advantage over all its competitors due to automatic investment and savings, a fully compatible user interface derived from user needs and pain points, and flexible investment options. Competitors (e.g. Daran, Kian Digital) lack automatic saving and automatic investment and various options such as cash-back and insurance. Baloot offers automatic investment and automatic saving, diverse ranges for different risk levels, and the possibility of investing in stable funds with an easy-to-use UI.</p>
+        <h3>Main challenges of the product</h3>
+        <ul>
+          <li>Trust in Baloot as a way to invest and save up.</li>
+          <li>People's reluctance to invest in the stock market after major fluctuations.</li>
+          <li>Obtaining the relevant permits from competent governmental and non-governmental organizations.</li>
+          <li>User's lack of familiarity with investments and savings fundamentals and its automatic quality; a vague mental image of the concept of saving and micro-investment.</li>
+        </ul>
+      </section>
+
+      <!-- Persona -->
+      <section class="showcase-section" id="personas">
+        <h2>04 · Persona</h2>
+        <p><strong>Specifications:</strong> Age 18 years and above (able to invest for themselves and other family members and pass legal identity verification). Usually middle class; lack of financial education.</p>
+        <p><strong>Pain points:</strong> Laziness and forgetfulness in saving and investing; lack of motivation and uncertainty in investing small amounts; low income; complex user interfaces of financial apps; concerns about losing savings; lack of trust and financial knowledge.</p>
+        <p><strong>Needs:</strong> Be able to invest with small amounts; have a prediction of their future investment; easily use the app; be reminded or automatically invested for them; simple financial literacy training; clarifying information regarding purchasing investment funds.</p>
+        <p><strong>Goals:</strong> Preserve the value of their money; invest for the future with small amounts; investment for children; have multiple services such as life insurance, cashback, etc.; creating incentives for investment.</p>
+        <p>Baloot users are divided into 4 categories in terms of type of investment, knowledge and risk tolerance—from low income/low knowledge (e.g. students) to intermediate-to-high stock market knowledge and moderate-to-high income and investment.</p>
+      </section>
+
+      <!-- Trust building -->
+      <section class="showcase-section" id="trust">
+        <h2>05 · Trust building</h2>
+        <p>Baloot cooperates with brokerages and banks and the stock exchange organization. Some of the brokerages that cooperate with Baloot and have a license from the Securities and Exchange Organization include Sahm Ashena Brokerage and Mehrafrin Brokerage. Baloot currently cooperates with 15+ banks for automating the savings process (e.g. Bank Mellat, Melli, Keshavarzi, Ayandeh, and others), with Central Bank oversight.</p>
+        <p>The ability to view and receive the contract and certificate of deposit in the app makes all matters clearly accessible to the user and increases confidence. When the user enters the app, they are faced with an onboarding that briefly explains the different parts of Baloot in a few slides with visualization; all parts of the program have a guide specific to themselves.</p>
+      </section>
+
+      <!-- Ideation: sitemap & flows -->
+      <section class="showcase-section" id="ideation">
+        <h2>06 · Ideation</h2>
+        <p>Based on the information obtained from previous sections and the sorting and categorization of data, brainstorming sessions, interviews, etc., the sitemap and user flow for different scenarios, as well as initial wireframes, have been created.</p>
+        <h3>Key flows</h3>
+        <ul>
+          <li><strong>First scenario — Automatic investment:</strong> Choose automatic investment → see onboarding → select type (Smart or Periodic) → select fund → enter amount/units and bank → connect to Direct Debit → automatic investment activated.</li>
+          <li><strong>Second scenario — Automatic saving:</strong> See onboarding → activate automatic savings → adjust amount and time interval → choose bank → connect to Direct Debit → automatic savings activated.</li>
+          <li><strong>Third scenario — Manual investment:</strong> Enter from homepage banner → click on fund → view details → buy → specify units or amount → connect to banking gateway → manual purchase done.</li>
+        </ul>
+      </section>
+
+      <!-- Main pages (descriptions) -->
+      <section class="showcase-section" id="main-pages">
+        <h2>07 · Main pages</h2>
+        <h3>Home page</h3>
+        <p>Once a user has entered the Baloot application, the first page is the home page. General information such as the value of the investment and account balance are available, as well as accessibility to all sections. Users can easily go to my saving account page, notifications, booklets, and invite friends. The page is personalized by users' situation: completion card if authentication is incomplete; activation card or automatic investment status if inactive or active. A "next step" card at the top encourages and guides users to become successful investors.</p>
+        <h3>Automatic investment</h3>
+        <p>In this section, by reading about two ways—smart and periodic—users activate according to their needs, and afterward they see their information and can edit.</p>
+        <h3>Manual and quick fund purchase</h3>
+        <p>Users can select the account in which they will manually and directly invest and purchase the desired amount to add to their assets. A highly noticeable rate of Baloot's clients invests like this. There is also accessibility to the automatic investment pathway via a card at the top of the page.</p>
+        <h3>Automatic saving</h3>
+        <p>Automatic saving can be found on the home page and my account page. On this page, users allow Baloot to save the desired amount of money from the chosen bank. Users may use this amount in automatic savings or fast purchase of a manual account.</p>
+        <h3>My account</h3>
+        <p>Reachable through the home page; contains balance, withdrawals, payments, bills, and recent payment profit card. Accessibility to automatic saving and automatic investment page is also provided.</p>
+        <h3>Future prediction</h3>
+        <p>On the assets page. Users can predict their future investment thanks to the chart and the change of numbers and timeliness, leading to better investment management. The automatic investment settings are shown on the chart according to the user's age.</p>
+      </section>
+
+      <!-- Application pages (list) -->
+      <section class="showcase-section" id="app-pages">
+        <h2>08 · Application pages</h2>
+        <p>Full set of app screens covered in the case study:</p>
+        <div class="app-pages-list">
+          <span>Onboarding</span>
+          <span>Login</span>
+          <span>Home</span>
+          <span>Profile</span>
+          <span>Portfolio, Future</span>
+          <span>Manually Investment</span>
+          <span>Withdraw</span>
+          <span>Manually Investment (fund info)</span>
+          <span>Manually Investment (set units)</span>
+          <span>Automatic saving, Guide</span>
+          <span>Automatic saving (set time)</span>
+          <span>Auto investment, Home</span>
+          <span>Auto investment (set amount/units)</span>
+          <span>Auto investment (after setup)</span>
+          <span>Auto invest (fund list)</span>
+          <span>Auto invest (fund info)</span>
+          <span>Auto invest (phone input)</span>
+          <span>Wallet</span>
+          <span>Wallet, Transactions</span>
+          <span>Transactions, Filter</span>
+          <span>Portfolio (records)</span>
+          <span>Portfolio, Today</span>
+          <span>Blog, Home</span>
+          <span>Blog, Posts list</span>
+          <span>Blog, Post</span>
+          <span>Referral</span>
+          <span>Gift card</span>
+          <span>Account setup</span>
+        </div>
+      </section>
+
+      <!-- Design shots & full PDF (main pages through all UI shots) -->
+      <section class="showcase-section" id="design-shots" aria-labelledby="design-shots-title">
+        <h2 id="design-shots-title">09 · Design shots &amp; UI — Full presentation</h2>
+        <p>Below is the full PDF presentation: main pages, wireframes, design system, components, and all app UI shots from the case study, as in the original document.</p>
+        <div class="pdf-embed-wrap">
+          <iframe src="../Baloot%20Presantation.pdf#toolbar=0" title="Baloot UX Case Study — Full PDF presentation (main pages and UI shots)"></iframe>
+          <p class="pdf-embed-caption">
+            <a href="../Baloot%20Presantation.pdf" target="_blank" rel="noopener noreferrer">Open PDF in a new tab</a> if the embed does not load. Contains all design shots from main pages through application screens, wireframes, design system, and evaluation.
+          </p>
+        </div>
+      </section>
+
+      <!-- Design system abstract -->
+      <section class="showcase-section" id="design-system">
+        <h2>10 · Design system (abstract)</h2>
+        <p><strong>Color palette:</strong> Neutrals (e.g. #FFFFFF, #F2F2F2, #1E1E1E); purple accent (#DAD3F8, #C7BCF5, #593BE2, #2F179B); green (#128756, #1BC47D, #A5F3D2); warm (#B36800, #FFB958, #FFE3A0, #FFF1D1).</p>
+        <p><strong>Typography:</strong> Font family Vazir. Headings 1–5 (24px down to 12px). Weights: Regular, Medium, Bold, Black.</p>
+        <p><strong>Components:</strong> Buttons (A, B, C variants; purple, stroke, red), modals, bottom sheet guide, fields, navigation, snackbar, keyboard treatment, illustration of empty state, icons.</p>
+      </section>
+
+      <!-- Future features -->
+      <section class="showcase-section" id="future">
+        <h2>11 · Future features</h2>
+        <p><strong>Life insurance</strong> — Users enter from home menu, select life insurance, register contract duration and payment method, see proposed insurances, specify representatives and beneficiaries, finalize.</p>
+        <p><strong>Cashback</strong> — Part of card commission returned to the customer; goal to incentivize transactions through Baloot and automatically invest small amounts. Contract with Takhfifan; plans with banks. Investment accounts, retirement, children's future, and Cashback sections on the home page.</p>
+        <p><strong>Baloot card and bank account</strong> — For ease of transactions, cashback, round-up, quick withdrawals. Flow: welcome page → address/postal code → phone → verification → national ID → date of birth → username/password → national card photo → video authentication → account created; optional card issuance. Advantages: smart transfer, safety protocols, no minimum balance, instant withdraw, fast free account, digital banks support, cashback and round-up, online card passwords, no withdrawal limits.</p>
+      </section>
+
+      <!-- Usability evaluation -->
+      <section class="showcase-section" id="evaluation">
+        <h2>12 · Design evaluation (usability)</h2>
+        <p>Moderated usability testing with 24 participants. Impact on the application:</p>
+        <ul>
+          <li>Added "Your next step on Baloot" card to guide users and connect to account completion.</li>
+          <li>"Booklet" section on the home page and question-mark guide on all pages; onboarding slides for newcomers.</li>
+          <li>Removed confusing "my account" progress bar; improved "my account" button with icons and title; addressed contrast.</li>
+          <li>Card for manual/non-automatic investment; correct labels at bottom navigation, permanently visible.</li>
+          <li>Dedicated section for bills; touch points for automatic saving and investment on my account; "final cash deposit profit" section.</li>
+          <li>Withdrawal cards: color coding (e.g. red for unsuccessful), clearer hierarchy, progressive disclosure in bottom sheet.</li>
+          <li>Automatic saving: banners before/after activation guiding toward automatic investment; redirect after activation to automatic investment to increase conversion. Settings and steps on main page with better information architecture; amount and time separated into distinct steps.</li>
+        </ul>
+      </section>
+
+      <!-- Auto-investment redesign -->
+      <section class="showcase-section" id="auto-invest">
+        <h2>13 · Auto-investment redesign</h2>
+        <p>Users reported: difficulty determining amount and units with different banks; not knowing which fund was bought; assuming that after "automatic saving" they had completed Baloot steps. After ~1.5 months of study, brainstorming with technical team and CEO, prototypes and usability testing, and data review, the current solution was obtained.</p>
+        <h3>Periodic and smart investment</h3>
+        <p><strong>Smart:</strong> Users invest with the same accounts used for automatic savings. They select the investment location and desired number of units; whenever the wallet reaches the amount for 1 unit of that fund, investment is made automatically.</p>
+        <p><strong>Periodic:</strong> Users activate amount, account (placement), time period, and bank; within the selected timeline that amount is taken and added to their account.</p>
+        <p><strong>Automatic savings serve as a tool for automatic investment, not as a precondition.</strong> Users are encouraged from the beginning to have automatic investments; to activate, they provide preferred bank, investment amount, and time interval. This eliminated the situation where users only activated automatic savings but did not move towards investment. <strong>Result: ~20% improvement in conversion rate</strong> (e.g. from ~13.6 to ~16.3 users added daily to this feature in the period measured).</p>
+      </section>
+
+      <!-- Stats -->
+      <section class="showcase-section" id="results">
+        <h2>14 · Baloot statistics</h2>
+        <p>Since the official release of Baloot (almost a year ago):</p>
+        <div class="stat-row">
+          <div class="stat-item"><span class="num">30B Toman</span><span class="cap">Saved by users in Baloot last year</span></div>
+          <div class="stat-item"><span class="num">120K+</span><span class="cap">People who downloaded Baloot last year</span></div>
+        </div>
+        <p><strong>User segments:</strong> 29% activated both automatic saving and automatic investment; 49% only invest manually; 17% only save automatically; 5% save automatically and also purchase investment funds manually.</p>
+        <p><strong>72.14%</strong> of Baloot users who had automatic savings also continue their investment automatically (smart and periodic).</p>
+        <p><strong>Behavior change:</strong> 36.2% had investments in other platforms and preferred other platforms; 27.3% invest in Baloot and also in other platforms; 36.4% only purchased Baloot's investment fund and continued their journey with the app.</p>
+      </section>
+
+      <!-- Credits -->
+      <section class="showcase-section" id="credits">
+        <h2>Thanks for your attention</h2>
+        <div class="showcase-team">
+          <span><a href="https://linkedin.com/in/mojtabat" target="_blank" rel="noopener noreferrer">Mojtaba Torabi</a></span>
+          <span><a href="https://linkedin.com/in/mitra-mohammadi-4649271a0" target="_blank" rel="noopener noreferrer">Mitra Mohammadi</a></span>
+          <span><a href="https://linkedin.com/in/melika-besharati" target="_blank" rel="noopener noreferrer">Melika Besharati</a></span>
+        </div>
+      </section>
     </div>
   </main>
   <footer class="footer" role="contentinfo">

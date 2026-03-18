@@ -131,10 +131,6 @@
   if (document.querySelector(".home-hero")) {
     syncHeroVisualHeight();
     window.addEventListener("resize", syncHeroVisualHeight);
-    window.addEventListener("load", function () {
-      syncHeroVisualHeight();
-      setTimeout(syncHeroVisualHeight, 100);
-    });
     if ("ResizeObserver" in window) {
       var heroCopy = document.querySelector(".home-hero .hero-copy");
       if (heroCopy) {

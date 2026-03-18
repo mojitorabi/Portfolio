@@ -1,31 +1,28 @@
 # Deploy to GitHub (one-time)
 
-Your remote is already set to: `https://github.com/MojtabaTorabiii/mojtabat.com.git`
+Your remote is set to: `https://github.com/MojtabaTorabiii/mojtabat.com.git`
 
-## 1. Create the repository on GitHub
+## Option A — One command (recommended)
 
-Click this link (it opens a new repo with the name pre-filled):
+This creates the repo and pushes in one go. You need a [Personal Access Token](https://github.com/settings/tokens) with **repo** scope.
 
-**https://github.com/new?name=mojtabat.com&description=Portfolio**
-
-- Leave **“Add a README”** unchecked.
-- Click **Create repository**.
-
-## 2. Push from your Mac
-
-In **Terminal**, run:
+In **Terminal**:
 
 ```bash
 cd /Users/mojtabatorabi/Desktop/Portfolio
-git push -u origin main
+GITHUB_TOKEN=ghp_YourTokenHere ./deploy.sh
 ```
 
-Sign in with your GitHub account if asked. After the push, the GitHub Actions workflow will run and deploy your site.
+Replace `ghp_YourTokenHere` with your token. The script creates `MojtabaTorabiii/mojtabat.com` if it doesn't exist, then pushes. It does **not** store the token in git config.
 
-## 3. Turn on GitHub Pages
+## Option B — Manual
 
-In the repo: **Settings → Pages** → under **Build and deployment**, set **Source** to **GitHub Actions**.
+1. Create the repo: **https://github.com/new?name=mojtabat.com&description=Portfolio** (do not add a README).
+2. In Terminal: `cd /Users/mojtabatorabi/Desktop/Portfolio && git push -u origin main`
+3. Sign in with GitHub if prompted.
 
-## 4. (Optional) Use www.mojtabat.com
+## After the first push
 
-In **Settings → Pages** → **Custom domain**, enter `www.mojtabat.com` and save. Then add the DNS records at your domain registrar (see README).
+- **Settings → Pages** → **Source**: **GitHub Actions**.
+- Site: **https://MojtabaTorabiii.github.io/mojtabat.com**
+- (Optional) **Custom domain**: `www.mojtabat.com` — then set DNS (see README).
