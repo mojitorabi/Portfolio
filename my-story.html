@@ -3,101 +3,185 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Story ;) — Mojtaba Torabi</title>
+  <title>My Story - Mojtaba Torabi</title>
+  <meta name="description" content="The story behind Mojtaba Torabi's product design journey.">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    (function () {
+      var storedTheme = localStorage.getItem("theme-preference");
+      if (storedTheme === "light" || storedTheme === "dark") {
+        document.documentElement.dataset.theme = storedTheme;
+      }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" type="image/svg+xml" href="assets/branding/moji-light-mode.svg" data-dynamic-favicon>
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to main content</a>
-  <a href="#site-nav" class="skip-link skip-nav">Skip to navigation</a>
-  <header class="header" role="banner">
-    <div class="page-shell">
-      <nav id="site-nav" class="nav" aria-label="Main">
-        <a href="./" class="logo">Mojtaba Torabi</a>
-        <ul class="nav-list">
-          <li><a href="./#work">Work</a></li>
-          <li><a href="my-story.html" aria-current="page">My Story ;)</a></li>
-          <li><a href="resume.html">Resume</a></li>
-          <li><a href="ux-notes.html">UX Notes</a></li>
-        </ul>
-        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <div class="page-orb orb-one" aria-hidden="true"></div>
+  <div class="page-orb orb-two" aria-hidden="true"></div>
+  <button type="button" class="theme-toggle theme-fab" aria-label="Switch theme">
+    <span class="theme-icon" aria-hidden="true">◐</span>
+    <span class="visually-hidden">Switch theme</span>
+  </button>
+
+  <header class="site-header">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Primary">
+        <a class="brand" href="./" aria-label="Mojtaba Torabi home">
+          <span class="brand-logo" aria-hidden="true">
+            <img class="brand-logo-light" src="assets/branding/moji-light-mode.svg" alt="">
+            <img class="brand-logo-dark" src="assets/branding/moji-dark-mode.svg" alt="">
+          </span>
+          <span class="brand-label">Mojtaba Torabi</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Open menu">
+          <span></span>
+          <span></span>
         </button>
+        <div class="nav-panel">
+          <ul class="nav-links">
+            <li><a href="index.html#latest-experiences">Work</a></li>
+            <li><a href="my-story.html" aria-current="page">My Story</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="ux-notes.html">UX Notes</a></li>
+          </ul>
+          <button type="button" class="theme-toggle" aria-label="Switch theme">
+            <span class="theme-icon" aria-hidden="true">◐</span>
+            <span class="visually-hidden">Switch theme</span>
+          </button>
+        </div>
       </nav>
     </div>
   </header>
-  <main id="main" class="main">
-    <div class="page-shell">
-      <section class="page-hero">
-        <div class="reveal">
-          <span class="page-kicker">My Story</span>
-          <h1>A bit more about me.</h1>
-          <p class="page-lead">From pixels to melodies, I love merging engineering precision with creative flair. My journey moves between systems, culture, design craft, and curiosity.</p>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap split-grid">
+        <div class="page-intro reveal">
+          <div class="eyebrow">My Story</div>
+          <h1>About me.</h1>
+          <p>
+            My path into product design comes from engineering, systems thinking, music, and a strong
+            interest in how people make sense of complexity.
+          </p>
         </div>
-        <div class="story-visual reveal">
-          <div class="story-card-visual">
-            <img src="assets/illustrations/story-illustration.png" alt="Abstract illustration combining interface systems, geometry, and music-inspired wave forms.">
+        <div class="hero-visual reveal">
+          <img class="hero-illustration" src="assets/illustrations/story-illustration.png" alt="Abstract illustration combining design systems and musical rhythm.">
+          <div class="stat-stack">
+            <article class="stat-card">
+              <strong>THI</strong>
+              <span>design leadership</span>
+            </article>
+            <article class="stat-card">
+              <strong>CE</strong>
+              <span>engineering roots</span>
+            </article>
+            <article class="stat-card">
+              <strong>Music</strong>
+              <span>tar and setar</span>
+            </article>
+            <article class="stat-card">
+              <strong>Curiosity</strong>
+              <span>always learning</span>
+            </article>
           </div>
         </div>
-      </section>
-      <div class="page-grid">
-        <div class="page-content">
-          <section class="prose-block reveal">
-            <h2>Designing the Future</h2>
-            <p>At 26, I'm studying Design Leadership for my master's at Technische Hochschule Ingolstadt. Alongside that, I'm a product designer at #bastoy in Regensburg, building real products with social impact.</p>
-            <p>Before Germany, I designed for Torob, one of Iran's biggest e commerce platforms, and earlier I was at Baloot, a fintech startup where speed and clarity really mattered. Across these roles, I've helped shape live apps used by more than 30 million people each month.</p>
-            <p>I work best where UX, UI, data, and research meet, turning complex problems into simple flows people enjoy using.</p>
-          </section>
-          <section class="prose-block reveal">
-            <h2>Bridging Passions</h2>
-            <p>My journey started with a degree in computer engineering. Teaching System Analysis and Design as a teaching assistant helped me see stronger connections between technical systems and digital product design.</p>
-          </section>
-          <section class="prose-block reveal">
-            <h2>A Musical Heartbeat</h2>
-            <p>From a young age, I've had a deep love for Iranian traditional music. Playing tar and setar has always been my favorite pastime. Music isn't just a hobby for me, it's a way to express my soul.</p>
-            <p><a class="text-link" href="https://soundcloud.com/mojtabat" target="_blank" rel="noopener noreferrer">My SoundCloud <span aria-hidden="true">→</span></a></p>
-          </section>
-          <section class="prose-block reveal">
-            <h2>More than Work</h2>
-            <p>Cooking, football, tennis, historical novels, poetry, and taking care of plants are all part of my rhythm. They keep me curious, grounded, and creatively alive.</p>
-          </section>
-        </div>
-        <aside class="page-content">
-          <section class="page-panel reveal">
-            <h3>Other Experiences</h3>
-            <p><a class="text-link" href="work/baloot.html">Baloot <span aria-hidden="true">→</span></a></p>
-            <p><a class="text-link" href="work/torob.html">Torob <span aria-hidden="true">→</span></a></p>
-            <p><a class="text-link" href="work/shams-ol-emareh.html">Shams-ol-Emareh <span aria-hidden="true">→</span></a></p>
-            <p><a class="text-link" href="work/amanj.html">Amanj <span aria-hidden="true">→</span></a></p>
-          </section>
-          <section class="page-panel reveal">
-            <h3>Continue Exploring</h3>
-            <p><a class="text-link" href="resume.html">My Resume <span aria-hidden="true">→</span></a></p>
-            <p><a class="text-link" href="ux-notes.html">UX Notes <span aria-hidden="true">→</span></a></p>
-          </section>
-        </aside>
       </div>
-    </div>
-  </main>
-  <footer class="footer" role="contentinfo">
-    <div class="page-shell">
-      <div class="footer-shell">
-        <div class="footer-brand">
-          <strong>Mojtaba Torabi</strong>
-          <p class="footer-copy">Building thoughtful products with clarity and care.</p>
+    </section>
+
+    <section class="section-space">
+      <div class="wrap story-grid">
+        <article class="story-card reveal">
+          <div class="eyebrow">Design</div>
+          <h3>Learning while shipping</h3>
+          <p>I am studying design leadership at THI while working on real products in Germany. Before that, I designed for Torob and Baloot, where speed, trust, and clarity mattered every day.</p>
+        </article>
+        <article class="story-card reveal">
+          <div class="eyebrow">Engineering</div>
+          <h3>Systems first</h3>
+          <p>Computer engineering taught me to care about structure, edge cases, and decisions that continue to hold up as products grow.</p>
+        </article>
+        <article class="story-card reveal">
+          <div class="eyebrow">Music</div>
+          <h3>Rhythm</h3>
+          <p>Playing tar and setar shapes how I think about timing, flow, and the emotional tone of interfaces.</p>
+        </article>
+        <article class="story-card reveal">
+          <div class="eyebrow">Outside</div>
+          <h3>Books, sport, cooking, plants</h3>
+          <p>These routines keep me balanced and remind me that attention, patience, and care matter in design too.</p>
+        </article>
+        <article class="story-card reveal">
+          <div class="eyebrow">Values</div>
+          <h3>Clarity over noise</h3>
+          <p>I am drawn to products that guide people carefully and feel calm instead of clever.</p>
+        </article>
+        <article class="story-card reveal">
+          <div class="eyebrow">SoundCloud</div>
+          <h3>Music</h3>
+          <p>Some of the same sensitivity that matters in music matters in interaction design too.</p>
+          <a class="text-link" href="https://soundcloud.com/mojtabat" target="_blank" rel="noopener noreferrer">Open SoundCloud <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-space">
+      <div class="wrap">
+        <div class="cta-band reveal">
+          <div>
+            <div class="eyebrow">Next</div>
+            <h2>See work or resume.</h2>
+            <p>If the story gave you context, the best next pages are the work for proof and the resume for a faster professional summary.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="button button-primary" href="index.html#latest-experiences">See work</a>
+            <a class="button button-secondary" href="resume.html">See resume</a>
+            <a class="button button-secondary" href="ux-notes.html">UX Notes</a>
+          </div>
         </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-shell">
+      <div class="footer-copy">
+        <strong>Mojtaba Torabi</strong>
+        <p>Product designer. Engineering. Music. Thoughtful experiences.</p>
+      </div>
+      <div>
         <div class="footer-links">
-          <a href="https://www.linkedin.com/in/mojtabat" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://twitter.com/mojtabat" target="_blank" rel="noopener noreferrer">Twitter</a>
-          <a href="https://soundcloud.com/mojtabat" target="_blank" rel="noopener noreferrer">SoundCloud</a>
-          <a href="https://github.com/MojtabaTorabiii" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://www.instagram.com/mojtabat" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="index.html#latest-experiences">Work</a>
+          <a href="resume.html">Resume</a>
+          <a href="ux-notes.html">UX Notes</a>
+        </div>
+        <div class="social-links footer-socials">
+          <a class="social-link" href="https://www.behance.net/mojtabat" target="_blank" rel="noopener noreferrer" aria-label="Behance"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.34 10.62H5.28V7.67h3.01c1.66 0 2.43.46 2.43 1.47 0 1.03-.86 1.48-2.38 1.48Zm-.09 5.73H5.28V13.1h3.1c1.72 0 2.67.55 2.67 1.62 0 1.07-.89 1.63-2.8 1.63ZM16.27 7.7h5.45V6.25h-5.45V7.7Zm2.84 4.58c1.22 0 1.86.75 1.93 1.77h-3.97c.16-1 .86-1.77 2.04-1.77Zm.09 5.47c-1.35 0-2.12-.79-2.17-2.22h7.19c.06-.29.08-.61.08-.96 0-3.11-1.84-4.92-5.06-4.92-3.31 0-5.49 2.19-5.49 5.52 0 3.2 2.09 5.3 5.46 5.3 2.92 0 4.55-1.53 4.94-3.54h-2.84c-.29.55-.83.82-2.11.82ZM2 5h6.66c3.3 0 5.11 1.27 5.11 3.86 0 1.53-.74 2.76-2.19 3.35 1.89.51 2.84 1.92 2.84 3.99 0 2.93-2.08 4.8-5.66 4.8H2V5Z"/></svg></a>
+          <a class="social-link" href="https://dribbble.com/mojtabat" target="_blank" rel="noopener noreferrer" aria-label="Dribbble"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm6.89 4.62a8.18 8.18 0 0 1 1.73 5.03 17.2 17.2 0 0 0-5.26-.05 22.68 22.68 0 0 0-1.22-2.46 13.72 13.72 0 0 0 4.75-2.52ZM12 3.8a8.15 8.15 0 0 1 5.46 2.08 11.8 11.8 0 0 1-4.19 2.18 41.6 41.6 0 0 0-2.07-3.48A8.7 8.7 0 0 1 12 3.8ZM9.2 4.3a40.02 40.02 0 0 1 2.1 3.45 33.64 33.64 0 0 1-7.56.24A8.22 8.22 0 0 1 9.2 4.3ZM3.3 10c0-.09 0-.18.01-.27a35.25 35.25 0 0 0 8.87-.37c.34.66.67 1.34.96 2.03l-.47.13C7.6 12.95 4.88 16.2 4.34 16.88A8.16 8.16 0 0 1 3.3 10Zm2.38 8.17c.4-.57 2.73-3.57 7.62-5.18.03-.01.05-.01.08-.02.53 1.56.94 3.33 1.12 5.25A8.15 8.15 0 0 1 5.68 18.17Zm10.58-.87a22.47 22.47 0 0 0-1.03-4.8 15.2 15.2 0 0 1 5.25.19 8.2 8.2 0 0 1-4.22 4.61Z"/></svg></a>
+          <a class="social-link" href="https://www.linkedin.com/in/mojtabat" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A2.02 2.02 0 0 0 3.2 5.02 2 2 0 0 0 5.2 7.03h.03A2.01 2.01 0 1 0 5.25 3ZM20.8 13.03c0-3.47-1.86-5.08-4.34-5.08-2 0-2.9 1.1-3.4 1.87V8.5H9.69c.04.88 0 11.5 0 11.5h3.37v-6.42c0-.34.02-.68.13-.92.27-.67.89-1.37 1.93-1.37 1.36 0 1.9 1.03 1.9 2.54V20H20.8v-6.97Z"/></svg></a>
+          <a class="social-link" href="https://www.mojtabat.com" target="_blank" rel="noopener noreferrer" aria-label="Website"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2Zm6.92 9h-3.03a15.9 15.9 0 0 0-1.32-5.12A8.04 8.04 0 0 1 18.92 11ZM12 4.15c-.4 0-1.45 1.67-2.01 5.85h4.02C13.45 5.82 12.4 4.15 12 4.15ZM9.77 5.88A15.9 15.9 0 0 0 8.45 11H5.42a8.04 8.04 0 0 1 4.35-5.12ZM4.15 13h4.03c.12 1.88.58 3.63 1.32 5.12A8.04 8.04 0 0 1 4.15 13Zm5.84 0c.56 4.18 1.61 5.85 2.01 5.85.4 0 1.45-1.67 2.01-5.85H9.99Zm4.24 5.12c.74-1.49 1.2-3.24 1.32-5.12h3.03a8.04 8.04 0 0 1-4.35 5.12Z"/></svg></a>
+          <a class="social-link" href="https://x.com/MojtabaTorabii" target="_blank" rel="noopener noreferrer" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2H21.308L14.596 9.67L22.5 22H16.314L11.467 14.521L4.924 22H1.858L9.038 13.789L1.5 2H7.844L12.214 8.673L18.244 2ZM17.168 20.114H18.866L6.921 3.787H5.099L17.168 20.114Z"/></svg></a>
+          <a class="social-link" href="https://soundcloud.com/mojtabat" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.7 9.2a4.6 4.6 0 0 1 8.7 1.8 3.2 3.2 0 1 1 .6 6.4H9.2a2.8 2.8 0 0 1-.2-5.6c.2-.9.4-1.7.7-2.6Zm-4.8 2.3h1.5v5.8H4.9v-5.8Zm-2.4 1.3H4v4.5H2.5v-4.5Zm4.8-3h1.5v7.5H7.3V9.8Z"/></svg></a>
+          <a class="social-link" href="https://github.com/MojtabaTorabiii" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.59 2 12.25c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.49 0-.24-.01-1.03-.01-1.87-2.78.62-3.37-1.21-3.37-1.21-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 7.11c.85 0 1.71.12 2.51.35 1.9-1.33 2.74-1.05 2.74-1.05.56 1.41.21 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.95-2.35 4.81-4.59 5.06.36.32.69.95.69 1.92 0 1.38-.01 2.49-.01 2.83 0 .27.18.59.69.49A10.16 10.16 0 0 0 22 12.25C22 6.59 17.52 2 12 2Z"/></svg></a>
+          <a class="social-link" href="https://www.instagram.com/mojtabatorabiiii" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 1.8A3.7 3.7 0 0 0 3.8 7.5v9a3.7 3.7 0 0 0 3.7 3.7h9a3.7 3.7 0 0 0 3.7-3.7v-9a3.7 3.7 0 0 0-3.7-3.7h-9ZM17.3 6.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8A3.2 3.2 0 1 0 12 15.2 3.2 3.2 0 0 0 12 8.8Z"/></svg></a>
         </div>
       </div>
     </div>
   </footer>
+
+  <nav class="mobile-dock" aria-label="Mobile">
+    <a class="mobile-dock-link" href="index.html#latest-experiences">Work</a>
+    <a class="mobile-dock-link" href="my-story.html" aria-current="page">My Story</a>
+    <a class="mobile-dock-link" href="resume.html">Resume</a>
+    <a class="mobile-dock-link" href="ux-notes.html">UX Notes</a>
+  </nav>
+
   <script src="js/main.js"></script>
 </body>
 </html>

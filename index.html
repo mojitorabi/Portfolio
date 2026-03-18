@@ -3,260 +3,356 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mojtaba Torabi — Product Designer</title>
-  <meta name="description" content="Product designer with engineering precision and musical sensitivity. Portfolio, case studies, UX notes, and recommendations.">
+  <title>Mojtaba Torabi - Portfolio</title>
+  <meta name="description" content="Product design portfolio for Mojtaba Torabi with selected work, a vertical interactive roadmap, and recommendation gallery.">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    (function () {
+      var storedTheme = localStorage.getItem("theme-preference");
+      if (storedTheme === "light" || storedTheme === "dark") {
+        document.documentElement.dataset.theme = storedTheme;
+      }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" type="image/svg+xml" href="assets/branding/moji-light-mode.svg" data-dynamic-favicon>
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to main content</a>
-  <a href="#site-nav" class="skip-link skip-nav">Skip to navigation</a>
+  <a href="#main" class="skip-link">Skip to content</a>
 
-  <header class="header" role="banner">
-    <div class="page-shell">
-      <nav id="site-nav" class="nav" aria-label="Main">
-        <a href="./" class="logo" aria-current="page">Mojtaba Torabi</a>
-        <ul class="nav-list">
-          <li><a href="#work">Work</a></li>
-          <li><a href="my-story.html">My Story ;)</a></li>
-          <li><a href="resume.html">Resume</a></li>
-          <li><a href="ux-notes.html">UX Notes</a></li>
-        </ul>
-        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
+  <div class="page-orb orb-one" aria-hidden="true"></div>
+  <div class="page-orb orb-two" aria-hidden="true"></div>
+  <button type="button" class="theme-toggle theme-fab" aria-label="Switch theme">
+    <span class="theme-icon" aria-hidden="true">◐</span>
+    <span class="visually-hidden">Switch theme</span>
+  </button>
+
+  <header class="site-header" id="top">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Primary">
+        <a class="brand" href="./" aria-label="Mojtaba Torabi home">
+          <span class="brand-logo" aria-hidden="true">
+            <img class="brand-logo-light" src="assets/branding/moji-light-mode.svg" alt="">
+            <img class="brand-logo-dark" src="assets/branding/moji-dark-mode.svg" alt="">
+          </span>
+          <span class="brand-label">Mojtaba Torabi</span>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Open menu">
+          <span></span>
+          <span></span>
         </button>
+
+        <div class="nav-panel">
+          <ul class="nav-links">
+            <li><a href="#latest-experiences" aria-current="page">Work</a></li>
+            <li><a href="my-story.html">My Story</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="ux-notes.html">UX Notes</a></li>
+          </ul>
+
+          <button type="button" class="theme-toggle" aria-label="Switch theme">
+            <span class="theme-icon" aria-hidden="true">◐</span>
+            <span class="visually-hidden">Switch theme</span>
+          </button>
+        </div>
       </nav>
     </div>
   </header>
 
-  <main id="main" class="main">
-    <div class="page-shell">
-      <section class="hero">
+  <main id="main">
+    <section class="home-hero">
+      <div class="wrap hero-grid">
         <div class="hero-copy reveal">
-          <span class="eyebrow">Product Design Portfolio</span>
-          <h1>Designing simple digital products with precision, clarity, and character.</h1>
-          <p class="hero-subtitle">Hi, I'm Mojtaba, a product designer with engineering in my head and music in my heart. I've helped shape products used by more than 30 million people, and I'm currently studying Design Leadership at THI.</p>
-          <div class="hero-actions">
-            <a href="resume.html" class="btn btn-primary">See my resume</a>
-            <a href="#work" class="btn btn-secondary">Explore my work</a>
+          <div class="eyebrow">Product Designer in Germany</div>
+          <h1 class="hero-headline">
+            <span class="hero-accent">Mojtaba, product designer.</span><br>
+            <span class="hero-bold">Melody-fed systems thinker.</span><br>
+            <span class="hero-accent">Never became a rockstar.</span>
+          </h1>
+          <p class="hero-lead">Designing digital products that are easier to love. From fintech to ecommerce to social impact.</p>
+          <div class="button-row">
+            <a class="button button-primary button-gradient" href="resume.html">View resume</a>
           </div>
-          <p class="hero-note">Minimal, modern, and intentionally calm. Inspired by premium product sites and adapted for your own story.</p>
-          <div class="stats-grid">
-            <article class="stat-card reveal">
+
+          <div class="stat-stack" aria-label="Key highlights">
+            <article class="stat-card">
+              <strong>20+</strong>
+              <span>projects delivered</span>
+            </article>
+            <article class="stat-card">
               <strong>5+</strong>
-              <span>Apps and experiences shaped across fintech, commerce, and culture.</span>
+              <span>live applications shaped</span>
             </article>
-            <article class="stat-card reveal">
+            <article class="stat-card">
               <strong>30M+</strong>
-              <span>Monthly user reach through products shipped for large audiences.</span>
+              <span>users served</span>
             </article>
-            <article class="stat-card reveal">
+            <article class="stat-card">
               <strong>THI</strong>
-              <span>Design MSc focus with leadership, systems thinking, and craft.</span>
+              <span>design leadership master's</span>
             </article>
           </div>
         </div>
-        <div class="hero-media reveal">
-          <div class="hero-visual-card">
-            <img src="assets/illustrations/hero-illustration.png" alt="Abstract illustration of product design systems, wireframes, and interfaces.">
-          </div>
-          <div class="floating-badge badge-top"><strong>Engineering</strong><span>Systems, logic, and structure</span></div>
-          <div class="floating-badge badge-bottom"><strong>Music</strong><span>Rhythm, sensitivity, and flow</span></div>
-        </div>
-      </section>
 
-      <section class="section">
-        <div class="section-head">
-          <div>
-            <span class="section-eyebrow">How I Work</span>
-            <h2>Research-led, visually clear, and designed to scale.</h2>
-          </div>
-          <p>I work at the intersection of UX, UI, product thinking, and systems. The goal is always the same: turn complexity into flows that feel obvious.</p>
+        <div class="hero-visual reveal">
+          <img class="hero-portrait" src="assets/profile/mojtaba-portrait-latest.png" alt="Portrait of Mojtaba Torabi standing outdoors in Germany.">
         </div>
-        <div class="feature-grid">
-          <article class="feature-card reveal">
-            <h3>Design with focus</h3>
-            <p>I prefer interfaces that remove noise, guide attention, and make the next step feel effortless.</p>
-          </article>
-          <article class="feature-card reveal">
-            <h3>Systems over decoration</h3>
-            <p>Engineering thinking helps me build structure, consistency, and decisions that hold up across products.</p>
-          </article>
-          <article class="feature-card reveal">
-            <h3>Detail with empathy</h3>
-            <p>From research plans to visual refinement, I care about how a product looks, feels, and earns trust.</p>
-          </article>
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="work" class="section">
-        <div class="section-head">
-          <div>
-            <span class="section-eyebrow">Projects & Experiences</span>
-            <h2>Selected work across commerce, fintech, AR, and UX strategy.</h2>
-          </div>
-          <p>These projects come from the original portfolio structure, now presented with a more polished and product-focused visual language.</p>
+    <section class="section-space" id="latest-experiences">
+      <div class="wrap">
+        <div class="section-heading reveal">
+          <div class="eyebrow">Selected Work</div>
+          <h2>Recent work.</h2>
+          <p>Products, contexts, outcomes.</p>
         </div>
-        <div class="projects-grid">
-          <article class="project-card reveal">
-            <div class="project-meta">
-              <span class="project-tag">E-commerce</span>
-              <span class="project-tag">30M+ users</span>
+
+        <div class="experience-grid">
+          <article class="experience-card reveal">
+            <div class="experience-meta">
+              <span class="meta-pill">2025</span>
+              <span>Germany</span>
+            </div>
+            <h3>#bastoy</h3>
+            <p>UX/UI design and business development for a social-impact product with a stronger service vision.</p>
+          </article>
+          <article class="experience-card reveal">
+            <div class="experience-meta">
+              <span class="meta-pill">2024-2025</span>
+              <span>Consulting</span>
             </div>
             <h3>Torob</h3>
-            <p>Leading e-commerce platform that helps more than 30 million users find the best prices from over 180 thousand shops.</p>
-            <a href="work/torob.html" class="project-link">Case Study <span aria-hidden="true">→</span></a>
+            <p>Consulting support for one of Iran's largest ecommerce products across product clarity and experience quality.</p>
           </article>
-          <article class="project-card reveal">
-            <div class="project-meta">
-              <span class="project-tag">Fintech</span>
-              <span class="project-tag">Micro-saving</span>
+          <article class="experience-card reveal">
+            <div class="experience-meta">
+              <span class="meta-pill">2022-2024</span>
+              <span>30M+ users</span>
+            </div>
+            <h3>Torob Product Designer</h3>
+            <p>Contributed to offline signup growth of 81.7% and a 45% lift in marketing revenue.</p>
+          </article>
+          <article class="experience-card reveal">
+            <div class="experience-meta">
+              <span class="meta-pill">Current</span>
+              <span>THI</span>
+            </div>
+            <h3>Design Leadership MSc</h3>
+            <p>Current master's studies focused on strategy, systems, and leadership in design.</p>
+          </article>
+          <article class="experience-card reveal">
+            <div class="experience-meta">
+              <span class="meta-pill">2020-2022</span>
+              <span>Fintech</span>
             </div>
             <h3>Baloot</h3>
-            <p>Iran's first micro-saving and investment platform, helping people save small amounts automatically and invest with more confidence.</p>
-            <a href="work/baloot.html" class="project-link">Case Study <span aria-hidden="true">→</span></a>
+            <p>Helped shape Iran's first micro-saving and investment platform with a clearer user experience.</p>
           </article>
-          <article class="project-card reveal">
-            <div class="project-meta">
-              <span class="project-tag">AR Experience</span>
-              <span class="project-tag">Museums</span>
+          <article class="experience-card reveal">
+            <div class="experience-meta">
+              <span class="meta-pill">2018-2022</span>
+              <span>Education</span>
             </div>
-            <h3>Shams-ol-Emareh</h3>
-            <p>An AR guidance platform for museum visitors, designed to make cultural exploration more accessible and engaging.</p>
-            <a href="work/shams-ol-emareh.html" class="project-link">Case Study <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="project-card reveal">
-            <div class="project-meta">
-              <span class="project-tag">UX Strategy</span>
-              <span class="project-tag">Challenge</span>
-            </div>
-            <h3>5 Day UX Challange</h3>
-            <p>A seller portal case study for ebay focused on business seller workflows, promotions, and performance insights.</p>
-            <a href="https://drive.google.com/file/d/1asSjP9p_wrd-YcwXKyWk6d-xLl8chOdt/view?usp=sharing" class="project-link" target="_blank" rel="noopener noreferrer">Case Study <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="project-card reveal">
-            <div class="project-meta">
-              <span class="project-tag">Freelancing</span>
-              <span class="project-tag">Product Concept</span>
-            </div>
-            <h3>Amanj</h3>
-            <p>A digital product to improve the freelancing project experience and address common pain points for designers.</p>
-            <a href="work/amanj.html" class="project-link">Case Study <span aria-hidden="true">→</span></a>
+            <h3>Teaching Assistant</h3>
+            <p>Supported systems thinking and design foundations through System Analysis and Design teaching.</p>
           </article>
         </div>
-      </section>
 
-      <section class="section">
-        <div class="split-panel">
-          <div class="reveal">
-            <span class="section-eyebrow">My Story ;)</span>
-            <h2>From computer engineering to product design leadership.</h2>
-            <p class="hero-subtitle">My background moves between technical systems, digital products, music, and craft. That combination shapes how I design: structured, human, and expressive without being loud.</p>
-            <div class="inline-actions">
-              <a href="my-story.html" class="btn btn-primary">Read my story</a>
-              <a href="ux-notes.html" class="btn btn-secondary">Open UX notes</a>
-            </div>
-          </div>
-          <div class="story-visual reveal">
-            <div class="story-card-visual">
-              <img src="assets/illustrations/story-illustration.png" alt="Abstract illustration combining interface systems, geometry, and music-inspired wave forms.">
-            </div>
-          </div>
+        <div class="center-cta">
+          <a class="button button-secondary" href="https://linkedin.com/in/mojtaba-torabi-947934186" target="_blank" rel="noopener noreferrer">View more experiences</a>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="kind-words" class="section">
-        <div class="section-head">
-          <div>
-            <span class="section-eyebrow">Kind Words</span>
-            <h2>Recommendations from collaborators, leaders, and mentors.</h2>
+    <section class="section-space" id="roadmap">
+      <div class="wrap">
+        <div class="section-heading reveal">
+          <div class="eyebrow">Journey</div>
+          <h2>Journey.</h2>
+          <p>Engineering to product design.</p>
+        </div>
+
+        <div class="roadmap-flow reveal" aria-label="Career roadmap">
+          <button class="roadmap-node roadmap-node-right is-active" type="button" data-roadmap-target="engineering" aria-pressed="true">
+            <span class="roadmap-spacer" aria-hidden="true"></span>
+            <span class="roadmap-marker">2018</span>
+            <span class="roadmap-card">
+              <span class="roadmap-icon" aria-hidden="true">🧠</span>
+              <span class="roadmap-copy">
+                <strong>Engineering foundation</strong>
+                <span class="roadmap-range">2018-22</span>
+                <span>Computer engineering, HCI, and System Analysis &amp; Design teaching. Research at the University HCI Lab.</span>
+              </span>
+            </span>
+          </button>
+          <button class="roadmap-node roadmap-node-left" type="button" data-roadmap-target="baloot" aria-pressed="false">
+            <span class="roadmap-card">
+              <span class="roadmap-icon" aria-hidden="true">💸</span>
+              <span class="roadmap-copy">
+                <strong>Baloot · B2C Fintech</strong>
+                <span class="roadmap-range">2020-22</span>
+                <span>Iran's first micro-saving &amp; investment platform. 150K+ downloads, €1.2M saved. 4 usability rounds, 20% conversion lift.</span>
+              </span>
+            </span>
+            <span class="roadmap-marker">2020</span>
+            <span class="roadmap-spacer" aria-hidden="true"></span>
+          </button>
+          <button class="roadmap-node roadmap-node-right" type="button" data-roadmap-target="torob" aria-pressed="false">
+            <span class="roadmap-spacer" aria-hidden="true"></span>
+            <span class="roadmap-marker">2022</span>
+            <span class="roadmap-card">
+              <span class="roadmap-icon" aria-hidden="true">🛒</span>
+              <span class="roadmap-copy">
+                <strong>Torob Consumer · B2C</strong>
+                <span class="roadmap-range">2022-25</span>
+                <span>Smart shopping for 30M+ users. Smart Shopping advisor: 661K users in 6 weeks, 32% conversion. Design system, dark mode.</span>
+              </span>
+            </span>
+          </button>
+          <button class="roadmap-node roadmap-node-left" type="button" data-roadmap-target="torob-b2b" aria-pressed="false">
+            <span class="roadmap-card">
+              <span class="roadmap-icon" aria-hidden="true">🏪</span>
+              <span class="roadmap-copy">
+                <strong>Torob Panels · B2B</strong>
+                <span class="roadmap-range">2022-25</span>
+                <span>180k+ shops. 81.7% signup growth, 2M+ products. Shop Advisor: 13K shops, 135K uses. 45% revenue lift.</span>
+              </span>
+            </span>
+            <span class="roadmap-marker">2022</span>
+            <span class="roadmap-spacer" aria-hidden="true"></span>
+          </button>
+          <button class="roadmap-node roadmap-node-right" type="button" data-roadmap-target="thi" aria-pressed="false">
+            <span class="roadmap-spacer" aria-hidden="true"></span>
+            <span class="roadmap-marker">2024</span>
+            <span class="roadmap-card">
+              <span class="roadmap-icon" aria-hidden="true">🎓</span>
+              <span class="roadmap-copy">
+                <strong>Design Leadership MSc · THI</strong>
+                <span class="roadmap-range">2024-now</span>
+                <span>AVL, Tesa, Rohde &amp; Schwarz. PM, UX research, scale-up classroom. Grade 1.5.</span>
+              </span>
+            </span>
+          </button>
+          <button class="roadmap-node roadmap-node-left" type="button" data-roadmap-target="bastoy" aria-pressed="false">
+            <span class="roadmap-card">
+              <span class="roadmap-icon" aria-hidden="true">🌱</span>
+              <span class="roadmap-copy">
+                <strong>#bastoy · B2B2C</strong>
+                <span class="roadmap-range">2025</span>
+                <span>Social impact in Germany. End-to-end UX for employment reintegration. 40+ user profiles, 5 correctional facilities.</span>
+              </span>
+            </span>
+            <span class="roadmap-marker">Now</span>
+            <span class="roadmap-spacer" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space" id="kind-words">
+      <div class="wrap">
+        <div class="section-heading reveal">
+          <div class="eyebrow">Recommendations</div>
+          <h2>Recommendations.</h2>
+          <p>From colleagues.</p>
+        </div>
+
+        <div class="recommendation-marquee reveal">
+          <div class="recommendation-track">
+            <img class="recommendation-svg" src="assets/recommendations-svg/group-1.svg" alt="Recommendation from Prof. Dr. Bernhard Rothbucher.">
+            <img class="recommendation-svg" src="assets/recommendations-svg/group-2.svg" alt="Recommendation from MohammadHassan Momenian.">
+            <img class="recommendation-svg" src="assets/recommendations-svg/group-3.svg" alt="Recommendation from Tobias Hiebl.">
+            <img class="recommendation-svg" src="assets/recommendations-svg/group-4.svg" alt="Recommendation from Mojtaba Danaei.">
+            <img class="recommendation-svg" src="assets/recommendations-svg/group-5.svg" alt="Recommendation from Atena Iarni.">
+            <img class="recommendation-svg" src="assets/recommendations-svg/group-6.svg" alt="Recommendation from Mohammad Khodadadi.">
+            <img class="recommendation-svg" src="assets/recommendations-svg/group-7.svg" alt="Recommendation from Rahman Ebrahimi.">
+            <img class="recommendation-svg" src="assets/recommendations-svg/group-8.svg" alt="Recommendation from Milad Salimi.">
+            <img class="recommendation-svg" src="assets/recommendations-svg/group-9.svg" alt="Recommendation from Jamshid Rostami.">
+            <img class="recommendation-svg" src="assets/recommendations-svg/group-1.svg" alt="" aria-hidden="true">
+            <img class="recommendation-svg" src="assets/recommendations-svg/group-2.svg" alt="" aria-hidden="true">
+            <img class="recommendation-svg" src="assets/recommendations-svg/group-3.svg" alt="" aria-hidden="true">
+            <img class="recommendation-svg" src="assets/recommendations-svg/group-4.svg" alt="" aria-hidden="true">
+            <img class="recommendation-svg" src="assets/recommendations-svg/group-5.svg" alt="" aria-hidden="true">
+            <img class="recommendation-svg" src="assets/recommendations-svg/group-6.svg" alt="" aria-hidden="true">
+            <img class="recommendation-svg" src="assets/recommendations-svg/group-7.svg" alt="" aria-hidden="true">
+            <img class="recommendation-svg" src="assets/recommendations-svg/group-8.svg" alt="" aria-hidden="true">
+            <img class="recommendation-svg" src="assets/recommendations-svg/group-9.svg" alt="" aria-hidden="true">
           </div>
-          <p>The recommendations below are preserved from the previous portfolio and presented in a more editorial, readable layout.</p>
         </div>
-        <div class="testimonials-grid">
-          <article class="testimonial-card reveal">
-            <span class="testimonial-quote-mark">"</span>
-            <p class="testimonial-text">I highly recommend Mojtaba for any advanced academic or professional role in Product Design, UX/UI, Product Management, or UX Research or any related field. I am confident that he will continue to excel and make significant contributions to any team or organization he joins.</p>
-            <div class="testimonial-meta">
-              <img src="https://lh3.googleusercontent.com/sitesv/APaQ0STw7WNQ9Pu9xNS454L7Ze2zh5rc24y21i23Q6hiMRGaUaB-cqZDo89Lwm1rIWo9esH0gKyRwoHRw4htole_Ab2HsxbFfoxraVWJQ1Yta7hU0e38YMOkQ7t3ptYduk0UPPkxEdmj2X-VxXsQYUY-tuWKNZ8zz8nCf1xc3ccULoEpF_cyB8vfmvGiLfdBH21bzjjdZBYbuoJFKo7ckplim2gh7m_7_GcggaA_UL0=w1280" alt="Prof. Dr. (Ph.D.) Bernhard Rothbucher" class="testimonial-avatar" width="56" height="56" loading="lazy">
-              <div>
-                <strong class="testimonial-name">Prof. Dr. (Ph.D.) Bernhard Rothbucher</strong>
-                <div class="testimonial-title">Design Leadership Course Director at THI</div>
-                <div class="testimonial-relationship">Bernhard managed Mojtaba directly</div>
-              </div>
-              <time class="testimonial-date" datetime="2025-08-01">Aug 01, 2025</time>
-            </div>
-          </article>
-          <article class="testimonial-card reveal">
-            <span class="testimonial-quote-mark">"</span>
-            <p class="testimonial-text">It is without hesitation that I recommend Mojtaba for any role that demands a highly skilled and dedicated product designer. He brought creativity, technical understanding, and strong user-centered thinking into our products.</p>
-            <div class="testimonial-meta">
-              <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SSWuc5xTPHhhokxSrHxDd_IuNcyL-sjLI4kCx9k3ypx5f2dTqQFg0HptPu74fNCcujZjEhvy8KUN5L34jjCqlnWWGyofZforIQ2t94RaUAX6o5Trt7_ksCocALu0-xoWFSVIsmLzWna80SSPzu0MW1kRd5A3s2z1LdQNcJZR7cs3grxZBgTAXwBRQ1MLwqsHX3hyj4jsm65OHikloUvDxQmVVrPQh9EiciOqSM=w1280" alt="Mojtaba Danaei" class="testimonial-avatar" width="56" height="56" loading="lazy">
-              <div>
-                <strong class="testimonial-name">Mojtaba Danaei</strong>
-                <div class="testimonial-title">Co-founder & CEO at Baloot Co.</div>
-                <div class="testimonial-relationship">Mojtaba managed Mojtaba directly</div>
-              </div>
-              <time class="testimonial-date" datetime="2024-04-27">April 27, 2024</time>
-            </div>
-          </article>
-          <article class="testimonial-card reveal">
-            <span class="testimonial-quote-mark">"</span>
-            <p class="testimonial-text">Working with Mojtaba Torabi at Torob was a true pleasure. His design skills are undeniably impressive, but his superpower lies in accountability combined with a bias for action.</p>
-            <div class="testimonial-meta">
-              <img src="https://lh3.googleusercontent.com/sitesv/APaQ0ST3BpSa7NYVJntyfVeUN-iCfxITKcE5uNx0UzkB68X2lGxF05h7nu3YdPohhdqRkZie2zlFq031pLUx56UC29tw6il0sx2CVRM6FNMMxkLhlH_kLoM7TMEq6ahOUZ2uGha4LLeW543i01Pc0jGaZ6e0P3xRLZRsioT3W_E-omrR1FFCtY5Xa7ZDPBFJKErLlxjrGh31ip815Yue3DhH9EyJkUTd6Ut_sCUihtM=w1280" alt="MohammadHassan Momenian" class="testimonial-avatar" width="56" height="56" loading="lazy">
-              <div>
-                <strong class="testimonial-name">MohammadHassan Momenian</strong>
-                <div class="testimonial-title">VP of Product at Torob</div>
-                <div class="testimonial-relationship">MohammadHassan managed Mojtaba directly</div>
-              </div>
-              <time class="testimonial-date" datetime="2024-05-27">May 27, 2024</time>
-            </div>
-          </article>
-          <article class="testimonial-card reveal">
-            <span class="testimonial-quote-mark">"</span>
-            <p class="testimonial-text">Mojtaba supported #bastoy in a crucial phase of its development as a designer. His work stands out for clarity, a modern understanding of user experience, and strong responsiveness to feedback.</p>
-            <div class="testimonial-meta">
-              <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQfEocfNahNXEoO0DGSEqD91TeoZuGXP0adVmv5ANV0tD-vERpugRYTSEoOW63jxd4CaTFBjeN_yl_WAi1t_gA3I0dZkljrSjhQBVfUuAz8eiletpUhdfS6zccF9y8L84v8spcgMfljq8s2VdEBWd5xj0yXAcxNDAyN9NQ2jtl7pBS2NTUdn3Q1i8YxIE9jCXvpKGqkHRp6Y_Mqs8DRRy393f0Ev3QuHckd-DM=w1280" alt="Tobias Hiebl" class="testimonial-avatar" width="56" height="56" loading="lazy">
-              <div>
-                <strong class="testimonial-name">Tobias Hiebl</strong>
-                <div class="testimonial-title">Founder & CEO at #bastoy</div>
-                <div class="testimonial-relationship">Tobias managed Mojtaba directly</div>
-              </div>
-              <time class="testimonial-date" datetime="2025-09-10">September 10, 2025</time>
-            </div>
-          </article>
-        </div>
-        <div class="cta-panel reveal">
+      </div>
+    </section>
+
+    <section class="section-space" id="contact">
+      <div class="wrap">
+        <div class="cta-band reveal">
           <div>
-            <strong>See more detailed case studies and portfolio references.</strong>
-            <p class="footer-copy">The redesigned site keeps your original architecture while presenting it in a more contemporary way.</p>
+            <div class="eyebrow">Hiring</div>
+            <h2>Start with the resume.</h2>
+            <p>Resume first. Story and writing add context.</p>
           </div>
-          <a href="https://www.behance.net/mojtabat" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Behance Case Studies</a>
+          <div class="cta-actions">
+            <a class="button button-primary button-gradient" href="resume.html">View resume</a>
+            <a class="button button-secondary" href="my-story.html">My story</a>
+            <a class="button button-secondary" href="ux-notes.html">UX Notes</a>
+          </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer" role="contentinfo">
-    <div class="page-shell">
-      <div class="footer-shell">
-        <div class="footer-brand">
-          <strong>Mojtaba Torabi</strong>
-          <p class="footer-copy">Product designer with engineering precision and musical intuition.</p>
-        </div>
+  <footer class="site-footer">
+    <div class="wrap footer-shell">
+      <div class="footer-copy">
+        <strong>Mojtaba Torabi</strong>
+        <p>Product designer. Germany. Complexity into clarity.</p>
+      </div>
+      <div>
         <div class="footer-links">
-          <a href="https://www.linkedin.com/in/mojtabat" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://twitter.com/mojtabat" target="_blank" rel="noopener noreferrer">Twitter</a>
-          <a href="https://soundcloud.com/mojtabat" target="_blank" rel="noopener noreferrer">SoundCloud</a>
-          <a href="https://github.com/MojtabaTorabiii" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://www.instagram.com/mojtabat" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="my-story.html">My Story</a>
+          <a href="resume.html">Resume</a>
+          <a href="ux-notes.html">UX Notes</a>
+        </div>
+        <div class="social-links footer-socials">
+          <a class="social-link" href="https://www.behance.net/mojtabat" target="_blank" rel="noopener noreferrer" aria-label="Behance">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.34 10.62H5.28V7.67h3.01c1.66 0 2.43.46 2.43 1.47 0 1.03-.86 1.48-2.38 1.48Zm-.09 5.73H5.28V13.1h3.1c1.72 0 2.67.55 2.67 1.62 0 1.07-.89 1.63-2.8 1.63ZM16.27 7.7h5.45V6.25h-5.45V7.7Zm2.84 4.58c1.22 0 1.86.75 1.93 1.77h-3.97c.16-1 .86-1.77 2.04-1.77Zm.09 5.47c-1.35 0-2.12-.79-2.17-2.22h7.19c.06-.29.08-.61.08-.96 0-3.11-1.84-4.92-5.06-4.92-3.31 0-5.49 2.19-5.49 5.52 0 3.2 2.09 5.3 5.46 5.3 2.92 0 4.55-1.53 4.94-3.54h-2.84c-.29.55-.83.82-2.11.82ZM2 5h6.66c3.3 0 5.11 1.27 5.11 3.86 0 1.53-.74 2.76-2.19 3.35 1.89.51 2.84 1.92 2.84 3.99 0 2.93-2.08 4.8-5.66 4.8H2V5Z"/></svg>
+          </a>
+          <a class="social-link" href="https://dribbble.com/mojtabat" target="_blank" rel="noopener noreferrer" aria-label="Dribbble">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm6.89 4.62a8.18 8.18 0 0 1 1.73 5.03 17.2 17.2 0 0 0-5.26-.05 22.68 22.68 0 0 0-1.22-2.46 13.72 13.72 0 0 0 4.75-2.52ZM12 3.8a8.15 8.15 0 0 1 5.46 2.08 11.8 11.8 0 0 1-4.19 2.18 41.6 41.6 0 0 0-2.07-3.48A8.7 8.7 0 0 1 12 3.8ZM9.2 4.3a40.02 40.02 0 0 1 2.1 3.45 33.64 33.64 0 0 1-7.56.24A8.22 8.22 0 0 1 9.2 4.3ZM3.3 10c0-.09 0-.18.01-.27a35.25 35.25 0 0 0 8.87-.37c.34.66.67 1.34.96 2.03l-.47.13C7.6 12.95 4.88 16.2 4.34 16.88A8.16 8.16 0 0 1 3.3 10Zm2.38 8.17c.4-.57 2.73-3.57 7.62-5.18.03-.01.05-.01.08-.02.53 1.56.94 3.33 1.12 5.25A8.15 8.15 0 0 1 5.68 18.17Zm10.58-.87a22.47 22.47 0 0 0-1.03-4.8 15.2 15.2 0 0 1 5.25.19 8.2 8.2 0 0 1-4.22 4.61Z"/></svg>
+          </a>
+          <a class="social-link" href="https://www.linkedin.com/in/mojtabat" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A2.02 2.02 0 0 0 3.2 5.02 2 2 0 0 0 5.2 7.03h.03A2.01 2.01 0 1 0 5.25 3ZM20.8 13.03c0-3.47-1.86-5.08-4.34-5.08-2 0-2.9 1.1-3.4 1.87V8.5H9.69c.04.88 0 11.5 0 11.5h3.37v-6.42c0-.34.02-.68.13-.92.27-.67.89-1.37 1.93-1.37 1.36 0 1.9 1.03 1.9 2.54V20H20.8v-6.97Z"/></svg>
+          </a>
+          <a class="social-link" href="https://www.mojtabat.com" target="_blank" rel="noopener noreferrer" aria-label="Website">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2Zm6.92 9h-3.03a15.9 15.9 0 0 0-1.32-5.12A8.04 8.04 0 0 1 18.92 11ZM12 4.15c-.4 0-1.45 1.67-2.01 5.85h4.02C13.45 5.82 12.4 4.15 12 4.15ZM9.77 5.88A15.9 15.9 0 0 0 8.45 11H5.42a8.04 8.04 0 0 1 4.35-5.12ZM4.15 13h4.03c.12 1.88.58 3.63 1.32 5.12A8.04 8.04 0 0 1 4.15 13Zm5.84 0c.56 4.18 1.61 5.85 2.01 5.85.4 0 1.45-1.67 2.01-5.85H9.99Zm4.24 5.12c.74-1.49 1.2-3.24 1.32-5.12h3.03a8.04 8.04 0 0 1-4.35 5.12Z"/></svg>
+          </a>
+          <a class="social-link" href="https://x.com/MojtabaTorabii" target="_blank" rel="noopener noreferrer" aria-label="X">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2H21.308L14.596 9.67L22.5 22H16.314L11.467 14.521L4.924 22H1.858L9.038 13.789L1.5 2H7.844L12.214 8.673L18.244 2ZM17.168 20.114H18.866L6.921 3.787H5.099L17.168 20.114Z"/></svg>
+          </a>
+          <a class="social-link" href="https://soundcloud.com/mojtabat" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.7 9.2a4.6 4.6 0 0 1 8.7 1.8 3.2 3.2 0 1 1 .6 6.4H9.2a2.8 2.8 0 0 1-.2-5.6c.2-.9.4-1.7.7-2.6Zm-4.8 2.3h1.5v5.8H4.9v-5.8Zm-2.4 1.3H4v4.5H2.5v-4.5Zm4.8-3h1.5v7.5H7.3V9.8Z"/></svg>
+          </a>
+          <a class="social-link" href="https://github.com/MojtabaTorabiii" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.59 2 12.25c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.49 0-.24-.01-1.03-.01-1.87-2.78.62-3.37-1.21-3.37-1.21-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 7.11c.85 0 1.71.12 2.51.35 1.9-1.33 2.74-1.05 2.74-1.05.56 1.41.21 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.95-2.35 4.81-4.59 5.06.36.32.69.95.69 1.92 0 1.38-.01 2.49-.01 2.83 0 .27.18.59.69.49A10.16 10.16 0 0 0 22 12.25C22 6.59 17.52 2 12 2Z"/></svg>
+          </a>
+          <a class="social-link" href="https://www.instagram.com/mojtabatorabiiii" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 1.8A3.7 3.7 0 0 0 3.8 7.5v9a3.7 3.7 0 0 0 3.7 3.7h9a3.7 3.7 0 0 0 3.7-3.7v-9a3.7 3.7 0 0 0-3.7-3.7h-9ZM17.3 6.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8A3.2 3.2 0 1 0 12 15.2 3.2 3.2 0 0 0 12 8.8Z"/></svg>
+          </a>
         </div>
       </div>
     </div>
   </footer>
+
+  <nav class="mobile-dock" aria-label="Mobile">
+    <a class="mobile-dock-link" href="#latest-experiences" aria-current="page">Work</a>
+    <a class="mobile-dock-link" href="my-story.html">My Story</a>
+    <a class="mobile-dock-link" href="resume.html">Resume</a>
+    <a class="mobile-dock-link" href="ux-notes.html">UX Notes</a>
+  </nav>
 
   <script src="js/main.js"></script>
 </body>

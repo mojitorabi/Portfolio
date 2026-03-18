@@ -1,0 +1,33 @@
+---
+description: Portfolio repo workflow - always edit main repo and push to GitHub
+alwaysApply: true
+---
+
+# Portfolio Workflow
+
+## Target Repository
+
+- **Always** apply all changes to the main Portfolio repo: `/Users/mojtabatorabi/Desktop/Portfolio`
+- **Never** apply changes to other locations (e.g. Portfolio-live-repo or other clones)
+- The main repo is published at: https://github.com/mojitorabi/Portfolio
+
+## After Every Change
+
+1. Stage all modified and new files
+2. Commit with a clear message describing the changes
+3. Push to the remote `origin` on branch `main`
+
+## Git Commands to Run After Edits
+
+```bash
+cd /Users/mojtabatorabi/Desktop/Portfolio
+git add -A
+git status  # verify before commit
+git commit -m "Descriptive message"
+git push origin main
+```
+
+## Exclusions
+
+- Do not commit: `.venv/`, `.DS_Store`, `.env`, `*.pdf` (unless explicitly needed)
+- Respect `.gitignore` when staging

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 154 78" fill="none">
+  <title>Moji</title>
+  <path d="M12 49C14 34 18 20 25 20C30 20 32 25 31 32C30 41 23 53 16 57C13 58 12 56 13 52C15 41 21 26 29 22C38 18 44 25 44 38C44 43 44 47 45 50C47 38 52 25 59 24C64 24 66 28 66 34V49" stroke="#F5F5F7" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M78 39C78 30 84 24 93 24C102 24 108 30 108 39C108 48 102 54 93 54C84 54 78 48 78 39Z" stroke="#F5F5F7" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M123 24C124 37 124 49 123 62C122 69 118 73 112 73" stroke="#F5F5F7" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M141 24C142 33 142 41 142 49" stroke="#F5F5F7" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="124.2" cy="16.6" r="2.35" fill="#F5F5F7"/>
+  <circle cx="142.2" cy="16.6" r="2.35" fill="#F5F5F7"/>
+</svg>
