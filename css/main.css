@@ -660,7 +660,6 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
 
 .home-hero .hero-grid {
   align-items: stretch;
-  grid-template-rows: minmax(0, min-content);
 }
 
 .hero-copy,
@@ -914,7 +913,6 @@ html[data-theme="dark"] .button-gradient {
   align-self: stretch;
   padding: clamp(0.6rem, 1.2vw, 1rem);
   min-height: 0;
-  overflow: hidden;
 }
 
 .home-hero .hero-visual .hero-portrait {
@@ -923,7 +921,7 @@ html[data-theme="dark"] .button-gradient {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center center;
 }
 
 .hero-visual::before {
