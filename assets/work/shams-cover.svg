@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="shams-sky" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1f35"/>
+      <stop offset="100%" stop-color="#0d1528"/>
+    </linearGradient>
+    <linearGradient id="shams-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c9a227"/>
+      <stop offset="100%" stop-color="#e8d48a"/>
+    </linearGradient>
+    <radialGradient id="shams-lens" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4fd1c5" stop-opacity="0.35"/>
+      <stop offset="70%" stop-color="#2c5282" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#shams-sky)"/>
+  <path d="M0 320 Q200 280 400 300 T800 290 L800 450 L0 450 Z" fill="#0f1729" opacity="0.9"/>
+  <!-- Palace arch silhouette -->
+  <path d="M280 380 V220 Q400 120 520 220 V380" fill="none" stroke="url(#shams-gold)" stroke-width="2" opacity="0.5"/>
+  <path d="M320 380 V260 Q400 200 480 260 V380" fill="none" stroke="url(#shams-gold)" stroke-width="1.2" opacity="0.35"/>
+  <!-- AR viewfinder -->
+  <rect x="300" y="100" width="200" height="200" rx="24" fill="none" stroke="#4fd1c5" stroke-width="2" opacity="0.4"/>
+  <circle cx="400" cy="200" r="72" fill="url(#shams-lens)"/>
+  <circle cx="400" cy="200" r="68" fill="none" stroke="#4fd1c5" stroke-width="1.5" opacity="0.5"/>
+  <!-- Corner brackets -->
+  <path d="M300 120 h-16 M300 100 v16 M500 100 v16 M516 120 h-16 M516 280 h-16 M500 300 v-16 M300 300 v-16 M284 280 h16" stroke="#4fd1c5" stroke-width="2" opacity="0.55" fill="none"/>
+  <circle cx="400" cy="200" r="4" fill="#e8d48a" opacity="0.8"/>
+</svg>

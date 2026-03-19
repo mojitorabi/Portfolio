@@ -10,14 +10,14 @@
   --surface-strong: rgba(255, 255, 255, 0.9);
   --surface-tint: rgba(0, 122, 255, 0.08);
   --text: #1d1d1f;
-  --muted: #52525b; /* WCAG AA: 4.5:1+ on light bg */
+  --muted: #52525b;
+  /* WCAG AA: 4.5:1+ on light bg */
   --line: rgba(29, 29, 31, 0.12);
   --line-strong: rgba(29, 29, 31, 0.14);
   --accent: #007aff;
   --accent-strong: #0066cc;
   --accent-soft: rgba(0, 122, 255, 0.12);
   --hero-accent: #0066cc;
-  --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --success: #34c759;
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
@@ -29,7 +29,15 @@
   --wrap: 1160px;
   /* Apple.com: 8pt grid, generous section spacing */
   --shell-gutter: clamp(16px, 2.4vw, 24px);
-  --section-gap: clamp(64px, 8vw, 96px);
+  /* HIG-style major section rhythm (~7–10× 8pt) */
+  --section-gap: clamp(56px, 6vw, 80px);
+  /* Tight join after hero (HIG 8pt rhythm, ~3–4×8) */
+  --section-after-hero: clamp(20px, 2vw + 8px, 32px);
+  /* Space from top of viewport to hero content (HIG: clear of chrome + breathing room) */
+  --site-header-stack: 4.75rem; /* fixed header + padding estimate */
+  --hero-inset-desktop: calc(env(safe-area-inset-top, 0px) + var(--site-header-stack) + var(--space-4));
+  --hero-inset-compact: calc(env(safe-area-inset-top, 0px) + var(--space-8) + var(--space-2));
+  --hero-inset-phone: calc(env(safe-area-inset-top, 0px) + var(--space-9) + var(--space-2));
   --card-gap: 16px;
   --card-padding: clamp(16px, 2vw, 24px);
   /* HIG: min 44pt touch target for buttons */
@@ -72,7 +80,8 @@ html[data-theme="dark"] {
   --surface-strong: rgba(28, 28, 30, 0.92);
   --surface-tint: rgba(10, 132, 255, 0.14);
   --text: #f5f5f7;
-  --muted: #b8b8bd; /* WCAG AA: 4.5:1+ on dark bg */
+  --muted: #b8b8bd;
+  /* WCAG AA: 4.5:1+ on dark bg */
   --line: rgba(255, 255, 255, 0.12);
   --line-strong: rgba(255, 255, 255, 0.14);
   --accent: #0a84ff;
@@ -95,12 +104,12 @@ html[data-theme="dark"] {
     --muted: #b8b8bd;
     --line: rgba(255, 255, 255, 0.08);
     --line-strong: rgba(255, 255, 255, 0.14);
-  --accent: #0a84ff;
-  --accent-strong: #409cff;
-  --accent-soft: rgba(10, 132, 255, 0.18);
-  --hero-accent: #0a84ff;
-  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.24);
-  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.36);
+    --accent: #0a84ff;
+    --accent-strong: #409cff;
+    --accent-soft: rgba(10, 132, 255, 0.18);
+    --hero-accent: #0a84ff;
+    --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.24);
+    --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.36);
   }
 }
 
@@ -291,6 +300,11 @@ a {
 
 .section-space {
   padding-top: var(--section-gap);
+}
+
+/* Pull “Recent work” (and any block directly under hero) closer — avoids oversized vertical gap */
+.home-hero + .section-space {
+  padding-top: var(--section-after-hero);
 }
 
 .section-journey .wrap {
@@ -564,7 +578,8 @@ html[data-theme="dark"] .brand-logo-dark {
 }
 
 .theme-fab {
-  display: none; /* replaced by bottom tab bar More sheet on mobile */
+  display: none;
+  /* replaced by bottom tab bar More sheet on mobile */
 }
 
 .mobile-brand-fab {
@@ -657,7 +672,8 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
   background: color-mix(in srgb, var(--surface-strong) 92%, var(--accent-soft));
   border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--line));
   color: var(--accent);
-  font-size: var(--text-footnote); /* HIG footnote: 13px — more legible than caption */
+  font-size: var(--text-footnote);
+  /* HIG footnote: 13px — more legible than caption */
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -672,18 +688,19 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
   background: color-mix(in srgb, var(--surface-strong) 92%, transparent);
   border: 1px solid var(--line);
   color: var(--muted);
-  font-size: var(--text-footnote); /* HIG footnote: 13px */
+  font-size: var(--text-footnote);
+  /* HIG footnote: 13px */
   font-weight: 600;
   letter-spacing: -0.01em;
 }
 
 .home-hero {
-  padding-top: var(--section-gap);
-  padding-bottom: var(--space-4);
+  padding-top: var(--hero-inset-compact);
+  padding-bottom: var(--space-3);
 }
 
 .page-hero {
-  padding-top: calc(var(--section-gap) + var(--space-4));
+  padding-top: var(--hero-inset-compact);
 }
 
 .hero-grid,
@@ -696,7 +713,6 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
 
 .home-hero .hero-grid {
   align-items: stretch;
-  max-height: 520px;
 }
 
 .hero-copy,
@@ -706,7 +722,8 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
 
 .hero-copy .eyebrow,
 .page-intro .eyebrow {
-  margin-bottom: var(--space-3); /* HIG: 24px gap between badge and title */
+  margin-bottom: var(--space-3);
+  /* HIG: 24px gap between badge and title */
 }
 
 .hero-copy h1,
@@ -720,35 +737,101 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
   letter-spacing: -0.04em;
 }
 
-.hero-copy h1,
+.hero-copy h1:not(.hero-headline),
 .page-intro h1 {
   font-size: clamp(3rem, 1.5vw + 2.6rem, 4rem);
   line-height: 1.05;
 }
 
-.home-hero .hero-copy h1 {
+.home-hero .hero-copy h1:not(.hero-headline) {
   font-size: clamp(3rem, 1.6vw + 2.6rem, 4rem);
   line-height: 1.05;
 }
 
+/* Hero: Apple-style stack — secondary lead → dominant title → scoped tagline */
+.hero-copy h1.hero-headline,
+.home-hero .hero-copy h1.hero-headline {
+  font-size: unset;
+  line-height: unset;
+  font-weight: unset;
+  letter-spacing: unset;
+  color: unset;
+}
+
 .hero-headline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(10px, 1.2vw, 14px);
+  max-width: 42rem;
+}
+
+.hero-line {
   display: block;
-  font-weight: inherit;
-  letter-spacing: -0.03em;
-}
-
-.hero-headline .hero-accent {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  color: var(--hero-accent);
-  font-style: normal;
-}
-
-.hero-headline .hero-bold {
+  margin: 0;
   font-family: var(--font-display);
-  font-weight: 800;
+}
+
+.hero-line-lead {
+  font-size: clamp(1.0625rem, 0.75vw + 0.82rem, 1.3125rem);
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: -0.02em;
+  line-height: 1.28;
+}
+
+.hero-line-focus {
+  font-size: clamp(2.125rem, 2.5vw + 1rem, 3.5rem);
+  font-weight: 700;
   color: var(--text);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  max-width: min(36rem, 100%);
+  text-wrap: balance;
+}
+
+/* Single-word brand accent on focal line (subtle gradient; solid fallback) */
+.hero-focus-accent {
+  display: inline;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  background-image: linear-gradient(
+    115deg,
+    var(--accent-strong) 0%,
+    var(--accent) 42%,
+    color-mix(in srgb, var(--accent) 72%, var(--text)) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--accent-strong);
+}
+
+@media (prefers-contrast: more) {
+  .hero-focus-accent {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    color: var(--accent-strong);
+  }
+}
+
+@media (forced-colors: active) {
+  .hero-focus-accent {
+    background: none;
+    -webkit-text-fill-color: CanvasText;
+    color: LinkText;
+  }
+}
+
+.hero-line-scope {
+  font-size: clamp(1rem, 0.5vw + 0.9rem, 1.1875rem);
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: -0.014em;
+  line-height: 1.4;
+  max-width: 36rem;
+  text-wrap: balance;
 }
 
 .hero-lead {
@@ -799,8 +882,8 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
   line-height: 1.47;
 }
 
-.hero-copy p + p,
-.page-intro p + p {
+.hero-copy p+p,
+.page-intro p+p {
   margin-top: var(--space-3);
 }
 
@@ -817,12 +900,62 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
   margin-top: var(--space-6);
 }
 
+/* Desktop: fixed header clearance + tighter hero bottom / section join */
+@media (min-width: 1025px) {
+  .home-hero {
+    padding-top: var(--hero-inset-desktop);
+    padding-bottom: var(--space-2);
+  }
+
+  .page-hero {
+    padding-top: var(--hero-inset-desktop);
+  }
+
+  .home-hero .hero-grid {
+    gap: var(--space-6);
+  }
+
+  .hero-line-focus {
+    font-size: clamp(2.25rem, 2.2vw + 1.2rem, 3.25rem);
+  }
+
+  .hero-copy .eyebrow {
+    margin-bottom: var(--space-2);
+  }
+
+  .hero-copy .button-row {
+    margin-top: var(--space-3);
+  }
+
+  .hero-copy .stat-stack {
+    margin-top: var(--space-3);
+    gap: var(--space-2);
+  }
+
+  .hero-copy .stat-stack .stat-card {
+    min-height: 5rem;
+    padding: 12px 14px;
+    align-content: center;
+  }
+
+  .hero-copy .stat-stack .stat-card strong {
+    font-size: var(--text-title2);
+    color: var(--text);
+  }
+
+  .hero-copy .stat-stack .stat-card span {
+    font-size: var(--text-caption1);
+    line-height: 1.25;
+  }
+}
+
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: var(--control-height);
-  min-width: 44px; /* HIG min touch target */
+  min-width: 44px;
+  /* HIG min touch target */
   padding: 0 var(--button-padding-x);
   border: 1px solid color-mix(in srgb, var(--line) 92%, rgba(255, 255, 255, 0.28));
   border-radius: 999px;
@@ -905,6 +1038,7 @@ html[data-theme="dark"] .button-gradient {
 }
 
 @media (prefers-color-scheme: dark) {
+
   html:not([data-theme="light"]) .button-primary,
   html:not([data-theme="light"]) .button-gradient {
     color: #ffffff;
@@ -993,7 +1127,7 @@ html[data-theme="dark"] .button-gradient {
 
 .hero-copy .stat-stack {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: var(--space-5);
+  margin-top: var(--space-3);
   gap: var(--space-2);
   perspective: 800px;
 }
@@ -1003,16 +1137,14 @@ html[data-theme="dark"] .button-gradient {
   padding: calc(var(--card-padding) - 0.1rem);
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.45);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.52) 0%,
-    rgba(255, 255, 255, 0.22) 50%,
-    rgba(255, 255, 255, 0.12) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.52) 0%,
+      rgba(255, 255, 255, 0.22) 50%,
+      rgba(255, 255, 255, 0.12) 100%);
   backdrop-filter: blur(40px) saturate(1.4);
   -webkit-backdrop-filter: blur(40px) saturate(1.4);
   display: grid;
-  align-content: start;
+  align-content: center;
   gap: 0.35rem;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
@@ -1037,7 +1169,7 @@ html[data-theme="dark"] .button-gradient {
   font-size: var(--text-title1);
   line-height: 1;
   letter-spacing: -0.04em;
-  color: var(--accent);
+  color: var(--text);
 }
 
 .stat-card span {
@@ -1048,12 +1180,10 @@ html[data-theme="dark"] .button-gradient {
 
 html[data-theme="dark"] .stat-card {
   border-color: rgba(255, 255, 255, 0.12);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(255, 255, 255, 0.04) 50%,
-    rgba(255, 255, 255, 0.02) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.04) 50%,
+      rgba(255, 255, 255, 0.02) 100%);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.12),
     inset 0 -1px 0 rgba(0, 0, 0, 0.2),
@@ -1072,18 +1202,17 @@ html[data-theme="dark"] .stat-card:hover {
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) .stat-card {
     border-color: rgba(255, 255, 255, 0.12);
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.08) 0%,
-      rgba(255, 255, 255, 0.04) 50%,
-      rgba(255, 255, 255, 0.02) 100%
-    );
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0.04) 50%,
+        rgba(255, 255, 255, 0.02) 100%);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.12),
       inset 0 -1px 0 rgba(0, 0, 0, 0.2),
       0 4px 0 rgba(0, 0, 0, 0.08),
       0 8px 24px rgba(0, 0, 0, 0.24);
   }
+
   html:not([data-theme="light"]) .stat-card:hover {
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.14),
@@ -1122,11 +1251,11 @@ html[data-theme="dark"] .stat-card:hover {
 
 .section-heading {
   max-width: 42rem;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-5);
 }
 
 .section-heading p {
-  margin: var(--space-3) 0 0;
+  margin: var(--space-2) 0 0;
 }
 
 .design-grid,
@@ -1142,6 +1271,11 @@ html[data-theme="dark"] .stat-card:hover {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--card-gap);
+  align-items: stretch;
+}
+
+.experience-grid--case {
+  gap: var(--space-3);
 }
 
 .resume-list {
@@ -1164,11 +1298,17 @@ html[data-theme="dark"] .stat-card:hover {
   flex-direction: column;
   padding: 0;
   overflow: hidden;
+  height: 100%;
+  min-height: 0;
 }
 
 .card-cover {
+  position: relative;
   width: 100%;
-  height: 10.5rem;
+  aspect-ratio: 16 / 10;
+  height: auto;
+  min-height: 9.5rem;
+  max-height: 11rem;
   overflow: hidden;
   flex: none;
 }
@@ -1179,11 +1319,144 @@ html[data-theme="dark"] .stat-card:hover {
   object-fit: cover;
   object-position: center;
   display: block;
-  transition: transform 360ms var(--ease);
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.experience-card:hover .card-cover img {
-  transform: scale(1.04);
+.experience-card.case-card:hover .card-cover img,
+.experience-card.case-card:focus-within .card-cover img {
+  transform: scale(1.07);
+}
+
+.card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 var(--space-2);
+}
+
+.card-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: var(--text-caption2);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--muted) 8%, transparent);
+  border: 1px solid var(--line);
+}
+
+.experience-card .card-body > h3 {
+  margin: 0 0 var(--space-1);
+}
+
+.experience-card .card-desc {
+  margin: 0;
+  margin-top: auto;
+  padding-top: var(--space-2);
+  font-size: var(--text-subhead);
+  line-height: 1.35;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.experience-card.case-card .card-desc {
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+/* Case study cards — editorial minimal + growth-style motion */
+.experience-card.case-card {
+  position: relative;
+  isolation: isolate;
+  border-radius: var(--surface-radius-xl);
+  background: color-mix(in srgb, var(--surface-strong) 88%, transparent);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.14) inset,
+    var(--shadow-sm);
+}
+
+.experience-card.case-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 400ms var(--ease);
+  background:
+    radial-gradient(120% 80% at 10% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 55%),
+    radial-gradient(100% 70% at 100% 100%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 50%);
+}
+
+.experience-card.case-card:hover::before,
+.experience-card.case-card:focus-within::before {
+  opacity: 1;
+}
+
+.case-card-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  text-decoration: none;
+  color: inherit;
+  border-radius: inherit;
+  outline: none;
+}
+
+.case-card-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.experience-card.case-card .card-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(185deg, transparent 30%, rgba(0, 0, 0, 0.22) 70%, rgba(0, 0, 0, 0.55) 100%);
+  opacity: 0;
+  transition: opacity 400ms var(--ease);
+  pointer-events: none;
+}
+
+.experience-card.case-card:hover .card-cover::after,
+.experience-card.case-card:focus-within .card-cover::after {
+  opacity: 1;
+}
+
+.card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  margin-top: auto;
+  padding-top: var(--space-3);
+  font-size: var(--text-subhead);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+.card-cta-icon {
+  display: inline-block;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.experience-card.case-card:hover .card-cta-icon,
+.experience-card.case-card:focus-within .card-cta-icon {
+  transform: translateX(5px);
+}
+
+.experience-card.case-card .card-body > h3 {
+  margin: 0 0 var(--space-1);
+  font-size: clamp(1.2rem, 1.1vw + 0.95rem, var(--text-title2));
+  letter-spacing: -0.034em;
+  line-height: 1.08;
 }
 
 .card-body {
@@ -1222,14 +1495,13 @@ html[data-theme="dark"] .stat-card:hover {
   flex-wrap: wrap;
 }
 
-.experience-meta > span:last-child,
-.resume-meta > .body-copy {
+.experience-meta>span:last-child,
+.resume-meta>.body-copy {
   color: var(--muted);
   font-size: var(--text-body);
 }
 
 .surface-card,
-.experience-card,
 .story-card,
 .resume-card,
 .writing-card,
@@ -1239,13 +1511,45 @@ html[data-theme="dark"] .stat-card:hover {
 }
 
 .surface-card:hover,
-.experience-card:hover,
 .story-card:hover,
 .resume-card:hover,
 .writing-card:hover {
   transform: translateY(-3px);
   border-color: var(--line-strong);
   box-shadow: var(--shadow-md);
+}
+
+.experience-card {
+  transition:
+    transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 380ms var(--ease),
+    box-shadow 380ms var(--ease),
+    background 380ms var(--ease);
+}
+
+.experience-card.case-card:hover,
+.experience-card.case-card:focus-within {
+  transform: translateY(-10px);
+  border-color: color-mix(in srgb, var(--accent) 22%, var(--line-strong));
+  box-shadow:
+    0 24px 56px rgba(0, 0, 0, 0.1),
+    0 0 0 1px color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+html[data-theme="dark"] .experience-card.case-card:hover,
+html[data-theme="dark"] .experience-card.case-card:focus-within {
+  box-shadow:
+    0 28px 64px rgba(0, 0, 0, 0.5),
+    0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .experience-card.case-card:hover,
+  html:not([data-theme="light"]) .experience-card.case-card:focus-within {
+    box-shadow:
+      0 28px 64px rgba(0, 0, 0, 0.5),
+      0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent);
+  }
 }
 
 .center-cta {
@@ -1464,7 +1768,7 @@ html[data-theme="dark"] .stat-card:hover {
   letter-spacing: -0.025em;
 }
 
-.roadmap-copy > span:not(.roadmap-range) {
+.roadmap-copy>span:not(.roadmap-range) {
   color: var(--muted);
   font-size: var(--text-footnote);
   line-height: 1.48;
@@ -1588,7 +1892,8 @@ html[data-theme="dark"] .stat-card:hover {
 
 /* ═══ BOTTOM TAB BAR (mobile & tablet) ═══ */
 .bottom-tab-bar {
-  display: none; /* shown only on ≤1024px */
+  display: none;
+  /* shown only on ≤1024px */
 }
 
 /* Legacy mobile-dock hidden everywhere */
@@ -1801,10 +2106,12 @@ html[data-theme="dark"] .stat-card:hover {
     transform: translate3d(0, 0, 0) scale(1);
     opacity: 0.62;
   }
+
   50% {
     transform: translate3d(0.7%, -0.6%, 0) scale(1.018);
     opacity: 0.72;
   }
+
   100% {
     transform: translate3d(-0.7%, 0.8%, 0) scale(1.014);
     opacity: 0.64;
@@ -1815,9 +2122,11 @@ html[data-theme="dark"] .stat-card:hover {
   0% {
     transform: translate3d(-0.35%, 0, 0) scale(1);
   }
+
   50% {
     transform: translate3d(0.55%, -0.65%, 0) scale(1.018);
   }
+
   100% {
     transform: translate3d(-0.45%, 0.5%, 0) scale(1.012);
   }
@@ -1827,9 +2136,11 @@ html[data-theme="dark"] .stat-card:hover {
   0% {
     transform: translate3d(0, 0, 0) scale(1);
   }
+
   50% {
     transform: translate3d(6px, -7px, 0) scale(1.02);
   }
+
   100% {
     transform: translate3d(-6px, 6px, 0) scale(1.015);
   }
@@ -1839,12 +2150,14 @@ html[data-theme="dark"] .stat-card:hover {
   0% {
     transform: translateX(calc(-50% - 1rem));
   }
+
   100% {
     transform: translateX(0);
   }
 }
 
 @media (max-width: 1080px) {
+
   .hero-grid,
   .split-grid,
   .design-grid,
@@ -1871,10 +2184,11 @@ html[data-theme="dark"] .stat-card:hover {
 @media (max-width: 1024px) {
   :root {
     --shell-gutter: clamp(16px, 4vw, 24px);
-    --section-gap: clamp(48px, 8vw, 64px);
+    --section-gap: clamp(52px, 7vw, 72px);
     --card-gap: 16px;
     --card-padding: 16px;
-    --control-height: 48px; /* HIG: 48pt for iPad touch targets */
+    --control-height: 48px;
+    /* HIG: 48pt for iPad touch targets */
     --button-padding-x: 16px;
     --surface-radius: 12px;
     --surface-radius-xl: 16px;
@@ -1897,10 +2211,10 @@ html[data-theme="dark"] .stat-card:hover {
     display: none !important;
   }
 
-  /* ── Page top padding: just safe area inset + a comfortable gap ── */
+  /* Page top: status bar / safe area + comfortable HIG margin (no fixed top nav) */
   .home-hero,
   .page-hero {
-    padding-top: calc(var(--space-7) + env(safe-area-inset-top, 0px));
+    padding-top: var(--hero-inset-compact);
   }
 
   /* ── Grid resets ── */
@@ -1917,9 +2231,9 @@ html[data-theme="dark"] .stat-card:hover {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* ── Hero portrait: fixed aspect ratio so image is always visible ── */
+  /* Hero portrait: fixed aspect ratio so image is always visible */
   .home-hero .hero-visual {
-    order: -1; /* portrait comes first on mobile */
+    order: -1;
     align-self: auto;
     min-height: 0;
     height: auto;
@@ -1936,403 +2250,421 @@ html[data-theme="dark"] .stat-card:hover {
     object-position: top center;
   }
 
-  .hero-visual {
-    align-self: stretch;
-  }
+    .hero-visual {
+      align-self: stretch;
+    }
 
-  /* ── Stack CTA / footer ── */
-  .cta-band,
-  .footer-shell {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    /* ── Stack CTA / footer ── */
+    .cta-band,
+    .footer-shell {
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
-  .button-row,
-  .cta-actions,
-  .footer-links {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-  }
+    .button-row,
+    .cta-actions,
+    .footer-links {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+    }
 
-  .button {
-    width: 100%;
-    min-height: 48px;
-    font-size: var(--text-body);
-  }
+    .button {
+      width: 100%;
+      min-height: 48px;
+      font-size: var(--text-body);
+    }
 
-  /* ════════════════════════════════════
+    /* ════════════════════════════════════
      BOTTOM TAB BAR
      Apple HIG Tab Bar: 49pt height + safe area
      4 tabs: Home (logo) | My Story | Resume | More
      ════════════════════════════════════ */
-  .bottom-tab-bar {
-    position: fixed;
-    left: 50%;
-    bottom: 0;
-    z-index: 50;
-    display: flex;
-    align-items: stretch;
-    width: 100%;
-    max-width: 100%;
-    padding: 0 var(--space-2) env(safe-area-inset-bottom, 12px);
-    padding-top: 0;
-    border-top: 1px solid var(--line);
-    background: color-mix(in srgb, var(--surface-strong) 92%, transparent);
-    backdrop-filter: blur(28px) saturate(1.4);
-    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08);
-    transform: translateX(-50%) translateY(0);
-    transition: transform 320ms var(--ease), opacity 280ms var(--ease);
+    .bottom-tab-bar {
+      position: fixed;
+      left: 50%;
+      bottom: 0;
+      z-index: 50;
+      display: flex;
+      align-items: stretch;
+      width: 100%;
+      max-width: 100%;
+      padding: 0 var(--space-2) env(safe-area-inset-bottom, 12px);
+      padding-top: 0;
+      border-top: 1px solid var(--line);
+      background: color-mix(in srgb, var(--surface-strong) 92%, transparent);
+      backdrop-filter: blur(28px) saturate(1.4);
+      box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08);
+      transform: translateX(-50%) translateY(0);
+      transition: transform 320ms var(--ease), opacity 280ms var(--ease);
+    }
+
+    html.tab-bar-hidden .bottom-tab-bar {
+      transform: translateX(-50%) translateY(calc(100% + 2px));
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .bottom-tab-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      min-height: 49px;
+      /* HIG: 49pt tab bar */
+      padding: 6px 4px 4px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-size: var(--text-caption2);
+      /* 11px HIG caption2 for tab labels */
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 160ms var(--ease);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .bottom-tab-item[aria-current="page"],
+    .bottom-tab-item.active {
+      color: var(--accent);
+    }
+
+    .bottom-tab-item:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: -2px;
+      border-radius: var(--radius-md);
+    }
+
+    /* Tab icon wrapper */
+    .bottom-tab-icon {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      flex: none;
+      transition: background 160ms var(--ease);
+    }
+
+    .bottom-tab-item[aria-current="page"] .bottom-tab-icon,
+    .bottom-tab-item.active .bottom-tab-icon {
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+    }
+
+    /* Moji logo in first tab */
+    .bottom-tab-logo {
+      height: 18px;
+      width: auto;
+      display: block;
+      opacity: 0.6;
+      transition: opacity 160ms var(--ease);
+    }
+
+    .bottom-tab-item[aria-current="page"] .bottom-tab-logo,
+    .bottom-tab-item.active .bottom-tab-logo {
+      opacity: 1;
+    }
+
+    /* Tab icon SVGs */
+    .bottom-tab-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Brand logo visibility per theme */
+    .bottom-tab-logo-light {
+      display: block;
+    }
+
+    .bottom-tab-logo-dark {
+      display: none;
+    }
+
+    html[data-theme="dark"] .bottom-tab-logo-light {
+      display: none;
+    }
+
+    html[data-theme="dark"] .bottom-tab-logo-dark {
+      display: block;
+      opacity: 0.6;
+    }
+
+    html[data-theme="dark"] .bottom-tab-item[aria-current="page"] .bottom-tab-logo-dark,
+    html[data-theme="dark"] .bottom-tab-item.active .bottom-tab-logo-dark {
+      opacity: 1;
+    }
+
+    /* ── Roadmap ── */
+    .roadmap-flow::before {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .roadmap-node {
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      gap: 1rem;
+    }
+
+    .roadmap-card {
+      width: min(100%, 25.5rem);
+    }
+
+    .hero-visual,
+    .surface-card,
+    .experience-card,
+    .story-card,
+    .resume-card,
+    .writing-card,
+    .cta-band,
+    .roadmap-step {
+      border-radius: var(--surface-radius);
+    }
+
+    .hero-portrait,
+    .hero-illustration {
+      border-radius: var(--radius-xl);
+    }
+
+    .site-footer {
+      padding-bottom: calc(var(--space-8) + 84px + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* Section heading stays large */
+    .section-heading h2 {
+      font-size: clamp(var(--text-title1), 5vw, var(--text-large-title));
+    }
+
+    /* Badge/eyebrow spacing from parent headings */
+    .section-heading .eyebrow {
+      margin-bottom: var(--space-3);
+    }
   }
 
-  html.tab-bar-hidden .bottom-tab-bar {
-    transform: translateX(-50%) translateY(calc(100% + 2px));
-    opacity: 0;
-    pointer-events: none;
+  /* Mobile: HIG design system (iPhone ≤640px) */
+  @media (max-width: 640px) {
+    :root {
+      --shell-gutter: 16px;
+      --section-gap: clamp(40px, 10vw, 56px);
+      --card-gap: 12px;
+      --card-padding: 16px;
+      --control-height: 44px;
+      /* HIG: 44pt min touch target for iOS */
+      --button-padding-x: 16px;
+      --surface-radius: 12px;
+      --surface-radius-xl: 16px;
+    }
+
+    /* Phone: slightly more top inset than tablet (readable first line, HIG rhythm) */
+    .home-hero,
+    .page-hero {
+      padding-top: var(--hero-inset-phone);
+    }
+
+    /* Hero headline — HIG LargeTitle-ish for impact */
+    .hero-copy h1,
+    .page-intro h1 {
+      font-size: clamp(2rem, 7vw, 2.75rem);
+      line-height: 1.06;
+    }
+
+    .home-hero .hero-copy h1 {
+      font-size: clamp(2rem, 6.5vw, 2.75rem);
+      line-height: 1.06;
+    }
+
+    .home-hero .hero-lead {
+      font-size: var(--text-body);
+    }
+
+    /* Section headings — HIG Title1 at most on small screens */
+    .section-heading h2,
+    .cta-band h2 {
+      font-size: clamp(var(--text-title2), 6vw, var(--text-title1));
+      line-height: 1.05;
+    }
+
+    .hero-copy p,
+    .page-intro p {
+      font-size: var(--text-body);
+    }
+
+    .hero-copy .stat-stack,
+    .stat-stack {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* Hero visual on phone: forced 4:3 ratio so portrait is always visible */
+    .home-hero .hero-visual {
+      aspect-ratio: 3 / 2;
+      min-height: 0;
+      height: auto;
+      padding: 0;
+    }
+
+    .hero-portrait,
+    .hero-illustration {
+      max-height: none;
+      border-radius: var(--radius-lg);
+    }
+
+    /* Stat cards — compact on phone */
+    .stat-card {
+      min-height: 5.8rem;
+      padding: 14px;
+    }
+
+    .experience-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .card-cover {
+      aspect-ratio: auto;
+      height: 9rem;
+      min-height: 0;
+      max-height: none;
+    }
+
+    .stat-card strong {
+      font-size: var(--text-title2);
+    }
+
+    .stat-card span {
+      font-size: var(--text-caption1);
+    }
+
+    .roadmap-flow::before {
+      left: 2.35rem;
+      transform: none;
+    }
+
+    .roadmap-node {
+      grid-template-columns: 4rem minmax(0, 1fr);
+      gap: 0.85rem;
+    }
+
+    .roadmap-node-left .roadmap-card,
+    .roadmap-node-right .roadmap-card {
+      grid-column: 2;
+      justify-self: stretch;
+      width: 100%;
+    }
+
+    .roadmap-node-left .roadmap-spacer,
+    .roadmap-node-right .roadmap-spacer {
+      display: none;
+    }
+
+    .roadmap-marker {
+      grid-column: 1;
+      min-width: 4rem;
+      min-height: 2.55rem;
+      padding-inline: 0.65rem;
+    }
+
+    .roadmap-node-left .roadmap-card::before,
+    .roadmap-node-right .roadmap-card::before {
+      left: -0.85rem;
+      right: auto;
+      width: 0.85rem;
+    }
+
+    .roadmap-card {
+      padding: 0.9rem;
+      border-radius: 1.3rem;
+      gap: 0.7rem;
+    }
+
+    .roadmap-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 1.2rem;
+    }
+
+    .roadmap-illustration,
+    .roadmap-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 1.4rem;
+    }
+
+    .roadmap-copy strong {
+      font-size: var(--text-callout);
+      /* 16px */
+    }
+
+    .roadmap-copy>span:not(.roadmap-range) {
+      font-size: var(--text-footnote);
+      /* 13px HIG footnote */
+      line-height: 1.45;
+    }
+
+    .roadmap-description {
+      font-size: var(--text-footnote);
+      line-height: 1.45;
+    }
+
+    .recommendation-svg {
+      width: 17rem;
+      padding: 0.65rem;
+    }
+
+    /* Bottom tab bar on phone is full-width */
+    .bottom-tab-bar {
+      max-width: 100%;
+    }
+
+    /* Experience grid: 1 col on phone */
+    .experience-grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* Card text sizes scaled to HIG body */
+    .experience-card h3,
+    .story-card h3,
+    .resume-card h3,
+    .writing-card h3 {
+      font-size: var(--text-title3);
+      /* 20px */
+    }
+
+    /* Badge spacing standardization */
+    .hero-copy .eyebrow,
+    .page-intro .eyebrow,
+    .section-heading .eyebrow {
+      margin-bottom: var(--space-3);
+    }
+
+    /* Footer padding for bottom tab bar */
+    .site-footer {
+      padding-bottom: calc(var(--space-7) + 84px + env(safe-area-inset-bottom, 0px));
+    }
   }
 
-  .bottom-tab-item {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    min-height: 49px; /* HIG: 49pt tab bar */
-    padding: 6px 4px 4px;
-    border: none;
-    background: transparent;
-    color: var(--muted);
-    font-size: var(--text-caption2); /* 11px HIG caption2 for tab labels */
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    text-decoration: none;
-    cursor: pointer;
-    transition: color 160ms var(--ease);
-    -webkit-tap-highlight-color: transparent;
-  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
 
-  .bottom-tab-item[aria-current="page"],
-  .bottom-tab-item.active {
-    color: var(--accent);
-  }
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition-duration: 0ms !important;
+      transition-delay: 0ms !important;
+    }
 
-  .bottom-tab-item:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: -2px;
-    border-radius: var(--radius-md);
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
   }
-
-  /* Tab icon wrapper */
-  .bottom-tab-icon {
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    flex: none;
-    transition: background 160ms var(--ease);
-  }
-
-  .bottom-tab-item[aria-current="page"] .bottom-tab-icon,
-  .bottom-tab-item.active .bottom-tab-icon {
-    background: color-mix(in srgb, var(--accent) 12%, transparent);
-  }
-
-  /* Moji logo in first tab */
-  .bottom-tab-logo {
-    height: 18px;
-    width: auto;
-    display: block;
-    opacity: 0.6;
-    transition: opacity 160ms var(--ease);
-  }
-
-  .bottom-tab-item[aria-current="page"] .bottom-tab-logo,
-  .bottom-tab-item.active .bottom-tab-logo {
-    opacity: 1;
-  }
-
-  /* Tab icon SVGs */
-  .bottom-tab-icon svg {
-    width: 22px;
-    height: 22px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.6;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  /* Brand logo visibility per theme */
-  .bottom-tab-logo-light {
-    display: block;
-  }
-  .bottom-tab-logo-dark {
-    display: none;
-  }
-
-  html[data-theme="dark"] .bottom-tab-logo-light { display: none; }
-  html[data-theme="dark"] .bottom-tab-logo-dark  { display: block; opacity: 0.6; }
-  html[data-theme="dark"] .bottom-tab-item[aria-current="page"] .bottom-tab-logo-dark,
-  html[data-theme="dark"] .bottom-tab-item.active .bottom-tab-logo-dark { opacity: 1; }
-
-  /* ── Roadmap ── */
-  .roadmap-flow::before {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .roadmap-node {
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-    gap: 1rem;
-  }
-
-  .roadmap-card {
-    width: min(100%, 25.5rem);
-  }
-
-  .hero-visual,
-  .surface-card,
-  .experience-card,
-  .story-card,
-  .resume-card,
-  .writing-card,
-  .cta-band,
-  .roadmap-step {
-    border-radius: var(--surface-radius);
-  }
-
-  .hero-portrait,
-  .hero-illustration {
-    border-radius: var(--radius-xl);
-  }
-
-  .site-footer {
-    padding-bottom: calc(var(--space-8) + 84px + env(safe-area-inset-bottom, 0px));
-  }
-
-  /* Section heading stays large */
-  .section-heading h2 {
-    font-size: clamp(var(--text-title1), 5vw, var(--text-large-title));
-  }
-
-  /* Badge/eyebrow spacing from parent headings */
-  .section-heading .eyebrow {
-    margin-bottom: var(--space-3);
-  }
-}
-
-/* Mobile: HIG design system (iPhone ≤640px) */
-@media (max-width: 640px) {
-  :root {
-    --shell-gutter: 16px;
-    --section-gap: clamp(32px, 11vw, 48px);
-    --card-gap: 12px;
-    --card-padding: 16px;
-    --control-height: 44px; /* HIG: 44pt min touch target for iOS */
-    --button-padding-x: 16px;
-    --surface-radius: 12px;
-    --surface-radius-xl: 16px;
-  }
-
-  /* Page top: just safe area + modest gap — no floating top chrome anymore */
-  .home-hero,
-  .page-hero {
-    padding-top: calc(var(--space-6) + env(safe-area-inset-top, 0px));
-  }
-
-  /* Hero headline — HIG LargeTitle-ish for impact */
-  .hero-copy h1,
-  .page-intro h1 {
-    font-size: clamp(2rem, 7vw, 2.75rem);
-    line-height: 1.06;
-  }
-
-  .home-hero .hero-copy h1 {
-    font-size: clamp(2rem, 6.5vw, 2.75rem);
-    line-height: 1.06;
-  }
-
-  .home-hero .hero-lead {
-    font-size: var(--text-body);
-  }
-
-  /* Section headings — HIG Title1 at most on small screens */
-  .section-heading h2,
-  .cta-band h2 {
-    font-size: clamp(var(--text-title2), 6vw, var(--text-title1));
-    line-height: 1.05;
-  }
-
-  .hero-copy p,
-  .page-intro p {
-    font-size: var(--text-body);
-  }
-
-  .hero-copy .stat-stack,
-  .stat-stack {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  /* Hero visual on phone: forced 4:3 ratio so portrait is always visible */
-  .home-hero .hero-visual {
-    aspect-ratio: 3 / 2;
-    min-height: 0;
-    height: auto;
-    padding: 0;
-  }
-
-  .hero-portrait,
-  .hero-illustration {
-    max-height: none;
-    border-radius: var(--radius-lg);
-  }
-
-  /* Stat cards — compact on phone */
-  .stat-card {
-    min-height: 5.8rem;
-    padding: 14px;
-  }
-
-  .experience-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .card-cover {
-    height: 9rem;
-  }
-
-  .stat-card strong {
-    font-size: var(--text-title2); /* 22px on phone */
-  }
-
-  .stat-card span {
-    font-size: var(--text-caption1); /* 12px */
-  }
-
-  /* Roadmap — single column list on phone */
-  .roadmap-flow::before {
-    left: 2.35rem;
-    transform: none;
-  }
-
-  .roadmap-node {
-    grid-template-columns: 4rem minmax(0, 1fr);
-    gap: 0.85rem;
-  }
-
-  .roadmap-node-left .roadmap-card,
-  .roadmap-node-right .roadmap-card {
-    grid-column: 2;
-    justify-self: stretch;
-    width: 100%;
-  }
-
-  .roadmap-node-left .roadmap-spacer,
-  .roadmap-node-right .roadmap-spacer {
-    display: none;
-  }
-
-  .roadmap-marker {
-    grid-column: 1;
-    min-width: 4rem;
-    min-height: 2.55rem;
-    padding-inline: 0.65rem;
-  }
-
-  .roadmap-node-left .roadmap-card::before,
-  .roadmap-node-right .roadmap-card::before {
-    left: -0.85rem;
-    right: auto;
-    width: 0.85rem;
-  }
-
-  .roadmap-card {
-    padding: 0.9rem;
-    border-radius: 1.3rem;
-    gap: 0.7rem;
-  }
-
-  .roadmap-icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 1.2rem;
-  }
-
-  .roadmap-illustration,
-  .roadmap-icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 1.4rem;
-  }
-
-  .roadmap-copy strong {
-    font-size: var(--text-callout); /* 16px */
-  }
-
-  .roadmap-copy > span:not(.roadmap-range) {
-    font-size: var(--text-footnote); /* 13px HIG footnote */
-    line-height: 1.45;
-  }
-
-  .roadmap-description {
-    font-size: var(--text-footnote);
-    line-height: 1.45;
-  }
-
-  .recommendation-svg {
-    width: 17rem;
-    padding: 0.65rem;
-  }
-
-  /* Bottom tab bar on phone is full-width */
-  .bottom-tab-bar {
-    max-width: 100%;
-  }
-
-  /* Experience grid: 1 col on phone */
-  .experience-grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* Card text sizes scaled to HIG body */
-  .experience-card h3,
-  .story-card h3,
-  .resume-card h3,
-  .writing-card h3 {
-    font-size: var(--text-title3); /* 20px */
-  }
-
-  /* Badge spacing standardization */
-  .hero-copy .eyebrow,
-  .page-intro .eyebrow,
-  .section-heading .eyebrow {
-    margin-bottom: var(--space-3);
-  }
-
-  /* Footer padding for bottom tab bar */
-  .site-footer {
-    padding-bottom: calc(var(--space-7) + 84px + env(safe-area-inset-bottom, 0px));
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition-duration: 0ms !important;
-    transition-delay: 0ms !important;
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
-}

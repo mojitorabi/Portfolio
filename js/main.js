@@ -21,19 +21,8 @@
   var scrollTolerance = 6;
   var touchActive = false;
 
-  function isCompactViewport() {
-    return window.innerWidth <= 1024;
-  }
-
   function getSystemTheme() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  }
-
-  function normalizeTheme(theme) {
-    if (isCompactViewport() && theme !== "light" && theme !== "dark") {
-      return getSystemTheme();
-    }
-    return theme;
   }
 
   function getStoredTheme() {
@@ -41,16 +30,15 @@
   }
 
   function applyTheme(theme) {
-    var normalizedTheme = normalizeTheme(theme);
-
-    if (normalizedTheme === "light" || normalizedTheme === "dark") {
-      root.dataset.theme = normalizedTheme;
+    if (theme === "light" || theme === "dark") {
+      root.dataset.theme = theme;
     } else {
       root.removeAttribute("data-theme");
     }
 
     syncFavicon(theme);
-    syncBottomTabLogos(normalizedTheme);
+    var resolved = theme === "light" || theme === "dark" ? theme : getSystemTheme();
+    syncBottomTabLogos(resolved);
   }
 
   function syncFavicon(theme) {
@@ -72,14 +60,15 @@
   }
 
   function themeMeta(theme) {
-    if (theme === "light") return { icon: "☀", label: "Switch theme, current light" };
-    if (theme === "dark")  return { icon: "☾", label: "Switch theme, current dark" };
-    return { icon: "◐", label: "Switch theme, current auto" };
+    if (theme === "light") return { icon: "☀", label: "Appearance: Light" };
+    if (theme === "dark")  return { icon: "☾", label: "Appearance: Dark" };
+    return { icon: "◐", label: "Appearance: System default" };
   }
 
   function syncThemeToggle(theme) {
     if (!themeToggles.length) return;
-    var meta = themeMeta(normalizeTheme(theme));
+    var stored = theme === "light" || theme === "dark" || theme === "auto" ? theme : "auto";
+    var meta = themeMeta(stored);
     themeToggles.forEach(function (toggle) {
       var icon = toggle.querySelector(".theme-icon");
       if (icon) icon.textContent = meta.icon;
@@ -102,8 +91,9 @@
   }
 
   function cycleTheme() {
-    var themes = isCompactViewport() ? ["light", "dark"] : ["auto", "light", "dark"];
-    var current = isCompactViewport() ? normalizeTheme(getStoredTheme()) : getStoredTheme();
+    var themes = ["auto", "light", "dark"];
+    var current = getStoredTheme();
+    if (themes.indexOf(current) === -1) current = "auto";
     var index = themes.indexOf(current);
     var next = themes[(index + 1) % themes.length];
     updateTheme(next);

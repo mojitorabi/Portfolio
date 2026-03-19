@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="ux-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1929"/>
+      <stop offset="100%" stop-color="#152238"/>
+    </linearGradient>
+    <linearGradient id="ux-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0064d2"/>
+      <stop offset="100%" stop-color="#00a1ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#ux-bg)"/>
+  <pattern id="ux-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+    <path d="M48 0H0V48" fill="none" stroke="#1e3a5f" stroke-width="0.5" opacity="0.5"/>
+  </pattern>
+  <rect width="800" height="450" fill="url(#ux-grid)"/>
+  <!-- Seller portal abstract panels -->
+  <rect x="220" y="110" width="360" height="230" rx="16" fill="#111f33" stroke="url(#ux-accent)" stroke-width="1.5" opacity="0.9"/>
+  <rect x="240" y="130" width="100" height="12" rx="4" fill="#0064d2" opacity="0.5"/>
+  <rect x="240" y="155" width="320" height="8" rx="3" fill="#2a4a6e" opacity="0.8"/>
+  <rect x="240" y="175" width="280" height="8" rx="3" fill="#2a4a6e" opacity="0.5"/>
+  <rect x="240" y="205" width="150" height="70" rx="8" fill="#1a2e4a" stroke="#0064d2" stroke-width="1" opacity="0.85"/>
+  <rect x="410" y="205" width="150" height="70" rx="8" fill="#1a2e4a" stroke="#2a4a6e" stroke-width="1" opacity="0.7"/>
+  <rect x="240" y="290" width="80" height="28" rx="6" fill="url(#ux-accent)" opacity="0.35"/>
+  <rect x="318" y="58" width="164" height="6" rx="3" fill="#5ba3e8" opacity="0.35"/>
+  <rect x="350" y="70" width="100" height="4" rx="2" fill="#0064d2" opacity="0.4"/>
+</svg>
