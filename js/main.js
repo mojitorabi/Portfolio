@@ -8,7 +8,10 @@
   var menuToggle = document.querySelector(".menu-toggle");
   var themeToggles = document.querySelectorAll(".theme-toggle");
   var navLinks = document.querySelectorAll(".nav-links a");
-  var mobileDock = document.querySelector(".mobile-dock");
+  var bottomTabBar = document.querySelector(".bottom-tab-bar");
+  var moreTabBtn = document.getElementById("more-tab-btn");
+  var moreSheet = document.getElementById("more-sheet");
+  var moreBackdrop = document.getElementById("more-sheet-backdrop");
   var roadmapNodes = document.querySelectorAll(".roadmap-node");
   var favicon = document.querySelector('link[data-dynamic-favicon]');
   var themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
@@ -30,7 +33,6 @@
     if (isCompactViewport() && theme !== "light" && theme !== "dark") {
       return getSystemTheme();
     }
-
     return theme;
   }
 
@@ -48,54 +50,46 @@
     }
 
     syncFavicon(theme);
+    syncBottomTabLogos(normalizedTheme);
   }
 
   function syncFavicon(theme) {
-    if (!favicon) {
-      return;
-    }
-
+    if (!favicon) return;
     var resolvedTheme = theme === "light" || theme === "dark" ? theme : getSystemTheme();
     favicon.href = resolvedTheme === "dark"
       ? "assets/branding/moji-dark-mode.svg"
       : "assets/branding/moji-light-mode.svg";
   }
 
+  // Sync Moji logo images in the bottom tab bar to match the current theme
+  function syncBottomTabLogos(resolvedTheme) {
+    if (!bottomTabBar) return;
+    var actual = resolvedTheme === "light" || resolvedTheme === "dark" ? resolvedTheme : getSystemTheme();
+    var lightImgs = bottomTabBar.querySelectorAll(".bottom-tab-logo-light");
+    var darkImgs  = bottomTabBar.querySelectorAll(".bottom-tab-logo-dark");
+    lightImgs.forEach(function (img) { img.style.display = actual === "dark" ? "none" : "block"; });
+    darkImgs.forEach(function  (img) { img.style.display = actual === "dark" ? "block" : "none"; });
+  }
+
   function themeMeta(theme) {
-    if (theme === "light") {
-      return { icon: "☀", label: "Switch theme, current light" };
-    }
-
-    if (theme === "dark") {
-      return { icon: "☾", label: "Switch theme, current dark" };
-    }
-
+    if (theme === "light") return { icon: "☀", label: "Switch theme, current light" };
+    if (theme === "dark")  return { icon: "☾", label: "Switch theme, current dark" };
     return { icon: "◐", label: "Switch theme, current auto" };
   }
 
   function syncThemeToggle(theme) {
-    if (!themeToggles.length) {
-      return;
-    }
-
+    if (!themeToggles.length) return;
     var meta = themeMeta(normalizeTheme(theme));
-
     themeToggles.forEach(function (toggle) {
       var icon = toggle.querySelector(".theme-icon");
-      if (icon) {
-        icon.textContent = meta.icon;
-      }
-
+      if (icon) icon.textContent = meta.icon;
       toggle.setAttribute("aria-label", meta.label);
       toggle.setAttribute("title", meta.label);
     });
   }
 
   function closeMenu() {
-    if (!nav || !menuToggle) {
-      return;
-    }
-
+    if (!nav || !menuToggle) return;
     nav.classList.remove("menu-open");
     menuToggle.setAttribute("aria-expanded", "false");
     menuToggle.setAttribute("aria-label", "Open menu");
@@ -118,8 +112,46 @@
   applyTheme(getStoredTheme());
   syncThemeToggle(getStoredTheme());
 
+  // ── More Sheet (bottom tab bar "More" popover) ────────────────
+  function openMoreSheet() {
+    if (!moreSheet || !moreBackdrop || !moreTabBtn) return;
+    moreSheet.classList.add("open");
+    moreBackdrop.classList.add("open");
+    moreTabBtn.setAttribute("aria-expanded", "true");
+    moreBackdrop.removeAttribute("aria-hidden");
+    var focusable = moreSheet.querySelectorAll("a, button");
+    if (focusable.length) focusable[0].focus();
+  }
+
+  function closeMoreSheet() {
+    if (!moreSheet || !moreBackdrop || !moreTabBtn) return;
+    moreSheet.classList.remove("open");
+    moreBackdrop.classList.remove("open");
+    moreTabBtn.setAttribute("aria-expanded", "false");
+    moreBackdrop.setAttribute("aria-hidden", "true");
+    moreTabBtn.focus();
+  }
+
+  if (moreTabBtn) {
+    moreTabBtn.addEventListener("click", function () {
+      var isOpen = moreSheet && moreSheet.classList.contains("open");
+      if (isOpen) closeMoreSheet(); else openMoreSheet();
+    });
+  }
+
+  if (moreBackdrop) {
+    moreBackdrop.addEventListener("click", closeMoreSheet);
+  }
+
+  if (moreSheet) {
+    moreSheet.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", closeMoreSheet);
+    });
+  }
+  // ─────────────────────────────────────────────────────────────
+
   function syncHeroVisualHeight() {
-    var heroCopy = document.querySelector(".home-hero .hero-copy");
+    var heroCopy   = document.querySelector(".home-hero .hero-copy");
     var heroVisual = document.querySelector(".home-hero .hero-visual");
     if (!heroCopy || !heroVisual || window.innerWidth <= 1024) {
       heroVisual && heroVisual.style.removeProperty("height");
@@ -141,31 +173,28 @@
 
   function showMobileChrome() {
     root.classList.remove("mobile-top-chrome-hidden");
-    root.classList.remove("mobile-dock-hidden");
+    root.classList.remove("tab-bar-hidden");
   }
 
   function hideMobileChrome() {
     if (window.innerWidth <= 1024) {
       root.classList.add("mobile-top-chrome-hidden");
     }
-
-    if (mobileDock && window.innerWidth <= 1024) {
-      root.classList.add("mobile-dock-hidden");
+    if (bottomTabBar && window.innerWidth <= 1024) {
+      root.classList.add("tab-bar-hidden");
     }
   }
 
   function queueMobileChromeReveal() {
     window.clearTimeout(scrollStopTimer);
     scrollStopTimer = window.setTimeout(function () {
-      if (!touchActive) {
-        showMobileChrome();
-      }
+      if (!touchActive) showMobileChrome();
     }, chromeRevealDelay);
   }
 
   function syncScrollChrome() {
     var currentY = window.scrollY;
-    var deltaY = currentY - lastScrollY;
+    var deltaY   = currentY - lastScrollY;
 
     window.clearTimeout(scrollStopTimer);
 
@@ -196,51 +225,43 @@
     lastScrollY = currentY;
   }
 
-  if (header) {
-    window.addEventListener("scroll", syncScrollChrome, { passive: true });
-    window.addEventListener("resize", function () {
-      applyTheme(getStoredTheme());
-      syncThemeToggle(getStoredTheme());
-      syncScrollChrome();
-    });
+  window.addEventListener("scroll", syncScrollChrome, { passive: true });
+  window.addEventListener("resize", function () {
+    applyTheme(getStoredTheme());
+    syncThemeToggle(getStoredTheme());
     syncScrollChrome();
-  }
+  });
+  syncScrollChrome();
 
   window.addEventListener("touchstart", function () {
-    if (window.innerWidth > 1024) {
-      return;
-    }
-
+    if (window.innerWidth > 1024) return;
     touchActive = true;
     window.clearTimeout(scrollStopTimer);
-
-    if (window.scrollY > 24) {
-      hideMobileChrome();
-    }
+    if (window.scrollY > 24) hideMobileChrome();
   }, { passive: true });
 
   function releaseTouchChrome() {
-    if (window.innerWidth > 1024) {
-      return;
-    }
-
+    if (window.innerWidth > 1024) return;
     touchActive = false;
-
-    if (window.scrollY <= 24) {
-      showMobileChrome();
-      return;
-    }
-
+    if (window.scrollY <= 24) { showMobileChrome(); return; }
     queueMobileChromeReveal();
   }
 
-  window.addEventListener("touchend", releaseTouchChrome, { passive: true });
+  window.addEventListener("touchend",   releaseTouchChrome, { passive: true });
   window.addEventListener("touchcancel", releaseTouchChrome, { passive: true });
 
   themeMedia.addEventListener("change", function () {
     if (getStoredTheme() === "auto") {
       applyTheme(getStoredTheme());
       syncThemeToggle(getStoredTheme());
+    }
+  });
+
+  // Keyboard: Escape closes sheet and menu
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      if (moreSheet && moreSheet.classList.contains("open")) closeMoreSheet();
+      closeMenu();
     }
   });
 
@@ -252,15 +273,7 @@
     });
 
     document.addEventListener("click", function (event) {
-      if (!nav.contains(event.target)) {
-        closeMenu();
-      }
-    });
-
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") {
-        closeMenu();
-      }
+      if (!nav.contains(event.target)) closeMenu();
     });
   }
 
@@ -273,10 +286,7 @@
   });
 
   function activateRoadmap(target) {
-    if (!roadmapNodes.length) {
-      return;
-    }
-
+    if (!roadmapNodes.length) return;
     roadmapNodes.forEach(function (node) {
       var isActive = node.getAttribute("data-roadmap-target") === target;
       node.classList.toggle("is-active", isActive);
@@ -289,39 +299,21 @@
     roadmapNodes.forEach(function (node, index) {
       node.setAttribute("tabindex", node.classList.contains("is-active") ? "0" : "-1");
 
-      node.addEventListener("click", function () {
-        activateRoadmap(node.getAttribute("data-roadmap-target"));
-      });
-
+      node.addEventListener("click",      function () { activateRoadmap(node.getAttribute("data-roadmap-target")); });
       node.addEventListener("mouseenter", function () {
         if (window.matchMedia("(hover: hover)").matches) {
           activateRoadmap(node.getAttribute("data-roadmap-target"));
         }
       });
-
-      node.addEventListener("focus", function () {
-        activateRoadmap(node.getAttribute("data-roadmap-target"));
-      });
+      node.addEventListener("focus", function () { activateRoadmap(node.getAttribute("data-roadmap-target")); });
 
       node.addEventListener("keydown", function (event) {
         var nextIndex = index;
-
-        if (event.key === "ArrowDown" || event.key === "ArrowRight") {
-          nextIndex = (index + 1) % roadmapNodes.length;
-        } else if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
-          nextIndex = (index - 1 + roadmapNodes.length) % roadmapNodes.length;
-        } else if (event.key !== "Home" && event.key !== "End") {
-          return;
-        }
-
-        if (event.key === "Home") {
-          nextIndex = 0;
-        }
-
-        if (event.key === "End") {
-          nextIndex = roadmapNodes.length - 1;
-        }
-
+        if      (event.key === "ArrowDown"  || event.key === "ArrowRight") nextIndex = (index + 1) % roadmapNodes.length;
+        else if (event.key === "ArrowUp"    || event.key === "ArrowLeft")  nextIndex = (index - 1 + roadmapNodes.length) % roadmapNodes.length;
+        else if (event.key === "Home") nextIndex = 0;
+        else if (event.key === "End")  nextIndex = roadmapNodes.length - 1;
+        else return;
         event.preventDefault();
         activateRoadmap(roadmapNodes[nextIndex].getAttribute("data-roadmap-target"));
         roadmapNodes[nextIndex].focus();
@@ -332,20 +324,12 @@
       var roadmapObserver = new IntersectionObserver(
         function (entries) {
           entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              activateRoadmap(entry.target.getAttribute("data-roadmap-target"));
-            }
+            if (entry.isIntersecting) activateRoadmap(entry.target.getAttribute("data-roadmap-target"));
           });
         },
-        {
-          threshold: 0.65,
-          rootMargin: "-10% 0px -20% 0px",
-        }
+        { threshold: 0.65, rootMargin: "-10% 0px -20% 0px" }
       );
-
-      roadmapNodes.forEach(function (node) {
-        roadmapObserver.observe(node);
-      });
+      roadmapNodes.forEach(function (node) { roadmapObserver.observe(node); });
     }
   }
 
@@ -360,18 +344,10 @@
           }
         });
       },
-      {
-        threshold: 0.16,
-        rootMargin: "0px 0px -40px 0px",
-      }
+      { threshold: 0.16, rootMargin: "0px 0px -40px 0px" }
     );
-
-    revealItems.forEach(function (item) {
-      observer.observe(item);
-    });
+    revealItems.forEach(function (item) { observer.observe(item); });
   } else {
-    revealItems.forEach(function (item) {
-      item.classList.add("in-view");
-    });
+    revealItems.forEach(function (item) { item.classList.add("in-view"); });
   }
 })();
