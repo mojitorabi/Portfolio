@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A0A2E"/>
+      <stop offset="100%" stop-color="#240F3F"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9B59B6"/>
+      <stop offset="100%" stop-color="#6C3483"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <circle cx="600" cy="150" r="220" fill="#6C3483" opacity="0.15"/>
+  <circle cx="200" cy="350" r="160" fill="#9B59B6" opacity="0.1"/>
+  <!-- Cap/graduation icon abstracted -->
+  <polygon points="400,130 480,175 400,220 320,175" fill="#9B59B6" opacity="0.6"/>
+  <rect x="370" y="220" width="60" height="50" rx="8" fill="#6C3483" opacity="0.7"/>
+  <!-- Medal / grade indicator -->
+  <circle cx="580" cy="280" r="38" fill="none" stroke="#D4A84B" stroke-width="2.5" opacity="0.8"/>
+  <text x="580" y="276" text-anchor="middle" fill="#D4A84B" font-size="18" font-family="sans-serif" font-weight="bold" opacity="0.9">1.5</text>
+  <text x="580" y="294" text-anchor="middle" fill="#D4A84B" font-size="10" font-family="sans-serif" opacity="0.7">Grade</text>
+  <!-- Company logos abstracted -->
+  <rect x="155" y="290" width="70" height="30" rx="5" fill="#2A1A4A" stroke="#6C3483" stroke-width="1" opacity="0.9"/>
+  <rect x="235" y="290" width="70" height="30" rx="5" fill="#2A1A4A" stroke="#6C3483" stroke-width="1" opacity="0.9"/>
+  <rect x="315" y="290" width="70" height="30" rx="5" fill="#2A1A4A" stroke="#6C3483" stroke-width="1" opacity="0.9"/>
+  <circle cx="190" cy="305" r="8" fill="#9B59B6" opacity="0.6"/>
+  <circle cx="270" cy="305" r="8" fill="#7D3C98" opacity="0.7"/>
+  <circle cx="350" cy="305" r="8" fill="#9B59B6" opacity="0.5"/>
+  <!-- Subtle dots pattern -->
+  <circle cx="680" cy="380" r="4" fill="#9B59B6" opacity="0.4"/>
+  <circle cx="700" cy="360" r="3" fill="#D4A84B" opacity="0.4"/>
+  <circle cx="120" cy="140" r="3" fill="#9B59B6" opacity="0.3"/>
+</svg>

@@ -675,7 +675,11 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
   letter-spacing: -0.01em;
 }
 
-.home-hero,
+.home-hero {
+  padding-top: var(--section-gap);
+  padding-bottom: var(--space-4);
+}
+
 .page-hero {
   padding-top: calc(var(--section-gap) + var(--space-4));
 }
@@ -690,6 +694,7 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
 
 .home-hero .hero-grid {
   align-items: stretch;
+  max-height: 520px;
 }
 
 .hero-copy,
@@ -1133,7 +1138,7 @@ html[data-theme="dark"] .stat-card:hover {
 
 .experience-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--card-gap);
 }
 
@@ -1148,6 +1153,41 @@ html[data-theme="dark"] .stat-card:hover {
 .resume-card,
 .writing-card,
 .roadmap-step {
+  padding: var(--card-padding);
+}
+
+/* Work card uniform layout */
+.experience-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+.card-cover {
+  width: 100%;
+  height: 10.5rem;
+  overflow: hidden;
+  flex: none;
+}
+
+.card-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 360ms var(--ease);
+}
+
+.experience-card:hover .card-cover img {
+  transform: scale(1.04);
+}
+
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   padding: var(--card-padding);
 }
 
@@ -1654,9 +1694,12 @@ html[data-theme="dark"] .stat-card:hover {
   .design-grid,
   .story-grid,
   .resume-grid,
-  .writing-grid,
-  .experience-grid {
+  .writing-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .experience-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .hero-copy .stat-stack {
@@ -1721,9 +1764,12 @@ html[data-theme="dark"] .stat-card:hover {
   .design-grid,
   .story-grid,
   .resume-grid,
-  .writing-grid,
-  .experience-grid {
+  .writing-grid {
     grid-template-columns: 1fr;
+  }
+
+  .experience-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .hero-visual {
@@ -1898,6 +1944,15 @@ html[data-theme="dark"] .stat-card:hover {
   .stat-card {
     min-height: 6.2rem;
   }
+
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-cover {
+    height: 9rem;
+  }
+
 
   .roadmap-flow::before {
     left: 2.35rem;

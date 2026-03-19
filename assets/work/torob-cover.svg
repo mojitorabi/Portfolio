@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0D1B2A"/>
+      <stop offset="100%" stop-color="#111E30"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FF6B47"/>
+      <stop offset="100%" stop-color="#E84C2B"/>
+    </linearGradient>
+    <linearGradient id="grid-glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E3A5F"/>
+      <stop offset="100%" stop-color="#0D1B2A"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <!-- Subtle dot grid -->
+  <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+    <circle cx="20" cy="20" r="1" fill="#1E3A5F" opacity="0.6"/>
+  </pattern>
+  <rect width="800" height="450" fill="url(#dots)"/>
+  <!-- Large background circle -->
+  <circle cx="580" cy="200" r="220" fill="#1E3A5F" opacity="0.3"/>
+  <!-- Product grid squares -->
+  <rect x="260" y="120" width="80" height="80" rx="8" fill="#1A2E4A" stroke="#2A4A6E" stroke-width="1" opacity="0.9"/>
+  <rect x="352" y="120" width="80" height="80" rx="8" fill="#1A2E4A" stroke="#FF6B47" stroke-width="1.5" opacity="0.9"/>
+  <rect x="444" y="120" width="80" height="80" rx="8" fill="#1A2E4A" stroke="#2A4A6E" stroke-width="1" opacity="0.9"/>
+  <rect x="260" y="212" width="80" height="80" rx="8" fill="#FF6B47" opacity="0.15" stroke="#FF6B47" stroke-width="1.5"/>
+  <rect x="352" y="212" width="80" height="80" rx="8" fill="#1A2E4A" stroke="#2A4A6E" stroke-width="1" opacity="0.9"/>
+  <rect x="444" y="212" width="80" height="80" rx="8" fill="#1A2E4A" stroke="#2A4A6E" stroke-width="1" opacity="0.9"/>
+  <!-- Price tag accent -->
+  <rect x="362" y="130" width="60" height="20" rx="4" fill="url(#accent)" opacity="0.9"/>
+  <rect x="264" y="222" width="72" height="12" rx="3" fill="#FF6B47" opacity="0.6"/>
+  <!-- Arrow motif (price comparison) -->
+  <path d="M 520 175 L 560 175 L 560 160 L 590 185 L 560 210 L 560 195 L 520 195 Z" fill="url(#accent)" opacity="0.7"/>
+  <!-- Small accent dots -->
+  <circle cx="180" cy="200" r="40" fill="#FF6B47" opacity="0.08"/>
+  <circle cx="180" cy="200" r="20" fill="#FF6B47" opacity="0.12"/>
+  <!-- Glow effect -->
+  <circle cx="352" cy="160" r="50" fill="#FF6B47" opacity="0.05" filter="blur(20px)"/>
+</svg>
