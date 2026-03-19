@@ -1,6 +1,6 @@
 # Mojtaba Torabi — Portfolio
 
-Minimal portfolio site. Hosted on GitHub Pages.
+Minimal portfolio site. Hosted on GitHub Pages. Maintained with AI assistance.
 
 **Live site:** [https://mojitorabi.github.io/Portfolio/](https://mojitorabi.github.io/Portfolio/) · [www.mojtabat.com](https://www.mojtabat.com)
 
