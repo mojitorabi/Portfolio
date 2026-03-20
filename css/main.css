@@ -27,12 +27,12 @@
   --radius-lg: 12px;
   --radius-xl: 16px;
   --wrap: 1160px;
-  /* Apple.com: 8pt grid, generous section spacing */
+  /* Apple HIG: 8pt grid, spacing & layout (developer.apple.com/design/human-interface-guidelines) */
   --shell-gutter: clamp(16px, 2.4vw, 24px);
-  /* HIG-style major section rhythm (~7–10× 8pt) */
-  --section-gap: clamp(56px, 6vw, 80px);
-  /* Tight join after hero (HIG 8pt rhythm, ~3–4×8) */
-  --section-after-hero: clamp(20px, 2vw + 8px, 32px);
+  /* Major sections: 6–8× 8pt (48–64px) vertical rhythm */
+  --section-gap: clamp(48px, 5vw, 64px);
+  /* In-section blocks (headings → content): 3–4× 8pt */
+  --section-block-gap: var(--space-4);
   /* Space from top of viewport to hero content (HIG: clear of chrome + breathing room) */
   --site-header-stack: 4.75rem; /* fixed header + padding estimate */
   --hero-inset-desktop: calc(env(safe-area-inset-top, 0px) + var(--site-header-stack) + var(--space-4));
@@ -302,9 +302,9 @@ a {
   padding-top: var(--section-gap);
 }
 
-/* Pull “Recent work” (and any block directly under hero) closer — avoids oversized vertical gap */
+/* Uniform section-to-section spacing (same rhythm after hero as elsewhere) */
 .home-hero + .section-space {
-  padding-top: var(--section-after-hero);
+  padding-top: var(--section-gap);
 }
 
 .section-journey .wrap {
@@ -673,7 +673,7 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
   border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--line));
   color: var(--accent);
   font-size: var(--text-footnote);
-  /* HIG footnote: 13px — more legible than caption */
+  /* HIG footnote: 13px, more legible than caption */
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -699,6 +699,64 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
   padding-bottom: var(--space-3);
 }
 
+/* Hidden on desktop; shown on tablet/phone to anchor top of hero (HIG safe area + brand) */
+.home-hero-compact-brand {
+  display: none;
+}
+
+.home-hero-compact-brand-link {
+  display: block;
+  line-height: 0;
+  border-radius: var(--radius-md);
+}
+
+.home-hero-compact-brand-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.home-hero-compact-logo-wrap {
+  position: relative;
+  display: block;
+  width: clamp(4.75rem, 14vw, 5.75rem);
+  height: clamp(1.6rem, 4.5vw, 2rem);
+  margin: 0 auto;
+}
+
+.home-hero-compact-logo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.home-hero-compact-logo--light {
+  opacity: 1;
+}
+
+.home-hero-compact-logo--dark {
+  opacity: 0;
+}
+
+html[data-theme="dark"] .home-hero-compact-logo--light {
+  opacity: 0;
+}
+
+html[data-theme="dark"] .home-hero-compact-logo--dark {
+  opacity: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .home-hero-compact-logo--light {
+    opacity: 0;
+  }
+
+  html:not([data-theme="light"]) .home-hero-compact-logo--dark {
+    opacity: 1;
+  }
+}
+
 .page-hero {
   padding-top: var(--hero-inset-compact);
 }
@@ -720,10 +778,36 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
   max-width: 46rem;
 }
 
+/* Hero copy stacks as a column so badge + headline share one alignment */
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .hero-copy .eyebrow,
 .page-intro .eyebrow {
   margin-bottom: var(--space-3);
   /* HIG: 24px gap between badge and title */
+}
+
+/* Location pill: icon + label, same width rhythm as headline block */
+.eyebrow-location {
+  gap: 8px;
+}
+
+.eyebrow-location .eyebrow-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  color: var(--accent-strong);
+}
+
+.eyebrow-location .eyebrow-icon svg {
+  width: 1rem;
+  height: 1rem;
+  display: block;
 }
 
 .hero-copy h1,
@@ -748,7 +832,7 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
   line-height: 1.05;
 }
 
-/* Hero: Apple-style stack — secondary lead → dominant title → scoped tagline */
+/* Hero: Apple-style stack (secondary lead → dominant title → scoped tagline) */
 .hero-copy h1.hero-headline,
 .home-hero .hero-copy h1.hero-headline {
   font-size: unset;
@@ -778,6 +862,34 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
   color: var(--muted);
   letter-spacing: -0.02em;
   line-height: 1.28;
+}
+
+/* Editorial slogan, artistic but restrained */
+.hero-line-verse {
+  font-size: clamp(1.05rem, 0.9vw + 0.78rem, 1.25rem);
+  font-weight: 500;
+  font-style: italic;
+  color: color-mix(in srgb, var(--muted) 92%, var(--text));
+  letter-spacing: 0.01em;
+  line-height: 1.45;
+  max-width: 34rem;
+  text-wrap: balance;
+}
+
+.hero-line-verse::after {
+  content: "";
+  display: block;
+  width: 2.75rem;
+  height: 2px;
+  margin-top: 0.75em;
+  border-radius: 1px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 70%, transparent), transparent);
+  opacity: 0.55;
+}
+
+.hero-name {
+  font-weight: 700;
+  letter-spacing: -0.038em;
 }
 
 .hero-line-focus {
@@ -1103,7 +1215,8 @@ html[data-theme="dark"] .button-gradient {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  /* Anchor on upper body / face (standard portrait crop) */
+  object-position: 50% 18%;
 }
 
 .hero-visual::before {
@@ -1251,7 +1364,7 @@ html[data-theme="dark"] .stat-card:hover {
 
 .section-heading {
   max-width: 42rem;
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--section-block-gap);
 }
 
 .section-heading p {
@@ -1348,6 +1461,23 @@ html[data-theme="dark"] .stat-card:hover {
   border: 1px solid var(--line);
 }
 
+/* Case cards: compact keyword chips (HIG caption scale) */
+.experience-card.case-card .card-badges {
+  gap: 5px;
+  margin: 0 0 10px;
+}
+
+.experience-card.case-card .card-badge {
+  padding: 3px 7px;
+  font-size: var(--text-caption2);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  color: color-mix(in srgb, var(--muted) 88%, var(--text));
+  background: color-mix(in srgb, var(--surface-strong) 70%, transparent);
+}
+
 .experience-card .card-body > h3 {
   margin: 0 0 var(--space-1);
 }
@@ -1370,7 +1500,7 @@ html[data-theme="dark"] .stat-card:hover {
   line-clamp: 2;
 }
 
-/* Case study cards — editorial minimal + growth-style motion */
+/* Case study cards: editorial minimal + growth-style motion */
 .experience-card.case-card {
   position: relative;
   isolation: isolate;
@@ -1555,14 +1685,14 @@ html[data-theme="dark"] .experience-card.case-card:focus-within {
 .center-cta {
   display: flex;
   justify-content: center;
-  margin-top: var(--space-6);
+  margin-top: var(--space-5);
 }
 
 .roadmap-flow {
   position: relative;
   display: grid;
-  gap: 1.4rem;
-  margin-top: 0.25rem;
+  gap: var(--space-3);
+  margin-top: var(--space-1);
 }
 
 .roadmap-flow::before {
@@ -1809,7 +1939,7 @@ html[data-theme="dark"] .experience-card.case-card:focus-within {
 
 .recommendation-marquee {
   overflow: hidden;
-  margin-top: var(--space-4);
+  margin-top: var(--section-block-gap);
   mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
 }
 
@@ -1845,7 +1975,7 @@ html[data-theme="dark"] .experience-card.case-card:focus-within {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-6);
-  padding: clamp(1.5rem, 3vw, 2.25rem);
+  padding: var(--space-5) var(--space-6);
 }
 
 .cta-band p {
@@ -2184,7 +2314,7 @@ html[data-theme="dark"] .experience-card.case-card:focus-within {
 @media (max-width: 1024px) {
   :root {
     --shell-gutter: clamp(16px, 4vw, 24px);
-    --section-gap: clamp(52px, 7vw, 72px);
+    --section-gap: clamp(48px, 6vw, 64px);
     --card-gap: 16px;
     --card-padding: 16px;
     --control-height: 48px;
@@ -2199,22 +2329,34 @@ html[data-theme="dark"] .experience-card.case-card:focus-within {
     padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
   }
 
-  /* Hide the desktop header on mobile/tablet — bottom tab bar takes over nav */
+  /* Hide the desktop header on mobile/tablet; bottom tab bar takes over nav */
   .site-header {
     display: none;
   }
 
-  /* Hide old floating fab chrome — replaced by bottom tab bar */
+  /* Hide old floating fab chrome, replaced by bottom tab bar */
   .mobile-brand-fab,
   .mobile-top-actions,
   .theme-fab {
     display: none !important;
   }
 
-  /* Page top: status bar / safe area + comfortable HIG margin (no fixed top nav) */
-  .home-hero,
+  /* Page top: subpages keep full inset; home uses centered logo band + no double top padding */
   .page-hero {
     padding-top: var(--hero-inset-compact);
+  }
+
+  .home-hero {
+    padding-top: 0;
+    padding-bottom: var(--space-4);
+  }
+
+  .home-hero-compact-brand {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: calc(env(safe-area-inset-top, 0px) + var(--space-2));
+    margin-bottom: var(--space-5);
   }
 
   /* ── Grid resets ── */
@@ -2231,9 +2373,8 @@ html[data-theme="dark"] .experience-card.case-card:focus-within {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* Hero portrait: fixed aspect ratio so image is always visible */
+  /* Hero: copy first, portrait second (DOM order; no order:-1) */
   .home-hero .hero-visual {
-    order: -1;
     align-self: auto;
     min-height: 0;
     height: auto;
@@ -2247,7 +2388,7 @@ html[data-theme="dark"] .experience-card.case-card:focus-within {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: 50% 22%;
   }
 
     .hero-visual {
@@ -2454,7 +2595,7 @@ html[data-theme="dark"] .experience-card.case-card:focus-within {
   @media (max-width: 640px) {
     :root {
       --shell-gutter: 16px;
-      --section-gap: clamp(40px, 10vw, 56px);
+      --section-gap: clamp(40px, 8vw, 48px);
       --card-gap: 12px;
       --card-padding: 16px;
       --control-height: 44px;
@@ -2464,13 +2605,21 @@ html[data-theme="dark"] .experience-card.case-card:focus-within {
       --surface-radius-xl: 16px;
     }
 
-    /* Phone: slightly more top inset than tablet (readable first line, HIG rhythm) */
-    .home-hero,
+    /* Phone: subpages get extra top inset; home uses compact logo row only */
     .page-hero {
       padding-top: var(--hero-inset-phone);
     }
 
-    /* Hero headline — HIG LargeTitle-ish for impact */
+    .home-hero {
+      padding-top: 0;
+    }
+
+    .home-hero-compact-brand {
+      padding-top: calc(env(safe-area-inset-top, 0px) + var(--space-2));
+      margin-bottom: var(--space-5);
+    }
+
+    /* Hero headline, HIG LargeTitle-ish for impact */
     .hero-copy h1,
     .page-intro h1 {
       font-size: clamp(2rem, 7vw, 2.75rem);
@@ -2486,7 +2635,7 @@ html[data-theme="dark"] .experience-card.case-card:focus-within {
       font-size: var(--text-body);
     }
 
-    /* Section headings — HIG Title1 at most on small screens */
+    /* Section headings, HIG Title1 at most on small screens */
     .section-heading h2,
     .cta-band h2 {
       font-size: clamp(var(--text-title2), 6vw, var(--text-title1));
@@ -2503,12 +2652,16 @@ html[data-theme="dark"] .experience-card.case-card:focus-within {
       grid-template-columns: 1fr 1fr;
     }
 
-    /* Hero visual on phone: forced 4:3 ratio so portrait is always visible */
+    /* Hero visual on phone: wider ratio + face-centered crop */
     .home-hero .hero-visual {
       aspect-ratio: 3 / 2;
       min-height: 0;
       height: auto;
       padding: 0;
+    }
+
+    .home-hero .hero-visual .hero-portrait {
+      object-position: 50% 26%;
     }
 
     .hero-portrait,
@@ -2517,7 +2670,7 @@ html[data-theme="dark"] .experience-card.case-card:focus-within {
       border-radius: var(--radius-lg);
     }
 
-    /* Stat cards — compact on phone */
+    /* Stat cards, compact on phone */
     .stat-card {
       min-height: 5.8rem;
       padding: 14px;

@@ -1,0 +1,27 @@
+---
+description: After portfolio UI edits, local staging preview and Apple HIG verification
+alwaysApply: true
+---
+
+# Staging preview & Apple HIG (after each relevant change)
+
+## When this applies
+
+Whenever you **edit** portfolio **UI or UX** (`*.html`, `css/main.css`, `js/main.js`, assets that affect layout or branding).
+
+## 1. Real-time / local staging
+
+- Tell the user to preview at **`http://127.0.0.1:8765`** (or `http://localhost:8765`).
+- If no server is obviously running, give the exact command from **`docs/staging.md`**:
+  `cd /Users/mojtabatorabi/Desktop/Portfolio && python3 -m http.server 8765`
+- Remind them to **hard-refresh** after changes (e.g. Cmd+Shift+R) if styles look stale.
+
+## 2. Human Interface Guidelines
+
+- Treat **[Apple Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines)** as the bar for spacing, typography, touch targets, motion, accessibility, and platform patterns.
+- Before considering UI work “done,” cross-check against **`docs/hig-checklist.md`** in this repo (8pt rhythm, safe areas, contrast, 44pt targets, reduced motion, theme behavior).
+- If something can’t meet HIG fully (e.g. static hosting limits), note the tradeoff briefly for the user.
+
+## 3. Git
+
+- Do **not** auto-push after every edit unless the user explicitly asks to push. Prefer: staging + HIG pass → user approval → then commit/push per **`portfolio-workflow.mdc`** when requested.

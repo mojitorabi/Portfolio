@@ -11,13 +11,13 @@ alwaysApply: true
 - **Never** apply changes to other locations (e.g. Portfolio-live-repo or other clones)
 - The main repo is published at: https://github.com/mojitorabi/Portfolio
 
-## After Every Change
+## After Every Change (when user asks to ship)
 
-1. Stage all modified and new files
-2. Commit with a clear message describing the changes
-3. Push to the remote `origin` on branch `main`
+1. User should preview on **local staging** first; see **`docs/staging.md`** (`http://127.0.0.1:8765`).
+2. Quick pass against **`docs/hig-checklist.md`** and [Apple HIG](https://developer.apple.com/design/human-interface-guidelines).
+3. When the user explicitly asks to commit/push: stage, commit, push to `origin/main`.
 
-## Git Commands to Run After Edits
+## Git Commands (when pushing)
 
 ```bash
 cd /Users/mojtabatorabi/Desktop/Portfolio

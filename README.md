@@ -1,4 +1,4 @@
-# Mojtaba Torabi — Portfolio
+# Mojtaba Torabi · Portfolio
 
 Minimal portfolio site. Hosted on GitHub Pages. Maintained with AI assistance.
 
@@ -38,10 +38,10 @@ Then visit http://localhost:8000
 
 ## Structure
 
-- `index.html` — Home (hero, work, kind words)
-- `resume.html` — Resume
-- `my-story.html` — My Story
-- `ux-notes.html` — UX Notes
-- `work/*.html` — Case study placeholders (Torob, Baloot, Shams-ol-Emareh, Amanj)
+- `index.html`: Home (hero, work, kind words)
+- `resume.html`: Resume
+- `my-story.html`: My Story
+- `ux-notes.html`: UX Notes
+- `work/*.html`: Case study placeholders (Torob, Baloot, Shams-ol-Emareh, Amanj)
 
-Social links in the footer point to LinkedIn, Twitter, SoundCloud, GitHub, Instagram — update URLs in each HTML file to your real profiles.
+Social links in the footer point to LinkedIn, Twitter, SoundCloud, GitHub, Instagram. Update URLs in each HTML file to your real profiles.
