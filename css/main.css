@@ -1257,7 +1257,7 @@ html[data-theme="dark"] .button-gradient {
   backdrop-filter: blur(40px) saturate(1.4);
   -webkit-backdrop-filter: blur(40px) saturate(1.4);
   display: grid;
-  align-content: center;
+  align-content: start;
   gap: 0.35rem;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
@@ -1289,6 +1289,15 @@ html[data-theme="dark"] .button-gradient {
   color: var(--muted);
   font-size: var(--text-footnote);
   line-height: 1.45;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stat-card .stat-card-desc-multiline {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
 }
 
 html[data-theme="dark"] .stat-card {
@@ -1690,7 +1699,7 @@ html[data-theme="dark"] .experience-card.case-card:focus-within {
 
 .roadmap-flow {
   position: relative;
-  display: grid;
+  display: flex;
   gap: var(--space-3);
   margin-top: var(--space-1);
 }
