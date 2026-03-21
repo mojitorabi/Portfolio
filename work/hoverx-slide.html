@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HoverX — slide export</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse 120% 80% at 50% 0%, rgba(10, 132, 255, 0.12), transparent 55%),
+        var(--bg);
+      font-family: var(--font-sans);
+      color: var(--text);
+    }
+
+    article.slide {
+      width: min(100%, 960px);
+      margin: 0 auto;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    article.slide > .content {
+      padding: clamp(1.25rem, 3vw, 2rem) clamp(1.5rem, 4vw, 2.5rem);
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    article.slide .kicker {
+      margin: 0;
+      font-size: var(--text-caption1);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    article.slide h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    article.slide .subtitle {
+      margin: 0 0 0.35rem;
+      font-size: var(--text-subhead);
+      line-height: 1.45;
+      color: var(--muted);
+      max-width: 42rem;
+    }
+
+    article.slide ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      font-size: var(--text-footnote);
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    article.slide li {
+      margin-bottom: 0.35rem;
+    }
+
+    article.slide li:last-child {
+      margin-bottom: 0;
+    }
+
+    article.slide .label {
+      font-weight: 600;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <article class="slide" role="document">
+    <div class="content">
+      <p class="kicker">Project Design Creation, 2024 to 2025</p>
+      <h1>HoverX</h1>
+      <p class="subtitle">
+        A motorsport concept for the year 2100: electromagnetic racing, artificial intelligence, and sustainable energy in one vision.
+      </p>
+      <ul>
+        <li><span class="label">Concept.</span> Hover-motorcycle racing on superconducting tracks: strong performance with a smaller footprint than combustion-era motorsport.</li>
+        <li><span class="label">Technology.</span> AI-assisted race strategy, predictive safety systems, and grid-scale clean power tied to the circuit infrastructure.</li>
+        <li><span class="label">Experience.</span> A spectator and driver narrative built around speed, clarity, and trust in human–machine collaboration.</li>
+      </ul>
+    </div>
+  </article>
+</body>
+</html>

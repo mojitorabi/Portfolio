@@ -1700,6 +1700,7 @@ html[data-theme="dark"] .experience-card.case-card:focus-within {
 .roadmap-flow {
   position: relative;
   display: flex;
+  flex-direction: column;
   gap: var(--space-3);
   margin-top: var(--space-1);
 }
