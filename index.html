@@ -16,11 +16,11 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
   <link rel="icon" type="image/svg+xml" href="assets/branding/moji-light-mode.svg" data-dynamic-favicon>
 </head>
-<body>
+<body class="page page--home">
   <a href="#main" class="skip-link">Skip to content</a>
 
   <button type="button" class="theme-toggle theme-fab" aria-label="Switch theme" style="display:none">
@@ -65,9 +65,16 @@
     <section class="home-hero">
       <div class="home-hero__ambient" aria-hidden="true">
         <span class="home-hero__aurora"></span>
+        <span class="home-hero__aurora home-hero__aurora--lag"></span>
+        <span class="home-hero__ribbon"></span>
+        <span class="home-hero__pulse-ring"></span>
         <span class="home-hero__shimmer"></span>
         <span class="home-hero__mesh"></span>
         <span class="home-hero__mesh home-hero__mesh--slow"></span>
+        <span class="home-hero__mote home-hero__mote--1"></span>
+        <span class="home-hero__mote home-hero__mote--2"></span>
+        <span class="home-hero__mote home-hero__mote--3"></span>
+        <span class="home-hero__mote home-hero__mote--4"></span>
         <span class="home-hero__spark home-hero__spark--1"></span>
         <span class="home-hero__spark home-hero__spark--2"></span>
         <span class="home-hero__spark home-hero__spark--3"></span>
@@ -84,25 +91,23 @@
         </a>
       </div>
       <div class="wrap home-hero__wrap">
-        <div class="hero-copy hero-copy--home reveal">
-          <div class="eyebrow eyebrow-location">
-            <span class="eyebrow-icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-4.35 7-10a7 7 0 1 0-14 0c0 5.65 7 10 7 10Z"/><circle cx="12" cy="11" r="2.5"/></svg>
+        <div class="hero-copy hero-copy--home hero-copy--minimal reveal">
+          <h1 class="hero-headline hero-headline--minimal">
+            <div class="hero-location-badge eyebrow eyebrow-location" aria-label="Location">
+              <span class="eyebrow-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-4.35 7-10a7 7 0 1 0-14 0c0 5.65 7 10 7 10Z"/><circle cx="12" cy="11" r="2.5"/></svg>
+              </span>
+              Based in Germany
+            </div>
+            <span class="hero-title-line">
+              <span class="hero-title-highlight">Hi, I'm Mojtaba Torabi</span>
             </span>
-            Based in Germany
-          </div>
-          <h1 class="hero-headline">
-            <span class="hero-line hero-line-focus"><span class="hero-name">Mojtaba </span><span class="hero-focus-accent">Torabi</span></span>
-            <span class="hero-line hero-line-role">AI Product (UX) Designer</span>
-            <span class="hero-line hero-line-verse">Clarity hewn from complexity, with craft that keeps tempo with the product.</span>
+            <div class="hero-role-row">
+              <span class="hero-role-minimal">AI Product (UX) Designer</span>
+            </div>
           </h1>
-          <div class="hero-badges" aria-label="Focus areas">
-            <span class="card-badge hero-badge">B2C</span>
-            <span class="card-badge hero-badge">B2B</span>
-            <span class="card-badge hero-badge">Commerce &amp; social impact</span>
-            <span class="card-badge hero-badge">Fintech</span>
-          </div>
-          <div class="button-row">
+          <p class="hero-lede hero-lede--minimal">Outcome-led work from research to launch: fintech, commerce, and social impact.</p>
+          <div class="button-row hero-cta-row">
             <a class="button button-primary button-gradient" href="resume.html">View resume</a>
           </div>
 
