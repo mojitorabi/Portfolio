@@ -3581,9 +3581,12 @@ html[data-theme="dark"] .site-footer {
 .more-sheet {
   position: fixed;
   left: 50%;
-  /* Mobile: clears tab bar via --bottom-tab-stack; desktop: ≥24px fallback when stack is 0 */
-  bottom: calc(max(24px, var(--bottom-tab-stack, 0px)) + 12px);
-  transform: translateX(-50%) translateY(12px);
+  /*
+   * HIG: comfortable margin above tab bar (not flush). Tab stack + 32px (4×8pt) — was 12px and felt cramped.
+   * Desktop fallback when --bottom-tab-stack is 0: max(24px, 0) + space-4 still clears bottom comfortably.
+   */
+  bottom: calc(max(24px, var(--bottom-tab-stack, 0px)) + var(--space-4));
+  transform: translateX(-50%) translateY(10px);
   z-index: 49;
   width: min(calc(100% - 32px), 26rem);
   padding: var(--space-3);
