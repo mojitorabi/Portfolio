@@ -580,6 +580,40 @@
       color: #fff;
     }
 
+    .case-site-footer {
+      width: 100%;
+      max-width: 1120px;
+      margin: 48px auto 0;
+      padding: 0 16px 40px;
+    }
+
+    .case-site-footer-inner {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 20px;
+    }
+
+    .case-site-footer-legal {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px 24px;
+      font-size: 11px;
+      line-height: 1.45;
+      color: rgba(194, 194, 204, 0.78);
+    }
+
+    .case-site-footer-legal p {
+      margin: 0;
+      max-width: 28rem;
+    }
+
+    @media (max-width: 560px) {
+      .case-site-footer-legal {
+        flex-direction: column;
+      }
+    }
+
     /* Responsive */
     @media (max-width: 900px) {
       .hero {
@@ -1190,6 +1224,15 @@
       </div>
     </div>
   </div>
+
+  <footer class="case-site-footer" role="contentinfo">
+    <div class="case-site-footer-inner">
+      <div class="case-site-footer-legal">
+        <p>Copyright © 2023–present Mojtaba Torabi. All rights reserved.</p>
+        <p>Designed and built by me, from design through front-end.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
 
