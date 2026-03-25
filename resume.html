@@ -23,13 +23,6 @@
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <div class="hero-bg-animation" aria-hidden="true">
-    <div class="hero-aurora"></div>
-    <div class="hero-aurora-2"></div>
-    <div class="hero-aurora-3"></div>
-    <div class="hero-mesh"></div>
-  </div>
-
   <button type="button" class="theme-toggle theme-fab" aria-label="Switch theme" style="display:none">
     <span class="theme-icon" aria-hidden="true">◐</span>
     <span class="visually-hidden">Switch theme</span>
@@ -66,16 +59,37 @@
   </header>
 
   <main id="main">
-    <section class="page-hero">
+    <section class="page-hero page-hero--sub">
+      <div class="home-hero__ambient" aria-hidden="true">
+        <span class="home-hero__aurora"></span>
+        <span class="home-hero__shimmer"></span>
+        <span class="home-hero__mesh"></span>
+        <span class="home-hero__mesh home-hero__mesh--slow"></span>
+        <span class="home-hero__spark home-hero__spark--1"></span>
+        <span class="home-hero__spark home-hero__spark--2"></span>
+        <span class="home-hero__spark home-hero__spark--3"></span>
+        <span class="home-hero__orb home-hero__orb--a"></span>
+        <span class="home-hero__orb home-hero__orb--b"></span>
+        <span class="home-hero__orb home-hero__orb--c"></span>
+      </div>
       <div class="wrap split-grid">
-        <div class="page-intro reveal">
-          <div class="eyebrow">Resume</div>
+        <div class="page-intro page-intro--with-stats reveal">
+          <div class="eyebrow eyebrow-location eyebrow-location--text">
+            <span class="eyebrow-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+            </span>
+            Resume
+          </div>
           <h1>Overview.</h1>
           <p>
-            Product designer with experience across fintech, ecommerce, education, and social-impact work.
+            AI product (UX) designer with experience across fintech, ecommerce, education, and social-impact work.
             This is the fast version.
           </p>
-          <div class="stat-stack">
+          <div class="button-row">
+            <a class="button button-primary" href="https://www.mojtabat.com/resume" target="_blank" rel="noopener noreferrer">Open full resume</a>
+            <a class="button button-secondary" href="index.html#latest-experiences">See work</a>
+          </div>
+          <div class="stat-stack" aria-label="Key highlights">
             <article class="stat-card">
               <strong>30M+</strong>
               <span>Users impacted</span>
@@ -93,10 +107,9 @@
               <span>Projects</span>
             </article>
           </div>
-          <div class="button-row">
-            <a class="button button-primary" href="https://www.mojtabat.com/resume" target="_blank" rel="noopener noreferrer">Open full resume</a>
-            <a class="button button-secondary" href="index.html#latest-experiences">See work</a>
-          </div>
+        </div>
+        <div class="hero-visual hero-visual--decorative reveal" aria-hidden="true">
+          <div class="hero-visual__glow" aria-hidden="true"></div>
         </div>
       </div>
     </section>
@@ -107,7 +120,7 @@
           <article class="resume-card reveal">
             <div class="eyebrow">Core</div>
             <h3>Role</h3>
-            <p>Product Designer focused on user-centered product experiences, interaction systems, and cross-functional product thinking.</p>
+            <p>AI product (UX) designer focused on user-centered experiences, interaction systems, and cross-functional product thinking.</p>
           </article>
           <article class="resume-card reveal">
             <div class="eyebrow">Education</div>
