@@ -17,9 +17,10 @@
   var themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
   var lastScrollY = window.scrollY;
   var scrollStopTimer;
-  var chromeRevealDelay = 1100;
-  var scrollTolerance = 6;
+  var chromeRevealDelay = 680;
+  var scrollTolerance = 8;
   var touchActive = false;
+  var reduceMotionMql = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   function getSystemTheme() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -167,6 +168,7 @@
   }
 
   function hideMobileChrome() {
+    if (reduceMotionMql.matches) return;
     if (window.innerWidth <= 1024) {
       root.classList.add("mobile-top-chrome-hidden");
     }
@@ -198,13 +200,26 @@
       return;
     }
 
+    if (reduceMotionMql.matches) {
+      showMobileChrome();
+      lastScrollY = currentY;
+      return;
+    }
+
     if (currentY <= 24) {
       showMobileChrome();
       lastScrollY = currentY;
       return;
     }
 
-    if (touchActive || Math.abs(deltaY) >= scrollTolerance) {
+    /* HIG-style: hide on scroll down, show immediately on scroll up */
+    if (deltaY <= -scrollTolerance) {
+      showMobileChrome();
+      lastScrollY = currentY;
+      return;
+    }
+
+    if (deltaY >= scrollTolerance) {
       hideMobileChrome();
     }
 
@@ -225,6 +240,7 @@
 
   window.addEventListener("touchstart", function () {
     if (window.innerWidth > 1024) return;
+    if (reduceMotionMql.matches) return;
     touchActive = true;
     window.clearTimeout(scrollStopTimer);
     if (window.scrollY > 24) hideMobileChrome();
@@ -246,6 +262,16 @@
       syncThemeToggle(getStoredTheme());
     }
   });
+
+  if (typeof reduceMotionMql.addEventListener === "function") {
+    reduceMotionMql.addEventListener("change", function () {
+      if (reduceMotionMql.matches) showMobileChrome();
+    });
+  } else if (typeof reduceMotionMql.addListener === "function") {
+    reduceMotionMql.addListener(function () {
+      if (reduceMotionMql.matches) showMobileChrome();
+    });
+  }
 
   // Keyboard: Escape closes sheet and menu
   document.addEventListener("keydown", function (event) {
@@ -336,7 +362,13 @@
       },
       { threshold: 0.16, rootMargin: "0px 0px -40px 0px" }
     );
-    revealItems.forEach(function (item) { observer.observe(item); });
+    revealItems.forEach(function (item) {
+      if (item.closest(".home-hero")) {
+        item.classList.add("in-view");
+        return;
+      }
+      observer.observe(item);
+    });
   } else {
     revealItems.forEach(function (item) { item.classList.add("in-view"); });
   }
