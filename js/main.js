@@ -17,8 +17,8 @@
   var themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
   var lastScrollY = window.scrollY;
   var scrollStopTimer;
-  var chromeRevealDelay = 680;
-  var scrollTolerance = 8;
+  var chromeRevealDelay = 820;
+  var scrollTolerance = 12;
   var touchActive = false;
   var reduceMotionMql = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -27,10 +27,15 @@
   }
 
   function getStoredTheme() {
-    return localStorage.getItem(storageKey) || "auto";
+    var v = localStorage.getItem(storageKey);
+    if (v === "light" || v === "dark" || v === "auto") return v;
+    return "auto";
   }
 
   function applyTheme(theme) {
+    var pref = theme === "light" || theme === "dark" ? theme : "auto";
+    root.dataset.themePreference = pref;
+
     if (theme === "light" || theme === "dark") {
       root.dataset.theme = theme;
     } else {
@@ -61,9 +66,9 @@
   }
 
   function themeMeta(theme) {
-    if (theme === "light") return { icon: "☀", label: "Appearance: Light" };
-    if (theme === "dark")  return { icon: "☾", label: "Appearance: Dark" };
-    return { icon: "◐", label: "Appearance: System default" };
+    if (theme === "light") return { label: "Appearance: Light" };
+    if (theme === "dark") return { label: "Appearance: Dark" };
+    return { label: "Appearance: Automatic" };
   }
 
   function syncThemeToggle(theme) {
@@ -71,8 +76,6 @@
     var stored = theme === "light" || theme === "dark" || theme === "auto" ? theme : "auto";
     var meta = themeMeta(stored);
     themeToggles.forEach(function (toggle) {
-      var icon = toggle.querySelector(".theme-icon");
-      if (icon) icon.textContent = meta.icon;
       toggle.setAttribute("aria-label", meta.label);
       toggle.setAttribute("title", meta.label);
     });
@@ -169,6 +172,8 @@
 
   function hideMobileChrome() {
     if (reduceMotionMql.matches) return;
+    /* Don’t collapse chrome while a bottom-sheet is open — avoids fighting taps and focus */
+    if (moreSheet && moreSheet.classList.contains("open")) return;
     if (window.innerWidth <= 1024) {
       root.classList.add("mobile-top-chrome-hidden");
     }
@@ -238,12 +243,25 @@
   });
   syncScrollChrome();
 
-  window.addEventListener("touchstart", function () {
+  /*
+   * Never hide the tab bar on generic touchstart — that ran before click/tap completed,
+   * applied pointer-events: none, and broke tab selection (HIG: primary tab bar must stay tappable).
+   * Hide only from real scroll intent in syncScrollChrome.
+   */
+  window.addEventListener("touchstart", function (event) {
     if (window.innerWidth > 1024) return;
     if (reduceMotionMql.matches) return;
+    var t = event.touches && event.touches[0];
+    if (t && root.classList.contains("tab-bar-hidden")) {
+      var fromBottom = window.innerHeight - t.clientY;
+      /* Approx. tab bar + home indicator: first tap brings chrome back */
+      if (fromBottom <= 88) showMobileChrome();
+    }
     touchActive = true;
     window.clearTimeout(scrollStopTimer);
-    if (window.scrollY > 24) hideMobileChrome();
+    if (bottomTabBar && bottomTabBar.contains(event.target)) {
+      showMobileChrome();
+    }
   }, { passive: true });
 
   function releaseTouchChrome() {

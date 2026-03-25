@@ -8,9 +8,20 @@
   <meta name="color-scheme" content="light dark">
   <script>
     (function () {
-      var storedTheme = localStorage.getItem("theme-preference");
-      if (storedTheme === "light" || storedTheme === "dark") {
-        document.documentElement.dataset.theme = storedTheme;
+      var key = "theme-preference";
+      var root = document.documentElement;
+      var stored = localStorage.getItem(key);
+      if (stored === "light" || stored === "dark") {
+        root.dataset.theme = stored;
+        root.dataset.themePreference = stored;
+      } else {
+        root.removeAttribute("data-theme");
+        root.dataset.themePreference = "auto";
+      }
+      var link = document.querySelector("link[data-dynamic-favicon]");
+      if (link && stored !== "light" && stored !== "dark") {
+        var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        link.href = dark ? "assets/branding/moji-dark-mode.svg" : "assets/branding/moji-light-mode.svg";
       }
     })();
   </script>
@@ -23,9 +34,13 @@
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <button type="button" class="theme-toggle theme-fab" aria-label="Switch theme" style="display:none">
-    <span class="theme-icon" aria-hidden="true">◐</span>
-    <span class="visually-hidden">Switch theme</span>
+  <button type="button" class="theme-toggle theme-fab" aria-label="Appearance: Automatic" style="display:none">
+    <span class="theme-toggle-icons" aria-hidden="true">
+      <svg class="theme-icon-svg theme-icon-svg--light" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"/></svg>
+      <svg class="theme-icon-svg theme-icon-svg--dark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="theme-icon-svg theme-icon-svg--auto" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" fill-opacity="0.34"/></svg>
+    </span>
+    <span class="visually-hidden">Appearance</span>
   </button>
 
   <header class="site-header">
@@ -49,9 +64,13 @@
             <li><a href="resume.html">Resume</a></li>
             <li><a href="ux-notes.html">UX Notes</a></li>
           </ul>
-          <button type="button" class="theme-toggle" aria-label="Switch theme">
-            <span class="theme-icon" aria-hidden="true">◐</span>
-            <span class="visually-hidden">Switch theme</span>
+          <button type="button" class="theme-toggle" aria-label="Appearance: Automatic">
+            <span class="theme-toggle-icons" aria-hidden="true">
+              <svg class="theme-icon-svg theme-icon-svg--light" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"/></svg>
+              <svg class="theme-icon-svg theme-icon-svg--dark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg class="theme-icon-svg theme-icon-svg--auto" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" fill-opacity="0.34"/></svg>
+            </span>
+            <span class="visually-hidden">Appearance</span>
           </button>
         </div>
       </nav>
@@ -251,12 +270,13 @@
     </a>
     <div class="more-sheet-divider"></div>
     <div class="more-sheet-theme-row">
-      <span class="more-sheet-theme-label">
-        <span class="more-sheet-item-icon">◐</span>
-        Appearance
-      </span>
-      <button class="more-sheet-theme-toggle theme-toggle" aria-label="Switch theme" type="button">
-        <span class="theme-icon" aria-hidden="true">◐</span>
+      <span class="more-sheet-theme-label">Appearance</span>
+      <button class="more-sheet-theme-toggle theme-toggle" aria-label="Appearance: Automatic" type="button">
+        <span class="theme-toggle-icons" aria-hidden="true">
+          <svg class="theme-icon-svg theme-icon-svg--light" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"/></svg>
+          <svg class="theme-icon-svg theme-icon-svg--dark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="theme-icon-svg theme-icon-svg--auto" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" fill-opacity="0.34"/></svg>
+        </span>
       </button>
     </div>
   </div>

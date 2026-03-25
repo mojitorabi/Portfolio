@@ -70,6 +70,8 @@
   --text-large-title: 40px;
   --text-display: 48px;
   --text-hero: 64px;
+  /* Pages with `.bottom-tab-bar`: set in ≤1024px query to match bar + safe area (single source of truth) */
+  --bottom-tab-stack: 0px;
 }
 
 html[data-theme="dark"] {
@@ -431,14 +433,15 @@ html[data-theme="dark"] #main::before {
     radial-gradient(circle min(22vw, 12rem) at 68% 82%, rgba(6, 182, 212, 0.12), transparent 60%);
   filter: blur(34px) saturate(1.35);
   mix-blend-mode: multiply;
-  opacity: 0.38;
+  /* Slightly softer so lower page + footer feel less “cut off” from the field */
+  opacity: 0.32;
   transform-origin: 50% 50%;
   animation: liquidVenomBubbles 28s ease-in-out infinite;
 }
 
 html[data-theme="dark"] #main::after {
   mix-blend-mode: screen;
-  opacity: 0.28;
+  opacity: 0.24;
   filter: blur(36px) saturate(1.3);
   background:
     radial-gradient(circle min(28vw, 16rem) at 18% 72%, rgba(52, 211, 153, 0.26), transparent 68%),
@@ -450,7 +453,7 @@ html[data-theme="dark"] #main::after {
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) #main::after {
     mix-blend-mode: screen;
-    opacity: 0.28;
+    opacity: 0.24;
     filter: blur(36px) saturate(1.3);
     background:
       radial-gradient(circle min(28vw, 16rem) at 18% 72%, rgba(52, 211, 153, 0.26), transparent 68%),
@@ -755,7 +758,8 @@ html[data-theme="dark"] .brand-logo-dark {
 .nav-panel {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  /* Uniform 16px (2×8pt) between nav links and appearance control — matches HIG bar spacing */
+  gap: var(--space-2);
 }
 
 .header-cta,
@@ -800,7 +804,7 @@ html[data-theme="dark"] .brand-logo-dark {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: var(--space-1);
+  gap: var(--space-2);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -869,6 +873,33 @@ html[data-theme="dark"] .brand-logo-dark {
   background: transparent;
   backdrop-filter: none;
   box-shadow: none;
+}
+
+.site-header .theme-toggle:hover,
+.site-header .theme-toggle:focus-visible {
+  border-color: transparent;
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+}
+
+.theme-toggle-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.3125rem;
+  height: 1.3125rem;
+  flex-shrink: 0;
+}
+
+.theme-icon-svg {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+html[data-theme-preference="light"] .theme-icon-svg--light,
+html[data-theme-preference="dark"] .theme-icon-svg--dark,
+html[data-theme-preference="auto"] .theme-icon-svg--auto {
+  display: block;
 }
 
 .theme-icon {
@@ -1029,7 +1060,7 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
 @media (prefers-reduced-motion: no-preference) {
   .home-hero__ambient {
     opacity: 0;
-    animation: homeHeroAmbientFadeIn 1.15s ease-out 0.04s forwards;
+    animation: homeHeroAmbientFadeIn 0.88s cubic-bezier(0.22, 1, 0.36, 1) 0.02s forwards;
   }
 }
 
@@ -1527,6 +1558,7 @@ html[data-theme="dark"] .home-hero__orb--c {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .home-hero__ambient,
   .home-hero__aurora,
   .home-hero__aurora--lag,
   .home-hero__ribbon,
@@ -1538,6 +1570,10 @@ html[data-theme="dark"] .home-hero__orb--c {
   .home-hero__mesh--slow,
   .home-hero__orb {
     animation: none;
+  }
+
+  .home-hero__ambient {
+    opacity: 1;
   }
 
   .home-hero__ribbon {
@@ -3501,25 +3537,27 @@ html[data-theme="dark"] .experience-card.case-card:focus-within {
 .site-footer {
   margin-top: var(--space-8);
   padding-top: 0;
-  padding-bottom: calc(var(--space-8) + env(safe-area-inset-bottom, 0px));
-  background: color-mix(in srgb, var(--surface-strong) 72%, transparent);
+  /* ~Apple.com: modest bottom rhythm + safe area (not a deep “well”) */
+  padding-bottom: calc(var(--space-5) + env(safe-area-inset-bottom, 0px));
+  /* Blend with page field so footer reads as continuation of canvas, not a separate slab */
+  background: color-mix(in srgb, var(--surface-strong) 52%, var(--bg) 48%);
   border-top: 1px solid var(--line);
 }
 
 html[data-theme="dark"] .site-footer {
-  background: color-mix(in srgb, var(--surface-strong) 88%, transparent);
+  background: color-mix(in srgb, var(--surface-strong) 55%, var(--bg) 45%);
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) .site-footer {
-    background: color-mix(in srgb, var(--surface-strong) 88%, transparent);
+    background: color-mix(in srgb, var(--surface-strong) 55%, var(--bg) 45%);
   }
 }
 
-/* Main site pages: extra space for fixed bottom tab bar (≤1024px) */
+/* Dock pages: tab + safe area are in `body` `--bottom-tab-stack` — footer only needs rhythm */
 @media (max-width: 1024px) {
   .site-footer.site-footer--dock {
-    padding-bottom: calc(var(--space-8) + 84px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: var(--space-4);
   }
 }
 
@@ -3543,7 +3581,8 @@ html[data-theme="dark"] .site-footer {
 .more-sheet {
   position: fixed;
   left: 50%;
-  bottom: calc(84px + env(safe-area-inset-bottom, 0px) + 8px);
+  /* Mobile: clears tab bar via --bottom-tab-stack; desktop: ≥24px fallback when stack is 0 */
+  bottom: calc(max(24px, var(--bottom-tab-stack, 0px)) + 12px);
   transform: translateX(-50%) translateY(12px);
   z-index: 49;
   width: min(calc(100% - 32px), 26rem);
@@ -3661,7 +3700,6 @@ html[data-theme="dark"] .site-footer {
     inset 0 1px 0 rgba(255, 255, 255, 0.32),
     0 10px 24px rgba(15, 23, 42, 0.1);
   transition: transform 180ms var(--ease), border-color 180ms var(--ease), background 180ms var(--ease);
-  font-size: 1rem;
 }
 
 .more-sheet-theme-toggle:hover,
@@ -3679,7 +3717,7 @@ html[data-theme="dark"] .site-footer {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-7) var(--space-8);
-  padding-bottom: var(--space-6);
+  padding-bottom: var(--space-5);
 }
 
 .footer-col {
@@ -3978,11 +4016,13 @@ html[data-theme="dark"] .footer-brand-logo--dark {
     --button-padding-x: 16px;
     --surface-radius: 12px;
     --surface-radius-xl: 16px;
+    /* Tab row (~49pt) + bar safe-area padding — one stack, no duplicate footer padding */
+    --bottom-tab-stack: max(52px, calc(48px + max(10px, env(safe-area-inset-bottom, 0px))));
   }
 
-  /* Account for bottom tab bar height + safe area */
-  body {
-    padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+  /* Only when tab bar exists (main pages); work/* pages stay flush like desktop */
+  body:has(.bottom-tab-bar) {
+    padding-bottom: var(--bottom-tab-stack);
   }
 
   /* Hide the desktop header on mobile/tablet; bottom tab bar takes over nav */
