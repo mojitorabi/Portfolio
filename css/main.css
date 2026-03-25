@@ -160,42 +160,16 @@ html[data-theme="dark"] body {
   }
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  /* Light: soft mesh overlay */
-  background:
-    radial-gradient(circle at 20% 25%, rgba(255, 255, 255, 0.4), transparent 18rem),
-    radial-gradient(circle at 85% 20%, rgba(255, 255, 255, 0.25), transparent 16rem),
-    radial-gradient(circle at 45% 80%, rgba(224, 242, 254, 0.3), transparent 14rem);
-  opacity: 0.7;
-  z-index: -2;
-  animation: liquidShift 72s ease-in-out infinite alternate;
-}
-
+/* Disable old background animations to avoid conflict with hero-bg-animation */
+body::before,
 body::after {
-  content: "";
-  position: fixed;
-  inset: -8%;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 70% 30%, rgba(241, 245, 249, 0.5), transparent 20rem),
-    radial-gradient(circle at 30% 70%, rgba(226, 232, 240, 0.35), transparent 18rem);
-  opacity: 0.5;
-  z-index: -3;
-  transform-origin: center;
-  animation: liquidFloat 96s ease-in-out infinite;
+  display: none !important;
 }
 
 html[data-theme="dark"] body::before {
-  background:
-    radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.15), transparent 18rem),
-    radial-gradient(circle at 88% 15%, rgba(139, 92, 246, 0.12), transparent 16rem),
-    radial-gradient(circle at 50% 85%, rgba(34, 211, 238, 0.08), transparent 14rem);
-  opacity: 0.8;
+  display: none !important;
 }
+
 
 html[data-theme="dark"] body::after {
   background:
@@ -773,6 +747,186 @@ html[data-theme="dark"] .home-hero-compact-logo--dark {
   align-items: stretch;
 }
 
+/* Hero Animation: Artistic Mesh & Aurora - Global Background */
+.home-hero {
+  position: relative;
+  /* Removed overflow:hidden so fixed background works if placed inside, 
+     but ideally background is placed outside or is fixed. */
+}
+
+.hero-bg-animation {
+  position: fixed; /* Global background */
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--surface); /* Fallback */
+}
+
+/* Ensure content sits above the fixed background */
+#main, header, footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Typography & Layout Updates for Artistic Hero */
+.home-hero .hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 64rem;
+}
+
+.hero-headline {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.hero-role {
+  font-family: var(--font-body); /* Standard font */
+  font-size: clamp(2rem, 4vw, 3.5rem); /* Slightly smaller, more standard */
+  font-weight: 800; /* Bold */
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--text-main) 30%, var(--accent-strong));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 1.5rem 0 1rem; /* More spacing */
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--surface-strong) 60%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.badge:hover {
+  background: var(--surface-strong);
+  color: var(--text-main);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.hero-aurora,
+.hero-aurora-2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(92px);
+  opacity: 0.45;
+  mix-blend-mode: multiply;
+  animation: aurora-move 18s infinite alternate ease-in-out;
+}
+
+.hero-aurora {
+  top: -22%;
+  left: -18%;
+  width: min(64vw, 52rem);
+  height: min(64vw, 52rem);
+  background: radial-gradient(circle at 42% 38%, color-mix(in srgb, var(--accent-strong) 74%, #7dd3fc), transparent 68%);
+  animation-duration: 26s;
+}
+
+.hero-aurora-2 {
+  bottom: -24%;
+  right: -16%;
+  width: min(72vw, 56rem);
+  height: min(72vw, 56rem);
+  background: radial-gradient(circle at 55% 44%, color-mix(in srgb, #6dd5ed 84%, #a78bfa), transparent 70%);
+  animation-duration: 30s;
+  animation-direction: alternate-reverse;
+}
+
+.hero-aurora-3 {
+  position: absolute;
+  top: 18%;
+  right: 26%;
+  width: min(36vw, 30rem);
+  height: min(36vw, 30rem);
+  border-radius: 50%;
+  filter: blur(78px);
+  opacity: 0.36;
+  background: radial-gradient(circle at 50% 50%, color-mix(in srgb, #a78bfa 78%, var(--accent) 22%), transparent 66%);
+  mix-blend-mode: multiply;
+  animation: aurora-orbit 22s infinite alternate ease-in-out;
+}
+
+.hero-mesh {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(color-mix(in srgb, var(--accent-strong) 14%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, #6dd5ed 12%, transparent) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at 52% 45%, black 38%, transparent 88%);
+  -webkit-mask-image: radial-gradient(circle at 52% 45%, black 38%, transparent 88%);
+  opacity: 0.4;
+  animation: mesh-drift 34s linear infinite;
+}
+
+@keyframes aurora-move {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(8%, -6%) scale(1.08); }
+  100% { transform: translate(-6%, 10%) scale(1.13); }
+}
+
+@keyframes aurora-orbit {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-10%, 12%) scale(1.08); }
+  100% { transform: translate(8%, -9%) scale(0.95); }
+}
+
+@keyframes mesh-drift {
+  0% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-16px, 8px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+/* Dark Mode Overrides for Animation */
+@media (prefers-color-scheme: dark) {
+  .hero-aurora,
+  .hero-aurora-2,
+  .hero-aurora-3 {
+    mix-blend-mode: screen;
+    opacity: 0.34;
+  }
+
+  .hero-mesh { opacity: 0.36; }
+}
+
+html[data-theme="dark"] .hero-aurora,
+html[data-theme="dark"] .hero-aurora-2,
+html[data-theme="dark"] .hero-aurora-3 {
+  mix-blend-mode: screen;
+  opacity: 0.34;
+}
+
+/* Ensure content is above animation */
+.home-hero .wrap {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+}
+
 .hero-copy,
 .page-intro {
   max-width: 46rem;
@@ -1195,9 +1349,16 @@ html[data-theme="dark"] .button-gradient {
   align-items: center;
   justify-content: center;
   min-height: auto;
-  padding: var(--card-padding);
+  padding: 0; /* Removing padding to let image fill */
   overflow: hidden;
   align-self: center;
+  border-radius: var(--surface-radius-xl);
+}
+
+.hero-portrait {
+  display: block;
+  width: 100%;
+  height: auto;
   border-radius: var(--surface-radius-xl);
 }
 
@@ -1217,6 +1378,14 @@ html[data-theme="dark"] .button-gradient {
   object-fit: cover;
   /* Anchor on upper body / face (standard portrait crop) */
   object-position: 50% 18%;
+}
+
+/* Story portrait: preserve image quality and framing across devices */
+.page-hero .hero-visual .hero-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
 }
 
 .hero-visual::before {
@@ -1282,7 +1451,7 @@ html[data-theme="dark"] .button-gradient {
   font-size: var(--text-title1);
   line-height: 1;
   letter-spacing: -0.04em;
-  color: var(--text);
+  color: var(--accent-strong); /* User requested accent blue */
 }
 
 .stat-card span {
@@ -2359,6 +2528,10 @@ html[data-theme="dark"] .experience-card.case-card:focus-within {
   .home-hero {
     padding-top: 0;
     padding-bottom: var(--space-4);
+  }
+
+  .hero-bg-animation {
+    display: none;
   }
 
   .home-hero-compact-brand {
