@@ -4630,3 +4630,134 @@ html[data-theme="dark"] .footer-brand-logo--dark {
     transform: none;
   }
 }
+
+
+/* ===== Case study template ===== */
+.case-page .case-wrap {
+  width: min(1200px, calc(100% - 2 * var(--shell-gutter)));
+  margin: 0 auto;
+}
+
+.case-page .case-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: clamp(20px, 3vw, 40px);
+  align-items: start;
+}
+
+.case-page .case-main {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.case-page .case-section {
+  padding: clamp(18px, 2.2vw, 28px);
+  border: 1px solid color-mix(in srgb, var(--line) 88%, transparent);
+  border-radius: var(--radius-xl);
+  background: color-mix(in srgb, var(--surface-strong) 84%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 12px 26px rgba(15, 23, 42, 0.06);
+}
+
+.case-page .case-section h2 {
+  margin: 0 0 0.7rem;
+  font-size: clamp(1.12rem, 1.6vw, 1.45rem);
+  letter-spacing: -0.02em;
+}
+
+.case-page .case-kpi-grid,
+.case-page .case-goals-grid,
+.case-page .case-shot-grid,
+.case-page .case-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.case-page .case-kpi,
+.case-page .case-goal,
+.case-page .case-shot,
+.case-page .case-impact {
+  padding: 0.9rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--line) 88%, transparent);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+}
+
+.case-page .case-shot {
+  min-height: 120px;
+  display: grid;
+  align-content: center;
+}
+
+.case-page .case-shot strong,
+.case-page .case-impact strong {
+  display: block;
+  margin-bottom: 0.32rem;
+}
+
+.case-page .case-toc {
+  position: sticky;
+  top: calc(var(--site-header-stack) + var(--space-2));
+  padding: 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--line) 88%, transparent);
+  border-radius: var(--radius-xl);
+  background: color-mix(in srgb, var(--surface-strong) 88%, transparent);
+  backdrop-filter: blur(16px) saturate(1.12);
+  -webkit-backdrop-filter: blur(16px) saturate(1.12);
+}
+
+.case-page .case-toc-title {
+  font-size: var(--text-caption1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.case-page .case-toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.case-page .case-toc-list a {
+  display: block;
+  padding: 0.36rem 0.5rem;
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  text-decoration: none;
+  font-size: var(--text-footnote);
+}
+
+.case-page .case-toc-list a:hover,
+.case-page .case-toc-list a:focus-visible {
+  background: color-mix(in srgb, var(--accent-soft) 55%, transparent);
+  color: var(--accent);
+}
+
+@media (max-width: 1024px) {
+  .case-page .case-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .case-page .case-toc {
+    position: static;
+    order: -1;
+  }
+
+  .case-page .case-toc-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .case-page .case-kpi-grid,
+  .case-page .case-goals-grid,
+  .case-page .case-shot-grid,
+  .case-page .case-impact-grid,
+  .case-page .case-toc-list {
+    grid-template-columns: 1fr;
+  }
+}

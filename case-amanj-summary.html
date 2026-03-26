@@ -4,21 +4,170 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Amanj Case Summary - Mojtaba Torabi</title>
-  <meta name="description" content="Summary case study for Amanj by Mojtaba Torabi.">
+  <meta name="description" content="Structured case summary for Amanj.">
   <meta name="color-scheme" content="light dark">
+  <script>
+    (function () {
+      var key = "theme-preference";
+      var root = document.documentElement;
+      var stored = localStorage.getItem(key);
+      if (stored === "light" || stored === "dark") {
+        root.dataset.theme = stored;
+        root.dataset.themePreference = stored;
+      } else {
+        root.removeAttribute("data-theme");
+        root.dataset.themePreference = "auto";
+      }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
+<body class="case-page">
   <a href="#main" class="skip-link">Skip to content</a>
-  <header class="site-header" id="top"><div class="wrap"><nav class="site-nav" aria-label="Primary"><a class="brand" href="./" aria-label="Mojtaba Torabi home"><span class="brand-label">Mojtaba Torabi</span></a></nav></div></header>
+
+  <header class="site-header" id="top">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Primary">
+        <a class="brand" href="./" aria-label="Mojtaba Torabi home">
+          <span class="brand-logo" aria-hidden="true">
+            <img class="brand-logo-light" src="assets/branding/moji-light-mode.svg" alt="">
+            <img class="brand-logo-dark" src="assets/branding/moji-dark-mode.svg" alt="">
+          </span>
+          <span class="brand-label">Mojtaba Torabi</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Open menu"><span></span><span></span></button>
+        <div class="nav-panel">
+          <ul class="nav-links">
+            <li><a href="index.html#latest-experiences" aria-current="page">Work</a></li>
+            <li><a href="my-story.html">My Story</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="ux-notes.html">UX Notes</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
   <main id="main">
-    <section class="page-hero page-hero--sub"><div class="wrap split-grid"><div class="page-intro page-intro--with-stats reveal"><div class="eyebrow">Case summary</div><h1>Amanj - improving freelance project flow.</h1><p>A concise summary of research-led direction for smoother designer-client collaboration.</p><div class="button-row"><a class="button button-primary" href="https://www.mojtabat.com/work/amanj" target="_blank" rel="noopener noreferrer">Read full case study</a><a class="button button-secondary" href="index.html#latest-experiences">Back to work</a></div><div class="stat-stack" aria-label="Project snapshot"><article class="stat-card"><strong>Freelance Product Designer</strong><span>Role</span></article><article class="stat-card"><strong>Project-based</strong><span>Timeline</span></article><article class="stat-card"><strong>Small team</strong><span>Team</span></article><article class="stat-card"><strong>B2B / Freelance</strong><span>Domain</span></article></div></div></div></section>
-    <section class="section-space"><div class="wrap"><div class="section-heading reveal"><h2>Impact at a glance.</h2><p>Top outcomes only.</p></div><div class="resume-grid"><article class="resume-card reveal"><h3>Research-led direction</h3><p>Captured recurring pain points in project alignment.</p></article><article class="resume-card reveal"><h3>Stronger IA foundation</h3><p>Reduced ambiguity across project stages.</p></article><article class="resume-card reveal"><h3>Early concept validation</h3><p>Tested assumptions quickly with low-fidelity prototypes.</p></article></div></div></section>
-</span></a></article></div></section>
+    <section class="page-hero page-hero--sub">
+      <div class="case-wrap">
+        <div class="page-intro reveal">
+          <div class="eyebrow">Case Study Summary</div>
+          <h1>Amanj</h1>
+          <p>Amanj explored product opportunities to improve designer-client collaboration through clearer workflows and accountability.</p>
+          <div class="button-row">
+            <a class="button button-primary" href="https://www.mojtabat.com/work/amanj" target="_blank" rel="noopener noreferrer">Read full case study</a>
+            <a class="button button-secondary" href="index.html#latest-experiences">Back to work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space">
+      <div class="case-wrap case-layout">
+        <div class="case-main">
+          <section id="snapshot" class="case-section reveal">
+            <h2>Project snapshot</h2>
+            <div class="case-kpi-grid">
+              <article class="case-kpi"><strong>Role</strong><span>Freelance Product Designer</span></article>
+              <article class="case-kpi"><strong>Timeline</strong><span>Project-based</span></article>
+              <article class="case-kpi"><strong>Team</strong><span>Small team</span></article>
+              <article class="case-kpi"><strong>Domain</strong><span>B2B / Freelance</span></article>
+            </div>
+          </section>
+
+          <section id="challenge" class="case-section reveal">
+            <h2>Challenge</h2>
+            <p>Freelance projects often break down around scope clarity, communication rhythm, and visibility of progress.</p>
+          </section>
+
+          <section id="discovery" class="case-section reveal">
+            <h2>Discovery</h2>
+            <p>I mapped recurring pain points from freelance collaboration patterns and translated them into practical IA and flow priorities.</p>
+          </section>
+
+          <section id="goals" class="case-section reveal">
+            <h2>Goals & opportunities</h2>
+            <div class="case-goals-grid"><article class="case-goal"><strong>1</strong><span>Reduce ambiguity in project lifecycle</span></article>
+<article class="case-goal"><strong>2</strong><span>Improve shared understanding between sides</span></article>
+<article class="case-goal"><strong>3</strong><span>Design transparent progress and handoff states</span></article>
+<article class="case-goal"><strong>4</strong><span>Prioritize clarity over feature volume</span></article></div>
+          </section>
+
+          <section id="responsibilities" class="case-section reveal">
+            <h2>What I did (Responsibilities)</h2>
+            <p>I led discovery, product UX direction, IA structuring, and low-fi concept development to validate the core workflow direction.</p>
+          </section>
+
+          <section id="decisions" class="case-section reveal">
+            <h2>Key decisions</h2>
+            <p>1) Shared clarity before feature depth. 2) Reduce tool-switching in key tasks. 3) Keep project state visible and explicit.</p>
+          </section>
+
+          <section id="shots" class="case-section reveal">
+            <h2>Final design shots</h2>
+            <div class="case-shot-grid"><article class="case-shot"><strong>Shot 1</strong><span>Briefing and alignment interface</span></article>
+<article class="case-shot"><strong>Shot 2</strong><span>Milestone and status tracking flow</span></article>
+<article class="case-shot"><strong>Shot 3</strong><span>Collaboration and feedback states</span></article>
+<article class="case-shot"><strong>Shot 4</strong><span>Final concept structure and IA map</span></article></div>
+          </section>
+
+          <section id="impact" class="case-section reveal">
+            <h2>Impact</h2>
+            <div class="case-impact-grid"><article class="case-impact"><strong>Impact 1</strong><span>Clearer collaboration foundation</span></article>
+<article class="case-impact"><strong>Impact 2</strong><span>Lower ambiguity in role expectations</span></article>
+<article class="case-impact"><strong>Impact 3</strong><span>Better flow for progress visibility</span></article>
+<article class="case-impact"><strong>Impact 4</strong><span>Practical direction for product evolution</span></article></div>
+          </section>
+
+          <section id="learning" class="case-section reveal">
+            <h2>Outcome & learnings</h2>
+            <p>For service workflows, clarity is retention. Structured communication and visible state are core UX value, not extras.</p>
+          </section>
+        </div>
+
+        <aside class="case-toc reveal" aria-label="Case table of contents">
+          <p class="case-toc-title">On this page</p>
+          <ul class="case-toc-list">
+            <li><a href="#snapshot">Snapshot</a></li>
+            <li><a href="#challenge">Challenge</a></li>
+            <li><a href="#discovery">Discovery</a></li>
+            <li><a href="#goals">Goals</a></li>
+            <li><a href="#responsibilities">Responsibilities</a></li>
+            <li><a href="#decisions">Decisions</a></li>
+            <li><a href="#shots">Final shots</a></li>
+            <li><a href="#impact">Impact</a></li>
+            <li><a href="#learning">Learnings</a></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap footer-pro">
+      <nav class="footer-directory" aria-label="Footer">
+        <div class="footer-col">
+          <p class="footer-col-label">Explore</p>
+          <ul class="footer-col-list">
+            <li><a href="index.html#latest-experiences">Work</a></li>
+            <li><a href="my-story.html">My Story</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="ux-notes.html">UX Notes</a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-col--about">
+          <p class="footer-col-label">Mojtaba Torabi</p>
+          <p class="footer-about-line">AI Product (UX) Designer</p>
+          <p class="footer-about-meta">Germany · Complexity into clarity.</p>
+        </div>
+      </nav>
+    </div>
+  </footer>
+
   <script src="js/main.js"></script>
 </body>
 </html>

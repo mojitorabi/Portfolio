@@ -4,21 +4,170 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>5 Day UX Challenge Summary - Mojtaba Torabi</title>
-  <meta name="description" content="Summary case study for 5 Day UX Challenge by Mojtaba Torabi.">
+  <meta name="description" content="Structured case summary for 5 Day UX Challenge.">
   <meta name="color-scheme" content="light dark">
+  <script>
+    (function () {
+      var key = "theme-preference";
+      var root = document.documentElement;
+      var stored = localStorage.getItem(key);
+      if (stored === "light" || stored === "dark") {
+        root.dataset.theme = stored;
+        root.dataset.themePreference = stored;
+      } else {
+        root.removeAttribute("data-theme");
+        root.dataset.themePreference = "auto";
+      }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
+<body class="case-page">
   <a href="#main" class="skip-link">Skip to content</a>
-  <header class="site-header" id="top"><div class="wrap"><nav class="site-nav" aria-label="Primary"><a class="brand" href="./" aria-label="Mojtaba Torabi home"><span class="brand-label">Mojtaba Torabi</span></a></nav></div></header>
+
+  <header class="site-header" id="top">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Primary">
+        <a class="brand" href="./" aria-label="Mojtaba Torabi home">
+          <span class="brand-logo" aria-hidden="true">
+            <img class="brand-logo-light" src="assets/branding/moji-light-mode.svg" alt="">
+            <img class="brand-logo-dark" src="assets/branding/moji-dark-mode.svg" alt="">
+          </span>
+          <span class="brand-label">Mojtaba Torabi</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Open menu"><span></span><span></span></button>
+        <div class="nav-panel">
+          <ul class="nav-links">
+            <li><a href="index.html#latest-experiences" aria-current="page">Work</a></li>
+            <li><a href="my-story.html">My Story</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="ux-notes.html">UX Notes</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
   <main id="main">
-    <section class="page-hero page-hero--sub"><div class="wrap split-grid"><div class="page-intro page-intro--with-stats reveal"><div class="eyebrow">Case summary</div><h1>5 Day UX Challenge - eBay seller portal sprint.</h1><p>A sprint-format case summary covering framing, flow design, and interface direction.</p><div class="button-row"><a class="button button-primary" href="https://drive.google.com/file/d/1asSjP9p_wrd-YcwXKyWk6d-xLl8chOdt/view?usp=sharing" target="_blank" rel="noopener noreferrer">Read full case study</a><a class="button button-secondary" href="index.html#latest-experiences">Back to work</a></div><div class="stat-stack" aria-label="Project snapshot"><article class="stat-card"><strong>UX/UI Designer</strong><span>Role</span></article><article class="stat-card"><strong>5-day sprint</strong><span>Timeline</span></article><article class="stat-card"><strong>Individual challenge</strong><span>Team</span></article><article class="stat-card"><strong>B2B platform</strong><span>Domain</span></article></div></div></div></section>
-    <section class="section-space"><div class="wrap"><div class="section-heading reveal"><h2>Impact at a glance.</h2><p>Top outcomes only.</p></div><div class="resume-grid"><article class="resume-card reveal"><h3>Fast framing</h3><p>Scoped problem space quickly for focused output.</p></article><article class="resume-card reveal"><h3>End-to-end flow</h3><p>Connected user needs to practical interaction structure.</p></article><article class="resume-card reveal"><h3>Delivery-ready artifacts</h3><p>Produced clear outputs for stakeholder communication.</p></article></div></div></section>
-</span></a></article></div></section>
+    <section class="page-hero page-hero--sub">
+      <div class="case-wrap">
+        <div class="page-intro reveal">
+          <div class="eyebrow">Case Study Summary</div>
+          <h1>5 Day UX Challenge</h1>
+          <p>A time-boxed eBay seller portal challenge focused on delivering a coherent and defensible solution under strict constraints.</p>
+          <div class="button-row">
+            <a class="button button-primary" href="https://drive.google.com/file/d/1asSjP9p_wrd-YcwXKyWk6d-xLl8chOdt/view?usp=sharing" target="_blank" rel="noopener noreferrer">Read full case study</a>
+            <a class="button button-secondary" href="index.html#latest-experiences">Back to work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space">
+      <div class="case-wrap case-layout">
+        <div class="case-main">
+          <section id="snapshot" class="case-section reveal">
+            <h2>Project snapshot</h2>
+            <div class="case-kpi-grid">
+              <article class="case-kpi"><strong>Role</strong><span>UX/UI Designer</span></article>
+              <article class="case-kpi"><strong>Timeline</strong><span>5-day sprint</span></article>
+              <article class="case-kpi"><strong>Team</strong><span>Individual challenge</span></article>
+              <article class="case-kpi"><strong>Domain</strong><span>B2B platform</span></article>
+            </div>
+          </section>
+
+          <section id="challenge" class="case-section reveal">
+            <h2>Challenge</h2>
+            <p>The task required simplifying complex seller workflows in limited time while preserving essential controls and information.</p>
+          </section>
+
+          <section id="discovery" class="case-section reveal">
+            <h2>Discovery</h2>
+            <p>I quickly framed assumptions, prioritized high-frequency tasks, and narrowed scope to protect quality and end-to-end coherence.</p>
+          </section>
+
+          <section id="goals" class="case-section reveal">
+            <h2>Goals & opportunities</h2>
+            <div class="case-goals-grid"><article class="case-goal"><strong>1</strong><span>Define a realistic and focused sprint scope</span></article>
+<article class="case-goal"><strong>2</strong><span>Create clear task-first flow structure</span></article>
+<article class="case-goal"><strong>3</strong><span>Produce decision-ready interface direction</span></article>
+<article class="case-goal"><strong>4</strong><span>Deliver artifacts that communicate rationale fast</span></article></div>
+          </section>
+
+          <section id="responsibilities" class="case-section reveal">
+            <h2>What I did (Responsibilities)</h2>
+            <p>I handled the full process: framing, workflow design, interface direction, and synthesis into presentation-ready outputs.</p>
+          </section>
+
+          <section id="decisions" class="case-section reveal">
+            <h2>Key decisions</h2>
+            <p>1) Scope discipline first. 2) One primary goal per screen. 3) Consistent interaction language across the flow.</p>
+          </section>
+
+          <section id="shots" class="case-section reveal">
+            <h2>Final design shots</h2>
+            <div class="case-shot-grid"><article class="case-shot"><strong>Shot 1</strong><span>Problem framing and flow map</span></article>
+<article class="case-shot"><strong>Shot 2</strong><span>Primary task-state wireframes</span></article>
+<article class="case-shot"><strong>Shot 3</strong><span>Final concept UI direction</span></article>
+<article class="case-shot"><strong>Shot 4</strong><span>Packaged sprint storytelling assets</span></article></div>
+          </section>
+
+          <section id="impact" class="case-section reveal">
+            <h2>Impact</h2>
+            <div class="case-impact-grid"><article class="case-impact"><strong>Impact 1</strong><span>Fast and coherent output in 5 days</span></article>
+<article class="case-impact"><strong>Impact 2</strong><span>Strong narrative from problem to solution</span></article>
+<article class="case-impact"><strong>Impact 3</strong><span>High clarity for stakeholders/reviewers</span></article>
+<article class="case-impact"><strong>Impact 4</strong><span>Reusable sprint decision framework</span></article></div>
+          </section>
+
+          <section id="learning" class="case-section reveal">
+            <h2>Outcome & learnings</h2>
+            <p>Speed without scope discipline creates noise. Clear priorities and structure make rapid work meaningful and credible.</p>
+          </section>
+        </div>
+
+        <aside class="case-toc reveal" aria-label="Case table of contents">
+          <p class="case-toc-title">On this page</p>
+          <ul class="case-toc-list">
+            <li><a href="#snapshot">Snapshot</a></li>
+            <li><a href="#challenge">Challenge</a></li>
+            <li><a href="#discovery">Discovery</a></li>
+            <li><a href="#goals">Goals</a></li>
+            <li><a href="#responsibilities">Responsibilities</a></li>
+            <li><a href="#decisions">Decisions</a></li>
+            <li><a href="#shots">Final shots</a></li>
+            <li><a href="#impact">Impact</a></li>
+            <li><a href="#learning">Learnings</a></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap footer-pro">
+      <nav class="footer-directory" aria-label="Footer">
+        <div class="footer-col">
+          <p class="footer-col-label">Explore</p>
+          <ul class="footer-col-list">
+            <li><a href="index.html#latest-experiences">Work</a></li>
+            <li><a href="my-story.html">My Story</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="ux-notes.html">UX Notes</a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-col--about">
+          <p class="footer-col-label">Mojtaba Torabi</p>
+          <p class="footer-about-line">AI Product (UX) Designer</p>
+          <p class="footer-about-meta">Germany · Complexity into clarity.</p>
+        </div>
+      </nav>
+    </div>
+  </footer>
+
   <script src="js/main.js"></script>
 </body>
 </html>

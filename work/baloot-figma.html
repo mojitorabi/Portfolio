@@ -11,15 +11,15 @@
   <link rel="stylesheet" href="../css/main.css">
   <style>
     :root {
-      --embed-bg: #f3f8f6;
-      --embed-panel: #ffffff;
-      --embed-text: #1f2937;
-      --embed-muted: #6b7280;
-      --embed-border: #dbe4e1;
+      --embed-bg: transparent;
+      --embed-panel: color-mix(in srgb, var(--surface-strong) 92%, transparent);
+      --embed-text: var(--text);
+      --embed-muted: var(--muted);
+      --embed-border: var(--line);
     }
 
     body {
-      background: var(--embed-bg);
+      background: transparent;
     }
 
     .figma-shell {
@@ -96,17 +96,35 @@
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
-  <header class="header" role="banner">
-    <nav class="nav" aria-label="Main">
-      <a href="../" class="logo">Mojtaba Torabi</a>
-      <ul class="nav-list">
-        <li><a href="../#work">Work</a></li>
-        <li><a href="../my-story.html">My Story ;)</a></li>
-        <li><a href="../resume.html">Resume</a></li>
-        <li><a href="../ux-notes.html">UX Notes</a></li>
-      </ul>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    </nav>
+  <header class="site-header" id="top">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Primary">
+        <a class="brand" href="../" aria-label="Mojtaba Torabi home">
+          <span class="brand-logo" aria-hidden="true">
+            <img class="brand-logo-light" src="../assets/branding/moji-light-mode.svg" alt="">
+            <img class="brand-logo-dark" src="../assets/branding/moji-dark-mode.svg" alt="">
+          </span>
+          <span class="brand-label">Mojtaba Torabi</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Open menu"><span></span><span></span></button>
+        <div class="nav-panel">
+          <ul class="nav-links">
+            <li><a href="../index.html#latest-experiences" aria-current="page">Work</a></li>
+            <li><a href="../my-story.html">My Story</a></li>
+            <li><a href="../resume.html">Resume</a></li>
+            <li><a href="../ux-notes.html">UX Notes</a></li>
+          </ul>
+          <button type="button" class="theme-toggle" aria-label="Appearance: Automatic">
+            <span class="theme-toggle-icons" aria-hidden="true">
+              <svg class="theme-icon-svg theme-icon-svg--light" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"/></svg>
+              <svg class="theme-icon-svg theme-icon-svg--dark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg class="theme-icon-svg theme-icon-svg--auto" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" fill-opacity="0.34"/></svg>
+            </span>
+            <span class="visually-hidden">Appearance</span>
+          </button>
+        </div>
+      </nav>
+    </div>
   </header>
 
   <main id="main" class="main">
