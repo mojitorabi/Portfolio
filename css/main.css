@@ -214,13 +214,13 @@ body {
   overscroll-behavior-y: contain;
   font-family: var(--font-sans);
   color: var(--text);
-  /* Light: single long wash (hue/chroma aligned with #main blobs so scroll + motion don’t “tear”) */
+  /* One continuous canvas across all sections */
   background:
-    radial-gradient(ellipse 125% 88% at 16% 8%, color-mix(in srgb, var(--accent) 18%, rgba(147, 197, 253, 0.42)), transparent 55%),
-    radial-gradient(ellipse 118% 92% at 88% 12%, rgba(196, 181, 253, 0.26), transparent 52%),
-    radial-gradient(ellipse 100% 100% at 50% 96%, rgba(253, 186, 116, 0.14), transparent 48%),
-    radial-gradient(ellipse 105% 78% at 72% 52%, color-mix(in srgb, var(--accent) 6%, rgba(167, 243, 208, 0.12)), transparent 44%),
-    linear-gradient(188deg, #f8fafc 0%, #f4f6fa 24%, #eef1f7 48%, #ebeef5 72%, #e8ecf3 100%);
+    radial-gradient(ellipse 140% 92% at 12% 0%, color-mix(in srgb, var(--accent) 20%, rgba(147, 197, 253, 0.46)), transparent 54%),
+    radial-gradient(ellipse 120% 96% at 92% 10%, rgba(196, 181, 253, 0.26), transparent 52%),
+    radial-gradient(ellipse 110% 92% at 50% 100%, rgba(167, 243, 208, 0.14), transparent 56%),
+    linear-gradient(184deg, #f8fafc 0%, #f2f6fb 34%, #edf2f8 66%, #e8eef5 100%);
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -236,21 +236,21 @@ body {
 html[data-theme="dark"] body {
   /* Near-black canvas + blue + emerald/teal (no warm/violet lift — reads as one deep field) */
   background:
-    radial-gradient(ellipse 128% 94% at 6% 6%, rgba(29, 78, 216, 0.22), transparent 54%),
-    radial-gradient(ellipse 108% 88% at 96% 10%, rgba(4, 120, 87, 0.12), transparent 50%),
-    radial-gradient(ellipse 100% 100% at 18% 94%, rgba(13, 148, 136, 0.09), transparent 46%),
-    radial-gradient(ellipse 92% 76% at 78% 52%, rgba(37, 99, 235, 0.05), transparent 42%),
-    linear-gradient(192deg, #020408 0%, #0a1524 36%, #061a1c 62%, #03090e 100%);
+    radial-gradient(ellipse 128% 92% at 10% 8%, rgba(59, 130, 246, 0.15), transparent 52%),
+    radial-gradient(ellipse 112% 86% at 86% 14%, rgba(16, 185, 129, 0.12), transparent 50%),
+    radial-gradient(ellipse 94% 96% at 42% 92%, rgba(34, 211, 238, 0.08), transparent 48%),
+    linear-gradient(188deg, #020409 0%, #03050a 38%, #04080e 66%, #010205 100%);
+  background-attachment: fixed;
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) body {
     background:
-      radial-gradient(ellipse 128% 94% at 6% 6%, rgba(29, 78, 216, 0.22), transparent 54%),
-      radial-gradient(ellipse 108% 88% at 96% 10%, rgba(4, 120, 87, 0.12), transparent 50%),
-      radial-gradient(ellipse 100% 100% at 18% 94%, rgba(13, 148, 136, 0.09), transparent 46%),
-      radial-gradient(ellipse 92% 76% at 78% 52%, rgba(37, 99, 235, 0.05), transparent 42%),
-      linear-gradient(192deg, #020408 0%, #0a1524 36%, #061a1c 62%, #03090e 100%);
+      radial-gradient(ellipse 128% 92% at 10% 8%, rgba(59, 130, 246, 0.15), transparent 52%),
+      radial-gradient(ellipse 112% 86% at 86% 14%, rgba(16, 185, 129, 0.12), transparent 50%),
+      radial-gradient(ellipse 94% 96% at 42% 92%, rgba(34, 211, 238, 0.08), transparent 48%),
+      linear-gradient(188deg, #020409 0%, #03050a 38%, #04080e 66%, #010205 100%);
+    background-attachment: fixed;
   }
 }
 
@@ -583,75 +583,28 @@ a {
 }
 
 .section-space {
+  position: relative;
   padding-top: var(--section-gap);
   background: transparent;
 }
 
 /* Uniform section-to-section spacing (same rhythm after hero as elsewhere) */
 .home-hero + .section-space {
-  /* Overlap + shared canvas: bridges hero ambient tail into first section */
-  margin-top: -2rem;
-  padding-top: calc(var(--section-gap) + 2rem);
-}
-
-/* Home + subpage heroes: first content band fades from hero into page field */
-.home-hero + .section-space,
-.page-hero.page-hero--sub + .section-space {
-  position: relative;
+  margin-top: 0;
+  padding-top: var(--section-gap);
   background: transparent;
 }
 
-.home-hero + .section-space::before,
-.page-hero.page-hero--sub + .section-space::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: min(24vh, 10rem);
-  pointer-events: none;
-  z-index: 0;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--bg) 88%, var(--accent) 6%) 0%,
-    transparent 100%
-  );
-  opacity: 0.65;
+.home-hero::after {
+  display: none;
 }
 
-/* Dark: bridge tint matches black–blue–green field under hero */
-html[data-theme="dark"] .home-hero + .section-space::before,
-html[data-theme="dark"] .page-hero.page-hero--sub + .section-space::before {
-  height: min(30vh, 12rem);
-  background: linear-gradient(
-    180deg,
-    rgba(4, 14, 22, 0.95) 0%,
-    rgba(6, 22, 28, 0.55) 38%,
-    rgba(8, 28, 36, 0.22) 68%,
-    color-mix(in srgb, var(--accent) 14%, transparent) 88%,
-    transparent 100%
-  );
-  opacity: 0.88;
+/* Global transition veil so sections blend as one continuous canvas */
+.section-space::before {
+  display: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html:not([data-theme="light"]) .home-hero + .section-space::before,
-  html:not([data-theme="light"]) .page-hero.page-hero--sub + .section-space::before {
-    height: min(30vh, 12rem);
-    background: linear-gradient(
-      180deg,
-      rgba(4, 14, 22, 0.95) 0%,
-      rgba(6, 22, 28, 0.55) 38%,
-      rgba(8, 28, 36, 0.22) 68%,
-      color-mix(in srgb, var(--accent) 14%, transparent) 88%,
-      transparent 100%
-    );
-    opacity: 0.88;
-  }
-}
-
-.home-hero + .section-space > *,
-.page-hero.page-hero--sub + .section-space > * {
+.section-space > .wrap {
   position: relative;
   z-index: 1;
 }
@@ -1118,36 +1071,13 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
 /* Ambient mesh + orbs: product / systems / AI-adjacent motion, theme-aware */
 .home-hero__ambient {
   position: absolute;
-  inset: -10% -8% -28%;
+  inset: -10% -8% -120vh;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  isolation: isolate;
-  /* Long soft fade: hero wash merges into scroll canvas (avoids a visible “split”) */
-  mask-image: linear-gradient(
-    to bottom,
-    black 0%,
-    black 44%,
-    rgba(0, 0, 0, 0.88) 62%,
-    rgba(0, 0, 0, 0.5) 78%,
-    rgba(0, 0, 0, 0.18) 92%,
-    rgba(0, 0, 0, 0.04) 98%,
-    transparent 100%
-  );
-  mask-size: 100% 100%;
-  mask-repeat: no-repeat;
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    black 0%,
-    black 44%,
-    rgba(0, 0, 0, 0.88) 62%,
-    rgba(0, 0, 0, 0.5) 78%,
-    rgba(0, 0, 0, 0.18) 92%,
-    rgba(0, 0, 0, 0.04) 98%,
-    transparent 100%
-  );
-  -webkit-mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
+  /* Removed mask to improve performance and remove visual seam */
+  /* mask-image: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0.9) 65%, rgba(0, 0, 0, 0.55) 85%, rgba(0, 0, 0, 0.22) 95%, transparent 100%); */
+  /* -webkit-mask-image: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0.9) 65%, rgba(0, 0, 0, 0.55) 85%, rgba(0, 0, 0, 0.22) 95%, transparent 100%); */
 }
 
 /* Keep ONLY pulse ring + dots in hero ambient */
@@ -1341,6 +1271,7 @@ html[data-theme="dark"] .home-hero__pulse-ring {
   pointer-events: none;
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
+  will-change: transform;
   animation: heroMoteDrift 11s ease-in-out infinite;
 }
 
@@ -1882,6 +1813,10 @@ html[data-theme="dark"] .home-hero-compact-logo--dark {
   overflow-y: visible;
   padding-top: var(--hero-inset-compact);
   background: transparent;
+}
+
+.page-hero::after {
+  display: none;
 }
 
 .page-hero--sub .wrap {
