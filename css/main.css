@@ -127,47 +127,100 @@ html {
   overflow-x: clip;
 }
 
-/* Site-wide canvas: subtle grid + slow aurora (all pages, behind body content) */
-html::before {
-  content: "";
+/* Optimized Hero Animation: Aurora & Mesh */
+.hero-bg-animation {
   position: fixed;
   inset: 0;
-  z-index: -4;
+  z-index: -1;
+  overflow: hidden;
   pointer-events: none;
-  background-image:
-    linear-gradient(color-mix(in srgb, var(--line) 50%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--line) 50%, transparent) 1px, transparent 1px);
-  background-size: 72px 72px;
-  opacity: 0.072;
-  /* Full-strength grid to bottom — avoids a visible “band” vs body/hero */
-  mask-image: linear-gradient(180deg, black 0%, black 100%);
-  animation: globalSiteMesh 110s linear infinite;
+  background: var(--bg); /* Fallback */
+  transform: translate3d(0, 0, 0); /* Create stacking context for performance */
 }
 
-html[data-theme="dark"]::before {
-  opacity: 0.048;
+/* Individual aurora blobs - optimized for performance */
+.hero-aurora,
+.hero-aurora-2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px); /* Reduced from 90px+ for better performance */
+  opacity: 0.5;
+  will-change: transform;
+  /* Use transform for animation, GPU accelerated */
+  animation: aurora-move 25s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html::after {
-  content: "";
-  position: fixed;
+.hero-aurora {
+  top: -10%;
+  left: -10%;
+  width: min(70vw, 600px);
+  height: min(70vw, 600px);
+  background: radial-gradient(circle, var(--accent-strong), transparent 70%);
+}
+
+.hero-aurora-2 {
+  bottom: -10%;
+  right: -10%;
+  width: min(80vw, 700px);
+  height: min(80vw, 700px);
+  background: radial-gradient(circle, #6dd5ed, transparent 70%);
+  animation-duration: 35s;
+  animation-direction: alternate-reverse;
+}
+
+.hero-mesh {
+  position: absolute;
   inset: 0;
-  z-index: -5;
-  pointer-events: none;
-  background: conic-gradient(from 200deg at 48% 42%,
-      transparent 0deg,
-      color-mix(in srgb, var(--accent) 8%, transparent) 65deg,
-      transparent 130deg,
-      color-mix(in srgb, var(--accent) 6%, transparent) 210deg,
-      transparent 285deg);
-  filter: blur(88px);
+  background-image: 
+    radial-gradient(var(--line-strong) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  opacity: 0.3;
+  will-change: transform;
+  animation: mesh-drift 45s linear infinite;
+}
+
+@keyframes aurora-move {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(5%, 5%, 0) scale(1.1); }
+}
+
+@keyframes mesh-drift {
+  0% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-20px, 10px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+/* Dark Mode Adjustments */
+@media (prefers-color-scheme: dark) {
+  .hero-aurora,
+  .hero-aurora-2 {
+    opacity: 0.25;
+  }
+  .hero-mesh {
+    opacity: 0.2;
+  }
+}
+
+html[data-theme="dark"] .hero-aurora,
+html[data-theme="dark"] .hero-aurora-2 {
+  opacity: 0.25;
+}
+html[data-theme="dark"] .hero-mesh {
   opacity: 0.2;
-  animation: heroAuroraRotate 135s linear infinite reverse;
 }
 
-html[data-theme="dark"]::after {
-  opacity: 0.15;
+/* Disable old heavy animations on html/body */
+html::before,
+html::after,
+body::before,
+body::after {
+  display: none !important;
+  animation: none !important;
+  background: none !important;
 }
+
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"])::before {
