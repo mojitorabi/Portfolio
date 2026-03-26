@@ -1920,7 +1920,8 @@ html[data-theme="dark"] .page-hero--sub .page-intro::before {
     var(--accent) 100%
   );
   background-size: 240% 100%;
-  background-position: 0% 50%;
+  /* Default: accent band centered on the line (animation starts from middle) */
+  background-position: 50% 50%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1979,17 +1980,26 @@ html[data-theme="dark"] .page-hero--sub .page-intro::before {
 
 @media (prefers-reduced-motion: no-preference) {
   .hero-title-highlight {
-    animation: heroTitleHighlightFlow 11s ease-in-out infinite alternate;
+    animation: heroTitleHighlightFlow 11s ease-in-out infinite;
   }
 }
 
+/* Begins at center of sentence, sweeps toward edges, returns to center (no alternate jump) */
 @keyframes heroTitleHighlightFlow {
   0% {
+    background-position: 50% 50%;
+  }
+
+  33% {
     background-position: 0% 50%;
   }
 
-  100% {
+  66% {
     background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 50% 50%;
   }
 }
 
@@ -4058,7 +4068,7 @@ html[data-theme="dark"] .footer-brand-logo--dark {
 
     .footer-col-list a {
       padding: 10px 0;
-    }
+  }
 
   .button-row,
     .cta-actions {
