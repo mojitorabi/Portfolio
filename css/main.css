@@ -1,117 +1,17 @@
+@import "design-system.css";
+
+/* Apple HIG: SF Pro, system fonts */
 :root {
-  color-scheme: light;
-  /* Apple HIG: SF Pro, system fonts */
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
-  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-  /* Apple HIG palette */
-  --bg: #f5f5f7;
-  --bg-alt: #ffffff;
-  --surface: rgba(255, 255, 255, 0.72);
-  --surface-strong: rgba(255, 255, 255, 0.9);
-  --surface-tint: rgba(0, 122, 255, 0.08);
-  --text: #1d1d1f;
-  --muted: #52525b;
-  /* WCAG AA: 4.5:1+ on light bg */
-  --line: rgba(29, 29, 31, 0.12);
-  --line-strong: rgba(29, 29, 31, 0.14);
-  --accent: #007aff;
-  --accent-strong: #0066cc;
-  --accent-soft: rgba(0, 122, 255, 0.12);
-  --hero-accent: #0066cc;
-  --success: #34c759;
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
-  /* HIG corner radius: 8, 10, 12, 16pt */
-  --radius-sm: 8px;
-  --radius-md: 10px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --wrap: 1160px;
-  /* Apple HIG: 8pt grid, spacing & layout (developer.apple.com/design/human-interface-guidelines) */
-  --shell-gutter: clamp(16px, 2.4vw, 24px);
-  /* Major sections: 6–8× 8pt (48–64px) vertical rhythm */
-  --section-gap: clamp(48px, 5vw, 64px);
-  /* In-section blocks (headings → content): 3–4× 8pt */
-  --section-block-gap: var(--space-4);
-  /* Space from top of viewport to hero content (HIG: clear of chrome + breathing room) */
-  --site-header-stack: 4.75rem; /* fixed header + padding estimate */
-  --hero-inset-desktop: calc(env(safe-area-inset-top, 0px) + var(--site-header-stack) + var(--space-4));
-  --hero-inset-compact: calc(env(safe-area-inset-top, 0px) + var(--space-8) + var(--space-2));
-  --hero-inset-phone: calc(env(safe-area-inset-top, 0px) + var(--space-9) + var(--space-2));
-  --card-gap: 16px;
-  --card-padding: clamp(16px, 2vw, 24px);
-  /* HIG: min 44pt touch target for buttons */
-  --control-height: 44px;
-  --button-padding-x: 16px;
-  --surface-radius: 12px;
-  --surface-radius-xl: 16px;
-  /* HIG 8pt spacing scale */
-  --space-1: 8px;
-  --space-2: 16px;
-  --space-3: 24px;
-  --space-4: 32px;
-  --space-5: 40px;
-  --space-6: 48px;
-  --space-7: 64px;
-  --space-8: 80px;
-  --space-9: 96px;
-  --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
-  /* Apple.com typography scale */
-  --text-caption2: 11px;
-  --text-caption1: 12px;
-  --text-footnote: 13px;
-  --text-subhead: 15px;
-  --text-callout: 16px;
-  --text-body: 17px;
-  --text-headline: 17px;
-  --text-title3: 20px;
-  --text-title2: 22px;
-  --text-title1: 28px;
-  --text-large-title: 40px;
-  --text-display: 48px;
-  --text-hero: 64px;
-  /* Pages with `.bottom-tab-bar`: set in ≤1024px query to match bar + safe area (single source of truth) */
-  --bottom-tab-stack: 0px;
+  /* Variables moved to design-system.css */
 }
 
 html[data-theme="dark"] {
-  color-scheme: dark;
-  --bg: #000000;
-  --bg-alt: #0a0a0a;
-  --surface: rgba(28, 28, 30, 0.76);
-  --surface-strong: rgba(28, 28, 30, 0.92);
-  --surface-tint: rgba(10, 132, 255, 0.14);
-  --text: #f5f5f7;
-  --muted: #b8b8bd;
-  /* WCAG AA: 4.5:1+ on dark bg */
-  --line: rgba(255, 255, 255, 0.12);
-  --line-strong: rgba(255, 255, 255, 0.14);
-  --accent: #0a84ff;
-  --accent-strong: #409cff;
-  --accent-soft: rgba(10, 132, 255, 0.18);
-  --hero-accent: #0a84ff;
-  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.24);
-  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.36);
+  /* Variables moved to design-system.css */
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) {
-    color-scheme: dark;
-    --bg: #000000;
-    --bg-alt: #0a0a0a;
-    --surface: rgba(28, 28, 30, 0.76);
-    --surface-strong: rgba(28, 28, 30, 0.92);
-    --surface-tint: rgba(10, 132, 255, 0.14);
-    --text: #f5f5f7;
-    --muted: #b8b8bd;
-    --line: rgba(255, 255, 255, 0.08);
-    --line-strong: rgba(255, 255, 255, 0.14);
-  --accent: #0a84ff;
-  --accent-strong: #409cff;
-  --accent-soft: rgba(10, 132, 255, 0.18);
-  --hero-accent: #0a84ff;
-  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.24);
-  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.36);
+    /* Variables moved to design-system.css */
   }
 }
 
@@ -155,11 +55,10 @@ html {
 .hero-aurora-2 {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px); /* Reduced from 90px+ for better performance */
+  filter: blur(48px);
   opacity: 0.5;
-  will-change: transform;
-  /* Use transform for animation, GPU accelerated */
-  animation: aurora-move 25s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: auto;
+  animation: none;
 }
 
 .hero-aurora {
@@ -176,8 +75,6 @@ html {
   width: min(80vw, 700px);
   height: min(80vw, 700px);
   background: radial-gradient(circle, #6dd5ed, transparent 70%);
-  animation-duration: 35s;
-  animation-direction: alternate-reverse;
 }
 
 .hero-mesh {
@@ -187,6 +84,11 @@ html {
     radial-gradient(var(--line-strong) 1px, transparent 1px);
   background-size: 40px 40px;
   mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  opacity: 0.22;
+  will-change: auto;
+  animation: none;
+}
   -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
   opacity: 0.3;
   will-change: transform;
@@ -1136,15 +1038,7 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
 
 /* Ambient mesh + orbs: product / systems / AI-adjacent motion, theme-aware */
 .home-hero__ambient {
-  position: absolute;
-  /* Extend well below fold so fade blends into global fixed layers (no hard seam) */
-  inset: -14% -12% min(-72vh, -36%);
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-  /* Long soft tail — never fully cuts to zero so it reads as one field with body bg */
-  mask-image: linear-gradient(180deg, black 0%, black 36%, rgba(0, 0, 0, 0.55) 68%, rgba(0, 0, 0, 0.22) 88%, rgba(0, 0, 0, 0.08) 100%);
-  -webkit-mask-image: linear-gradient(180deg, black 0%, black 36%, rgba(0, 0, 0, 0.55) 68%, rgba(0, 0, 0, 0.22) 88%, rgba(0, 0, 0, 0.08) 100%);
+  display: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {

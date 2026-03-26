@@ -1,0 +1,126 @@
+/* Design System Tokens & Variables */
+
+:root {
+  color-scheme: light;
+  /* Apple HIG: SF Pro, system fonts */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  
+  /* Apple HIG palette - Light Mode */
+  --bg: #f5f5f7;
+  --bg-alt: #ffffff;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: rgba(255, 255, 255, 0.9);
+  --surface-tint: rgba(0, 122, 255, 0.08);
+  --text: #1d1d1f;
+  --muted: #52525b;
+  /* WCAG AA: 4.5:1+ on light bg */
+  --line: rgba(29, 29, 31, 0.12);
+  --line-strong: rgba(29, 29, 31, 0.14);
+  --accent: #007aff;
+  --accent-strong: #0066cc;
+  --accent-soft: rgba(0, 122, 255, 0.12);
+  --hero-accent: #0066cc;
+  --success: #34c759;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --surface-radius: 12px;
+  --surface-radius-xl: 16px;
+  
+  /* Layout */
+  --wrap: 1160px;
+  --shell-gutter: clamp(16px, 2.4vw, 24px);
+  --section-gap: clamp(48px, 5vw, 64px);
+  --section-block-gap: var(--space-4);
+  
+  /* Insets */
+  --site-header-stack: 4.75rem;
+  --hero-inset-desktop: calc(env(safe-area-inset-top, 0px) + var(--site-header-stack) + var(--space-4));
+  --hero-inset-compact: calc(env(safe-area-inset-top, 0px) + var(--space-8) + var(--space-2));
+  --hero-inset-phone: calc(env(safe-area-inset-top, 0px) + var(--space-9) + var(--space-2));
+  --bottom-tab-stack: 0px;
+  
+  /* Components */
+  --card-gap: 16px;
+  --card-padding: clamp(16px, 2vw, 24px);
+  --control-height: 44px;
+  --button-padding-x: 16px;
+  
+  /* Spacing Scale (8pt) */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 80px;
+  --space-9: 96px;
+  
+  /* Animation */
+  --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  
+  /* Typography Scale */
+  --text-caption2: 11px;
+  --text-caption1: 12px;
+  --text-footnote: 13px;
+  --text-subhead: 15px;
+  --text-callout: 16px;
+  --text-body: 17px;
+  --text-headline: 17px;
+  --text-title3: 20px;
+  --text-title2: 22px;
+  --text-title1: 28px;
+  --text-large-title: 40px;
+  --text-display: 48px;
+  --text-hero: 64px;
+}
+
+/* Dark Mode Variables */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #000000;
+  --bg-alt: #0a0a0a;
+  --surface: rgba(28, 28, 30, 0.76);
+  --surface-strong: rgba(28, 28, 30, 0.92);
+  --surface-tint: rgba(10, 132, 255, 0.14);
+  --text: #f5f5f7;
+  --muted: #b8b8bd;
+  --line: rgba(255, 255, 255, 0.12);
+  --line-strong: rgba(255, 255, 255, 0.14);
+  --accent: #0a84ff;
+  --accent-strong: #409cff;
+  --accent-soft: rgba(10, 132, 255, 0.18);
+  --hero-accent: #0a84ff;
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.36);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #000000;
+    --bg-alt: #0a0a0a;
+    --surface: rgba(28, 28, 30, 0.76);
+    --surface-strong: rgba(28, 28, 30, 0.92);
+    --surface-tint: rgba(10, 132, 255, 0.14);
+    --text: #f5f5f7;
+    --muted: #b8b8bd;
+    --line: rgba(255, 255, 255, 0.12);
+    --line-strong: rgba(255, 255, 255, 0.14);
+    --accent: #0a84ff;
+    --accent-strong: #409cff;
+    --accent-soft: rgba(10, 132, 255, 0.18);
+    --hero-accent: #0a84ff;
+    --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.24);
+    --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.36);
+  }
+}
