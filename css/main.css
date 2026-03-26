@@ -700,23 +700,23 @@ html[data-theme="dark"] .section-journey .wrap::before {
 
 .site-header.scrolled {
   padding: 0.3rem 0;
-  border-bottom-color: color-mix(in srgb, var(--line) 86%, transparent);
-  /* No backdrop-filter: full-viewport blur behind a fixed bar is a major scroll jank source in Chrome */
-  background: color-mix(in srgb, var(--surface-strong) 78%, var(--bg) 22%);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+  border-bottom-color: color-mix(in srgb, var(--line) 60%, transparent);
+  /* Apple OS-style glass: high blur + saturation boost + translucency */
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
 }
 
 html[data-theme="dark"] .site-header.scrolled {
-  background: color-mix(in srgb, var(--surface-strong) 82%, var(--bg) 18%);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  background: rgba(28, 28, 30, 0.72);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) .site-header.scrolled {
-    background: color-mix(in srgb, var(--surface-strong) 82%, var(--bg) 18%);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+    background: rgba(28, 28, 30, 0.72);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -1742,9 +1742,9 @@ body::after,
 }
 
 /* Keep hero text static: only pulse + dots animate */
-.home-hero .hero-title-highlight {
+/* .home-hero .hero-title-highlight {
   animation: none !important;
-}
+} */
 
 /* Hidden on desktop; shown on tablet/phone to anchor top of hero (HIG safe area + brand) */
 .home-hero-compact-brand {
