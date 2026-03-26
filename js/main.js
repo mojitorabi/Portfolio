@@ -17,6 +17,8 @@
   var themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
   var lastScrollY = window.scrollY;
   var scrollStopTimer;
+  var scrollChromeRaf = null;
+  var heroResizeTimer;
   var chromeRevealDelay = 820;
   var scrollTolerance = 12;
   var touchActive = false;
@@ -156,11 +158,15 @@
 
   if (document.querySelector(".home-hero")) {
     syncHeroVisualHeight();
-    window.addEventListener("resize", syncHeroVisualHeight);
+    function scheduleHeroVisualResize() {
+      window.clearTimeout(heroResizeTimer);
+      heroResizeTimer = window.setTimeout(syncHeroVisualHeight, 80);
+    }
+    window.addEventListener("resize", scheduleHeroVisualResize);
     if ("ResizeObserver" in window) {
       var heroCopy = document.querySelector(".home-hero .hero-copy");
       if (heroCopy) {
-        new ResizeObserver(syncHeroVisualHeight).observe(heroCopy);
+        new ResizeObserver(scheduleHeroVisualResize).observe(heroCopy);
       }
     }
   }
@@ -235,11 +241,19 @@
     lastScrollY = currentY;
   }
 
-  window.addEventListener("scroll", syncScrollChrome, { passive: true });
+  function scheduleScrollChrome() {
+    if (scrollChromeRaf !== null) return;
+    scrollChromeRaf = window.requestAnimationFrame(function () {
+      scrollChromeRaf = null;
+      syncScrollChrome();
+    });
+  }
+
+  window.addEventListener("scroll", scheduleScrollChrome, { passive: true });
   window.addEventListener("resize", function () {
     applyTheme(getStoredTheme());
     syncThemeToggle(getStoredTheme());
-    syncScrollChrome();
+    scheduleScrollChrome();
   });
   syncScrollChrome();
 
