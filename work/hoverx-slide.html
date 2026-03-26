@@ -23,6 +23,8 @@
     }
 
     article.slide {
+      position: relative;
+      z-index: 1;
       width: min(100%, 960px);
       margin: 0 auto;
       align-self: center;
@@ -88,12 +90,22 @@
     }
 
     body > .site-footer {
+      position: relative;
+      z-index: 1;
       margin-top: auto;
       width: 100%;
     }
   </style>
 </head>
 <body>
+  <div class="site-motes" aria-hidden="true">
+    <span class="site-mote site-mote--1"></span>
+    <span class="site-mote site-mote--2"></span>
+    <span class="site-mote site-mote--3"></span>
+    <span class="site-mote site-mote--4"></span>
+    <span class="site-mote site-mote--5"></span>
+    <span class="site-mote site-mote--6"></span>
+  </div>
   <article class="slide" role="document">
     <div class="content">
       <p class="kicker">Project Design Creation, 2024 to 2025</p>

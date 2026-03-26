@@ -202,7 +202,11 @@
     window.clearTimeout(scrollStopTimer);
 
     if (header) {
-      header.classList.toggle("scrolled", window.innerWidth > 1024 && currentY > 24);
+      var scrolled = window.innerWidth > 1024 && currentY > 24;
+      /* Avoid redundant class churn (layout/style invalidation) when value unchanged */
+      if (header.classList.contains("scrolled") !== scrolled) {
+        header.classList.toggle("scrolled", scrolled);
+      }
     }
 
     if (window.innerWidth > 1024) {

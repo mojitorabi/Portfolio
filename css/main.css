@@ -45,7 +45,8 @@ html {
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
-  background: var(--bg); /* Fallback */
+  /* Transparent: a flat --bg here sat on top of the body gradient and read as a separate “slab” */
+  background: transparent;
   transform: translate3d(0, 0, 0); /* Create stacking context for performance */
   backface-visibility: hidden;
 }
@@ -80,7 +81,7 @@ html {
 .hero-mesh {
   position: absolute;
   inset: 0;
-  background-image: 
+  background-image:
     radial-gradient(var(--line-strong) 1px, transparent 1px);
   background-size: 40px 40px;
   mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
@@ -88,11 +89,6 @@ html {
   opacity: 0.22;
   will-change: auto;
   animation: none;
-}
-  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-  opacity: 0.3;
-  will-change: transform;
-  animation: mesh-drift 45s linear infinite;
 }
 
 @keyframes aurora-move {
@@ -218,13 +214,13 @@ body {
   overscroll-behavior-y: contain;
   font-family: var(--font-sans);
   color: var(--text);
-  /* Light: hero-aligned field (accent-tinted blues + soft neutrals) */
+  /* Light: single long wash (hue/chroma aligned with #main blobs so scroll + motion don’t “tear”) */
   background:
-    radial-gradient(ellipse 130% 85% at 14% 6%, color-mix(in srgb, var(--accent) 22%, rgba(147, 197, 253, 0.5)), transparent 50%),
-    radial-gradient(ellipse 115% 95% at 90% 10%, rgba(196, 181, 253, 0.34), transparent 48%),
-    radial-gradient(ellipse 95% 100% at 48% 94%, rgba(253, 186, 116, 0.2), transparent 42%),
-    radial-gradient(ellipse 100% 75% at 70% 55%, color-mix(in srgb, var(--accent) 8%, rgba(167, 243, 208, 0.16)), transparent 40%),
-    linear-gradient(185deg, #f8fafc 0%, #f1f5f9 36%, #eef2f7 70%, #e8edf4 100%);
+    radial-gradient(ellipse 125% 88% at 16% 8%, color-mix(in srgb, var(--accent) 18%, rgba(147, 197, 253, 0.42)), transparent 55%),
+    radial-gradient(ellipse 118% 92% at 88% 12%, rgba(196, 181, 253, 0.26), transparent 52%),
+    radial-gradient(ellipse 100% 100% at 50% 96%, rgba(253, 186, 116, 0.14), transparent 48%),
+    radial-gradient(ellipse 105% 78% at 72% 52%, color-mix(in srgb, var(--accent) 6%, rgba(167, 243, 208, 0.12)), transparent 44%),
+    linear-gradient(188deg, #f8fafc 0%, #f4f6fa 24%, #eef1f7 48%, #ebeef5 72%, #e8ecf3 100%);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -238,22 +234,23 @@ body {
 }
 
 html[data-theme="dark"] body {
+  /* Near-black canvas + blue + emerald/teal (no warm/violet lift — reads as one deep field) */
   background:
-    radial-gradient(ellipse 125% 90% at 10% 10%, color-mix(in srgb, var(--accent) 24%, rgba(59, 130, 246, 0.35)), transparent 50%),
-    radial-gradient(ellipse 110% 85% at 92% 12%, rgba(139, 92, 246, 0.18), transparent 44%),
-    radial-gradient(ellipse 95% 100% at 22% 88%, rgba(34, 211, 238, 0.11), transparent 40%),
-    radial-gradient(ellipse 90% 80% at 68% 62%, rgba(251, 146, 60, 0.07), transparent 36%),
-    linear-gradient(188deg, #0b1020 0%, #141c2f 42%, #0f172a 100%);
+    radial-gradient(ellipse 128% 94% at 6% 6%, rgba(29, 78, 216, 0.22), transparent 54%),
+    radial-gradient(ellipse 108% 88% at 96% 10%, rgba(4, 120, 87, 0.12), transparent 50%),
+    radial-gradient(ellipse 100% 100% at 18% 94%, rgba(13, 148, 136, 0.09), transparent 46%),
+    radial-gradient(ellipse 92% 76% at 78% 52%, rgba(37, 99, 235, 0.05), transparent 42%),
+    linear-gradient(192deg, #020408 0%, #0a1524 36%, #061a1c 62%, #03090e 100%);
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) body {
     background:
-      radial-gradient(ellipse 125% 90% at 10% 10%, color-mix(in srgb, var(--accent) 24%, rgba(59, 130, 246, 0.35)), transparent 50%),
-      radial-gradient(ellipse 110% 85% at 92% 12%, rgba(139, 92, 246, 0.18), transparent 44%),
-      radial-gradient(ellipse 95% 100% at 22% 88%, rgba(34, 211, 238, 0.11), transparent 40%),
-      radial-gradient(ellipse 90% 80% at 68% 62%, rgba(251, 146, 60, 0.07), transparent 36%),
-      linear-gradient(188deg, #0b1020 0%, #141c2f 42%, #0f172a 100%);
+      radial-gradient(ellipse 128% 94% at 6% 6%, rgba(29, 78, 216, 0.22), transparent 54%),
+      radial-gradient(ellipse 108% 88% at 96% 10%, rgba(4, 120, 87, 0.12), transparent 50%),
+      radial-gradient(ellipse 100% 100% at 18% 94%, rgba(13, 148, 136, 0.09), transparent 46%),
+      radial-gradient(ellipse 92% 76% at 78% 52%, rgba(37, 99, 235, 0.05), transparent 42%),
+      linear-gradient(192deg, #020408 0%, #0a1524 36%, #061a1c 62%, #03090e 100%);
   }
 }
 
@@ -368,39 +365,42 @@ html[data-theme="dark"] body::after {
     radial-gradient(ellipse 36% 40% at 54% 80%, color-mix(in srgb, var(--accent) 11%, rgba(253, 186, 116, 0.24)), transparent 52%),
     radial-gradient(ellipse 44% 40% at 34% 68%, color-mix(in srgb, var(--accent) 10%, rgba(167, 243, 208, 0.22)), transparent 50%),
     radial-gradient(ellipse 32% 36% at 72% 46%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 48%);
-  filter: blur(58px) saturate(1.22);
-    opacity: 0.42;
+  filter: blur(46px) saturate(1.12);
+  /* Slightly softer so the wash merges with body gradient instead of “floating” on top */
+  opacity: 0.42;
   transform-origin: 42% 48%;
-  animation: liquidOilFloatA 40s ease-in-out infinite;
+  /* Slower drift = fewer composite updates (Chrome stays smoother) */
+  animation: liquidOilFloatA 56s ease-in-out infinite;
 }
 
 html[data-theme="dark"] #main::before {
+  /* Matches body: blue + cyan + emerald only (subtle motion wash) */
   background:
-    radial-gradient(ellipse 40% 38% at 26% 60%, rgba(52, 211, 153, 0.2), transparent 54%),
-    radial-gradient(ellipse 36% 34% at 76% 30%, rgba(34, 211, 238, 0.16), transparent 52%),
-    radial-gradient(ellipse 32% 36% at 44% 16%, rgba(16, 185, 129, 0.14), transparent 50%),
-    radial-gradient(ellipse 48% 44% at 16% 36%, color-mix(in srgb, var(--accent) 26%, rgba(59, 130, 246, 0.32)), transparent 56%),
-    radial-gradient(ellipse 42% 48% at 88% 22%, color-mix(in srgb, var(--accent) 18%, rgba(139, 92, 246, 0.26)), transparent 54%),
-    radial-gradient(ellipse 36% 40% at 54% 80%, color-mix(in srgb, var(--accent) 14%, rgba(34, 211, 238, 0.14)), transparent 52%),
-    radial-gradient(ellipse 44% 40% at 34% 68%, color-mix(in srgb, var(--accent) 12%, rgba(251, 146, 60, 0.08)), transparent 50%),
-    radial-gradient(ellipse 32% 36% at 72% 46%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 48%);
-  opacity: 0.36;
-  filter: blur(60px) saturate(1.2);
+    radial-gradient(ellipse 44% 40% at 22% 58%, rgba(16, 185, 129, 0.11), transparent 54%),
+    radial-gradient(ellipse 38% 36% at 80% 28%, rgba(34, 211, 238, 0.08), transparent 52%),
+    radial-gradient(ellipse 34% 38% at 46% 14%, rgba(5, 150, 105, 0.07), transparent 50%),
+    radial-gradient(ellipse 50% 46% at 12% 38%, rgba(37, 99, 235, 0.12), transparent 56%),
+    radial-gradient(ellipse 46% 50% at 90% 20%, rgba(59, 130, 246, 0.07), transparent 54%),
+    radial-gradient(ellipse 40% 42% at 52% 84%, rgba(20, 184, 166, 0.06), transparent 52%),
+    radial-gradient(ellipse 38% 40% at 32% 70%, rgba(6, 182, 212, 0.05), transparent 50%),
+    radial-gradient(ellipse 34% 36% at 74% 46%, rgba(22, 163, 74, 0.05), transparent 48%);
+  opacity: 0.26;
+  filter: blur(48px) saturate(1.08);
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) #main::before {
     background:
-      radial-gradient(ellipse 40% 38% at 26% 60%, rgba(52, 211, 153, 0.2), transparent 54%),
-      radial-gradient(ellipse 36% 34% at 76% 30%, rgba(34, 211, 238, 0.16), transparent 52%),
-      radial-gradient(ellipse 32% 36% at 44% 16%, rgba(16, 185, 129, 0.14), transparent 50%),
-      radial-gradient(ellipse 48% 44% at 16% 36%, color-mix(in srgb, var(--accent) 26%, rgba(59, 130, 246, 0.32)), transparent 56%),
-      radial-gradient(ellipse 42% 48% at 88% 22%, color-mix(in srgb, var(--accent) 18%, rgba(139, 92, 246, 0.26)), transparent 54%),
-      radial-gradient(ellipse 36% 40% at 54% 80%, color-mix(in srgb, var(--accent) 14%, rgba(34, 211, 238, 0.14)), transparent 52%),
-      radial-gradient(ellipse 44% 40% at 34% 68%, color-mix(in srgb, var(--accent) 12%, rgba(251, 146, 60, 0.08)), transparent 50%),
-      radial-gradient(ellipse 32% 36% at 72% 46%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 48%);
-    opacity: 0.36;
-    filter: blur(60px) saturate(1.2);
+      radial-gradient(ellipse 44% 40% at 22% 58%, rgba(16, 185, 129, 0.11), transparent 54%),
+      radial-gradient(ellipse 38% 36% at 80% 28%, rgba(34, 211, 238, 0.08), transparent 52%),
+      radial-gradient(ellipse 34% 38% at 46% 14%, rgba(5, 150, 105, 0.07), transparent 50%),
+      radial-gradient(ellipse 50% 46% at 12% 38%, rgba(37, 99, 235, 0.12), transparent 56%),
+      radial-gradient(ellipse 46% 50% at 90% 20%, rgba(59, 130, 246, 0.07), transparent 54%),
+      radial-gradient(ellipse 40% 42% at 52% 84%, rgba(20, 184, 166, 0.06), transparent 52%),
+      radial-gradient(ellipse 38% 40% at 32% 70%, rgba(6, 182, 212, 0.05), transparent 50%),
+      radial-gradient(ellipse 34% 36% at 74% 46%, rgba(22, 163, 74, 0.05), transparent 48%);
+    opacity: 0.26;
+    filter: blur(48px) saturate(1.08);
   }
 }
 
@@ -417,35 +417,35 @@ html[data-theme="dark"] #main::before {
     radial-gradient(circle min(24vw, 13rem) at 86% 44%, rgba(34, 211, 238, 0.18), transparent 65%),
     radial-gradient(circle min(20vw, 11rem) at 52% 12%, rgba(16, 185, 129, 0.16), transparent 62%),
     radial-gradient(circle min(22vw, 12rem) at 68% 82%, rgba(6, 182, 212, 0.12), transparent 60%);
-  filter: blur(34px) saturate(1.35);
-  mix-blend-mode: multiply;
-  /* Slightly softer so lower page + footer feel less “cut off” from the field */
-  opacity: 0.32;
+  filter: blur(26px) saturate(1.22);
+  /* Normal blend: cheaper + fewer banding seams vs multiply in Chrome */
+  mix-blend-mode: normal;
+  opacity: 0.2;
   transform-origin: 50% 50%;
-  animation: liquidVenomBubbles 28s ease-in-out infinite;
+  animation: liquidVenomBubbles 38s ease-in-out infinite;
 }
 
 html[data-theme="dark"] #main::after {
   mix-blend-mode: screen;
-  opacity: 0.24;
-  filter: blur(36px) saturate(1.3);
+  opacity: 0.16;
+  filter: blur(30px) saturate(1.12);
   background:
-    radial-gradient(circle min(28vw, 16rem) at 18% 72%, rgba(52, 211, 153, 0.26), transparent 68%),
-    radial-gradient(circle min(24vw, 13rem) at 86% 44%, rgba(34, 211, 238, 0.22), transparent 65%),
-    radial-gradient(circle min(20vw, 11rem) at 52% 12%, rgba(16, 185, 129, 0.2), transparent 62%),
-    radial-gradient(circle min(22vw, 12rem) at 68% 82%, rgba(45, 212, 191, 0.16), transparent 60%);
+    radial-gradient(circle min(28vw, 16rem) at 18% 72%, rgba(52, 211, 153, 0.18), transparent 68%),
+    radial-gradient(circle min(24vw, 13rem) at 86% 44%, rgba(34, 211, 238, 0.14), transparent 65%),
+    radial-gradient(circle min(20vw, 11rem) at 52% 12%, rgba(16, 185, 129, 0.14), transparent 62%),
+    radial-gradient(circle min(22vw, 12rem) at 68% 82%, rgba(45, 212, 191, 0.1), transparent 60%);
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) #main::after {
     mix-blend-mode: screen;
-    opacity: 0.24;
-    filter: blur(36px) saturate(1.3);
+    opacity: 0.16;
+    filter: blur(30px) saturate(1.12);
     background:
-      radial-gradient(circle min(28vw, 16rem) at 18% 72%, rgba(52, 211, 153, 0.26), transparent 68%),
-      radial-gradient(circle min(24vw, 13rem) at 86% 44%, rgba(34, 211, 238, 0.22), transparent 65%),
-      radial-gradient(circle min(20vw, 11rem) at 52% 12%, rgba(16, 185, 129, 0.2), transparent 62%),
-      radial-gradient(circle min(22vw, 12rem) at 68% 82%, rgba(45, 212, 191, 0.16), transparent 60%);
+      radial-gradient(circle min(28vw, 16rem) at 18% 72%, rgba(52, 211, 153, 0.18), transparent 68%),
+      radial-gradient(circle min(24vw, 13rem) at 86% 44%, rgba(34, 211, 238, 0.14), transparent 65%),
+      radial-gradient(circle min(20vw, 11rem) at 52% 12%, rgba(16, 185, 129, 0.14), transparent 62%),
+      radial-gradient(circle min(22vw, 12rem) at 68% 82%, rgba(45, 212, 191, 0.1), transparent 60%);
   }
 }
 
@@ -456,11 +456,11 @@ html[data-theme="dark"] #main::after {
   }
 
   33% {
-    transform: translateY(-2.2%) scale(1.06);
+    transform: translateY(-1.4%) scale(1.035);
   }
 
   66% {
-    transform: translateY(2.6%) scale(0.96);
+    transform: translateY(1.65%) scale(0.975);
   }
 }
 
@@ -471,15 +471,15 @@ html[data-theme="dark"] #main::after {
   }
 
   22% {
-    transform: translateY(-2.2%) scale(1.045) rotate(1deg);
+    transform: translateY(-1.35%) scale(1.028) rotate(0.55deg);
   }
 
   48% {
-    transform: translateY(2.6%) scale(0.97) rotate(-0.75deg);
+    transform: translateY(1.55%) scale(0.985) rotate(-0.45deg);
   }
 
   72% {
-    transform: translateY(1.6%) scale(1.02) rotate(0.45deg);
+    transform: translateY(0.95%) scale(1.012) rotate(0.28deg);
   }
 }
 
@@ -592,7 +592,68 @@ a {
   /* Overlap + shared canvas: bridges hero ambient tail into first section */
   margin-top: -2rem;
   padding-top: calc(var(--section-gap) + 2rem);
+}
+
+/* Home + subpage heroes: first content band fades from hero into page field */
+.home-hero + .section-space,
+.page-hero.page-hero--sub + .section-space {
+  position: relative;
   background: transparent;
+}
+
+.home-hero + .section-space::before,
+.page-hero.page-hero--sub + .section-space::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: min(24vh, 10rem);
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--bg) 88%, var(--accent) 6%) 0%,
+    transparent 100%
+  );
+  opacity: 0.65;
+}
+
+/* Dark: bridge tint matches black–blue–green field under hero */
+html[data-theme="dark"] .home-hero + .section-space::before,
+html[data-theme="dark"] .page-hero.page-hero--sub + .section-space::before {
+  height: min(30vh, 12rem);
+  background: linear-gradient(
+    180deg,
+    rgba(4, 14, 22, 0.95) 0%,
+    rgba(6, 22, 28, 0.55) 38%,
+    rgba(8, 28, 36, 0.22) 68%,
+    color-mix(in srgb, var(--accent) 14%, transparent) 88%,
+    transparent 100%
+  );
+  opacity: 0.88;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .home-hero + .section-space::before,
+  html:not([data-theme="light"]) .page-hero.page-hero--sub + .section-space::before {
+    height: min(30vh, 12rem);
+    background: linear-gradient(
+      180deg,
+      rgba(4, 14, 22, 0.95) 0%,
+      rgba(6, 22, 28, 0.55) 38%,
+      rgba(8, 28, 36, 0.22) 68%,
+      color-mix(in srgb, var(--accent) 14%, transparent) 88%,
+      transparent 100%
+    );
+    opacity: 0.88;
+  }
+}
+
+.home-hero + .section-space > *,
+.page-hero.page-hero--sub + .section-space > * {
+  position: relative;
+  z-index: 1;
 }
 
 .section-journey .wrap {
@@ -600,8 +661,13 @@ a {
   padding: clamp(1.35rem, 2vw, 1.8rem);
   border: 1px solid color-mix(in srgb, var(--line) 92%, rgba(255, 255, 255, 0.22));
   border-radius: clamp(1.6rem, 2vw, 2rem);
+  /* More air: lets the global field read through so the band doesn’t feel like a second canvas */
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--surface-strong) 96%, rgba(255, 255, 255, 0.7)), color-mix(in srgb, var(--surface) 96%, rgba(255, 255, 255, 0.56)));
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--surface-strong) 82%, transparent),
+      color-mix(in srgb, var(--surface) 78%, transparent)
+    );
   box-shadow: var(--shadow-sm);
   overflow: hidden;
 }
@@ -619,7 +685,7 @@ a {
 html[data-theme="dark"] .section-journey .wrap {
   border-color: rgba(255, 255, 255, 0.08);
   background:
-    linear-gradient(180deg, rgba(18, 22, 31, 0.92), rgba(14, 18, 26, 0.78));
+    linear-gradient(180deg, rgba(18, 22, 31, 0.78), rgba(14, 18, 26, 0.62));
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
 }
 
@@ -633,7 +699,7 @@ html[data-theme="dark"] .section-journey .wrap::before {
   html:not([data-theme="light"]) .section-journey .wrap {
     border-color: rgba(255, 255, 255, 0.08);
     background:
-      linear-gradient(180deg, rgba(18, 22, 31, 0.92), rgba(14, 18, 26, 0.78));
+      linear-gradient(180deg, rgba(18, 22, 31, 0.78), rgba(14, 18, 26, 0.62));
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
   }
 
@@ -682,10 +748,23 @@ html[data-theme="dark"] .section-journey .wrap::before {
 .site-header.scrolled {
   padding: 0.3rem 0;
   border-bottom-color: color-mix(in srgb, var(--line) 86%, transparent);
-  background: color-mix(in srgb, var(--surface-strong) 82%, transparent);
-  backdrop-filter: blur(20px) saturate(1.2);
-  -webkit-backdrop-filter: blur(20px) saturate(1.2);
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  /* No backdrop-filter: full-viewport blur behind a fixed bar is a major scroll jank source in Chrome */
+  background: color-mix(in srgb, var(--surface-strong) 78%, var(--bg) 22%);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+}
+
+html[data-theme="dark"] .site-header.scrolled {
+  background: color-mix(in srgb, var(--surface-strong) 82%, var(--bg) 18%);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .site-header.scrolled {
+    background: color-mix(in srgb, var(--surface-strong) 82%, var(--bg) 18%);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  }
 }
 
 .brand {
@@ -1043,6 +1122,32 @@ html.mobile-top-chrome-hidden .mobile-top-actions {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  isolation: isolate;
+  /* Long soft fade: hero wash merges into scroll canvas (avoids a visible “split”) */
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 44%,
+    rgba(0, 0, 0, 0.88) 62%,
+    rgba(0, 0, 0, 0.5) 78%,
+    rgba(0, 0, 0, 0.18) 92%,
+    rgba(0, 0, 0, 0.04) 98%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 44%,
+    rgba(0, 0, 0, 0.88) 62%,
+    rgba(0, 0, 0, 0.5) 78%,
+    rgba(0, 0, 0, 0.18) 92%,
+    rgba(0, 0, 0, 0.04) 98%,
+    transparent 100%
+  );
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
 }
 
 /* Keep ONLY pulse ring + dots in hero ambient */
@@ -1138,7 +1243,7 @@ html[data-theme="dark"] .home-hero__aurora--lag {
     transparent 65%
   );
   transform: rotate(-9deg);
-  filter: blur(36px);
+  filter: blur(28px);
   opacity: 0.28;
   mix-blend-mode: soft-light;
   pointer-events: none;
@@ -1164,7 +1269,7 @@ html[data-theme="dark"] .home-hero__ribbon {
   }
 }
 
-/* Discovery pulse: soft radar / critique halo (translate3d = stable layer in Safari + Chrome) */
+/* Discovery pulse: soft radar halo — transform+opacity only in keyframes; thin ring = cheaper Chrome paints */
 .home-hero__pulse-ring {
   position: absolute;
   left: 50%;
@@ -1174,11 +1279,13 @@ html[data-theme="dark"] .home-hero__ribbon {
   height: min(118vw, 54rem);
   border-radius: 50%;
   border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  /* Avoid animated inset blur on a huge circle (major Chrome jank source) */
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 8%, transparent);
   opacity: 0;
   pointer-events: none;
   backface-visibility: hidden;
   transform: translate3d(-50%, -50%, 0);
+  will-change: transform, opacity;
   animation: heroPulseRing 14s ease-in-out infinite;
 }
 
@@ -1198,21 +1305,21 @@ html[data-theme="dark"] .home-hero__pulse-ring {
   }
 }
 
-/* Pulse peaks in the first ~2s of each 12s cycle (on load + every repeat) */
+/* Opening pulse in first ~2.5s of each cycle, then long rest (professional hook + calm repeat) */
 @keyframes heroPulseRing {
   0% {
     opacity: 0;
     transform: translate3d(-50%, -50%, 0) scale(0.88);
   }
 
-  14% {
-    opacity: 0.38;
+  10% {
+    opacity: 0.36;
     transform: translate3d(-50%, -50%, 0) scale(1);
   }
 
-  28% {
+  24% {
     opacity: 0;
-    transform: translate3d(-50%, -50%, 0) scale(1.06);
+    transform: translate3d(-50%, -50%, 0) scale(1.05);
   }
 
   100% {
@@ -1239,9 +1346,7 @@ html[data-theme="dark"] .home-hero__pulse-ring {
 
 html[data-theme="dark"] .home-hero__mote {
   background: color-mix(in srgb, var(--accent) 75%, #c4d9ff);
-  box-shadow:
-    0 0 12px color-mix(in srgb, var(--accent) 50%, transparent),
-    0 0 28px color-mix(in srgb, var(--accent) 22%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 48%, transparent);
 }
 
 .home-hero__mote--1 {
@@ -1293,6 +1398,77 @@ html[data-theme="dark"] .home-hero__mote {
     opacity: 0.7;
     transform: translate3d(3px, 2px, 0) scale(1.05);
   }
+}
+
+/* Full-viewport motes: same drift as hero dots; first child of #main so they sit above #main::before/::after blur */
+.site-motes {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.site-mote {
+  position: absolute;
+  z-index: 0;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 90%, #ffffff);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 42%, transparent);
+  opacity: 0;
+  pointer-events: none;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  animation: heroMoteDrift 9s ease-in-out infinite;
+}
+
+html[data-theme="dark"] .site-mote {
+  background: color-mix(in srgb, var(--accent) 75%, #c4d9ff);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 48%, transparent);
+}
+
+.site-mote--1 {
+  top: 16%;
+  left: 11%;
+  animation-delay: 0s;
+}
+
+.site-mote--2 {
+  top: 38%;
+  right: 12%;
+  animation-delay: -2.4s;
+  animation-duration: 11s;
+}
+
+.site-mote--3 {
+  top: 62%;
+  left: 20%;
+  animation-delay: -4.8s;
+  animation-duration: 8.5s;
+}
+
+.site-mote--4 {
+  top: 28%;
+  right: 18%;
+  animation-delay: -1.2s;
+  animation-duration: 10.2s;
+}
+
+.site-mote--5 {
+  bottom: 22%;
+  right: 26%;
+  animation-delay: -3.1s;
+  animation-duration: 9.5s;
+}
+
+.site-mote--6 {
+  top: 48%;
+  left: 6%;
+  animation-delay: -5.5s;
+  animation-duration: 12s;
 }
 
 /* Static wash only (moving diagonal sweep removed — was distracting across hero) */
@@ -1546,6 +1722,7 @@ html[data-theme="dark"] .home-hero__orb--c {
   .home-hero__ribbon,
   .home-hero__pulse-ring,
   .home-hero__mote,
+  .site-mote,
   .home-hero__shimmer,
   .home-hero__spark,
   .home-hero__mesh,
@@ -1565,10 +1742,16 @@ html[data-theme="dark"] .home-hero__orb--c {
 
   .home-hero__pulse-ring {
     opacity: 0;
+    will-change: auto;
   }
 
   .home-hero__mote {
     opacity: 0.4;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .site-mote {
+    opacity: 0.32;
     transform: translate3d(0, 0, 0);
   }
 
@@ -1715,21 +1898,21 @@ html[data-theme="dark"] .home-hero-compact-logo--dark {
 .page-hero--sub .page-intro::before {
   content: "";
   position: absolute;
-  inset: -7% -10% -5%;
+  inset: -12% -14% -8%;
   z-index: -1;
   pointer-events: none;
   border-radius: var(--radius-xl);
-  background: radial-gradient(ellipse 72% 62% at 50% 32%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 76%);
-  opacity: 0.26;
+  background: radial-gradient(ellipse 78% 68% at 50% 30%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 82%);
+  opacity: 0.2;
 }
 
 html[data-theme="dark"] .page-hero--sub .page-intro::before {
-  opacity: 0.22;
+  opacity: 0.18;
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) .page-hero--sub .page-intro::before {
-    opacity: 0.22;
+    opacity: 0.18;
   }
 }
 
@@ -2985,7 +3168,7 @@ html[data-theme="dark"] .stat-card:hover {
   position: relative;
   isolation: isolate;
   border-radius: var(--surface-radius-xl);
-  background: color-mix(in srgb, var(--surface-strong) 88%, transparent);
+  background: color-mix(in srgb, var(--surface-strong) 76%, transparent);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.14) inset,
     var(--shadow-sm);
@@ -3518,18 +3701,18 @@ html[data-theme="dark"] .experience-card.case-card:focus-within {
   padding-top: 0;
   /* ~Apple.com: modest bottom rhythm + safe area (not a deep “well”) */
   padding-bottom: calc(var(--space-5) + env(safe-area-inset-bottom, 0px));
-  /* Blend with page field so footer reads as continuation of canvas, not a separate slab */
-  background: color-mix(in srgb, var(--surface-strong) 52%, var(--bg) 48%);
-  border-top: 1px solid var(--line);
+  /* Heavier page bg in the mix so the band doesn’t read as a disconnected panel */
+  background: color-mix(in srgb, var(--surface-strong) 38%, var(--bg) 62%);
+  border-top: 1px solid color-mix(in srgb, var(--line) 88%, transparent);
 }
 
 html[data-theme="dark"] .site-footer {
-  background: color-mix(in srgb, var(--surface-strong) 55%, var(--bg) 45%);
+  background: color-mix(in srgb, var(--surface-strong) 42%, var(--bg) 58%);
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) .site-footer {
-    background: color-mix(in srgb, var(--surface-strong) 55%, var(--bg) 45%);
+    background: color-mix(in srgb, var(--surface-strong) 42%, var(--bg) 58%);
   }
 }
 
