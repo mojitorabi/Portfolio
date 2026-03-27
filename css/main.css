@@ -81,11 +81,14 @@ html {
 .hero-mesh {
   position: absolute;
   inset: 0;
+  /* No repeating dot/grid patterns — only soft fantasy bloom. */
   background-image:
-    radial-gradient(var(--line-strong) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    radial-gradient(circle at 18% 28%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 62%),
+    radial-gradient(circle at 82% 22%, rgba(16, 185, 129, 0.18), transparent 64%),
+    radial-gradient(circle at 52% 78%, rgba(34, 211, 238, 0.14), transparent 66%);
+  filter: blur(34px) saturate(1.15);
+  mask-image: radial-gradient(circle at center, black 46%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at center, black 46%, transparent 100%);
   opacity: 0.22;
   will-change: auto;
   animation: none;
@@ -294,51 +297,43 @@ body::after {
 }
 
 html[data-theme="dark"] body::before {
+  /* Dark mode: strictly black/blue/green — no violet/white bloom. */
   background:
-    radial-gradient(circle at 14% 18%, color-mix(in srgb, var(--accent) 28%, rgba(59, 130, 246, 0.25)), transparent 19rem),
-    radial-gradient(circle at 88% 14%, rgba(139, 92, 246, 0.14), transparent 16rem),
-    radial-gradient(circle at 50% 84%, rgba(34, 211, 238, 0.09), transparent 14rem);
-  opacity: 0.82;
+    radial-gradient(circle at 12% 16%, rgba(37, 99, 235, 0.22), transparent 20rem),
+    radial-gradient(circle at 88% 14%, rgba(16, 185, 129, 0.16), transparent 18rem),
+    radial-gradient(circle at 50% 86%, rgba(34, 211, 238, 0.11), transparent 16rem);
+  opacity: 0.68;
 }
-
 
 html[data-theme="dark"] body::after {
   background:
-    radial-gradient(ellipse 36% 34% at 22% 56%, rgba(52, 211, 153, 0.16), transparent 58%),
-    radial-gradient(ellipse 40% 38% at 78% 36%, rgba(34, 211, 238, 0.14), transparent 56%),
-    radial-gradient(ellipse 30% 32% at 48% 20%, rgba(16, 185, 129, 0.12), transparent 55%),
-    radial-gradient(ellipse 52% 46% at 18% 32%, color-mix(in srgb, var(--accent) 24%, rgba(59, 130, 246, 0.28)), transparent 58%),
-    radial-gradient(ellipse 46% 50% at 84% 28%, color-mix(in srgb, var(--accent) 16%, rgba(139, 92, 246, 0.22)), transparent 56%),
-    radial-gradient(ellipse 38% 42% at 50% 74%, color-mix(in srgb, var(--accent) 12%, rgba(34, 211, 238, 0.12)), transparent 54%),
-    radial-gradient(ellipse 40% 38% at 36% 44%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 52%),
-    radial-gradient(circle at 75% 35%, rgba(30, 41, 59, 0.58), transparent 22rem),
-    radial-gradient(circle at 25% 65%, rgba(15, 23, 42, 0.48), transparent 20rem);
-  opacity: 0.55;
-  filter: blur(54px) saturate(1.16);
+    radial-gradient(ellipse 40% 36% at 22% 56%, rgba(52, 211, 153, 0.12), transparent 58%),
+    radial-gradient(ellipse 44% 40% at 78% 36%, rgba(34, 211, 238, 0.1), transparent 56%),
+    radial-gradient(ellipse 52% 46% at 16% 32%, rgba(59, 130, 246, 0.12), transparent 58%),
+    radial-gradient(circle at 75% 35%, rgba(2, 6, 23, 0.82), transparent 22rem),
+    radial-gradient(circle at 25% 65%, rgba(1, 4, 12, 0.72), transparent 20rem);
+  opacity: 0.5;
+  filter: blur(56px) saturate(1.1);
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) body::before {
     background:
-      radial-gradient(circle at 14% 18%, color-mix(in srgb, var(--accent) 28%, rgba(59, 130, 246, 0.25)), transparent 19rem),
-      radial-gradient(circle at 88% 14%, rgba(139, 92, 246, 0.14), transparent 16rem),
-      radial-gradient(circle at 50% 84%, rgba(34, 211, 238, 0.09), transparent 14rem);
-    opacity: 0.82;
+      radial-gradient(circle at 12% 16%, rgba(37, 99, 235, 0.22), transparent 20rem),
+      radial-gradient(circle at 88% 14%, rgba(16, 185, 129, 0.16), transparent 18rem),
+      radial-gradient(circle at 50% 86%, rgba(34, 211, 238, 0.11), transparent 16rem);
+    opacity: 0.68;
   }
 
   html:not([data-theme="light"]) body::after {
     background:
-      radial-gradient(ellipse 36% 34% at 22% 56%, rgba(52, 211, 153, 0.16), transparent 58%),
-      radial-gradient(ellipse 40% 38% at 78% 36%, rgba(34, 211, 238, 0.14), transparent 56%),
-      radial-gradient(ellipse 30% 32% at 48% 20%, rgba(16, 185, 129, 0.12), transparent 55%),
-      radial-gradient(ellipse 52% 46% at 18% 32%, color-mix(in srgb, var(--accent) 24%, rgba(59, 130, 246, 0.28)), transparent 58%),
-      radial-gradient(ellipse 46% 50% at 84% 28%, color-mix(in srgb, var(--accent) 16%, rgba(139, 92, 246, 0.22)), transparent 56%),
-      radial-gradient(ellipse 38% 42% at 50% 74%, color-mix(in srgb, var(--accent) 12%, rgba(34, 211, 238, 0.12)), transparent 54%),
-      radial-gradient(ellipse 40% 38% at 36% 44%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 52%),
-      radial-gradient(circle at 75% 35%, rgba(30, 41, 59, 0.58), transparent 22rem),
-      radial-gradient(circle at 25% 65%, rgba(15, 23, 42, 0.48), transparent 20rem);
-    opacity: 0.55;
-    filter: blur(54px) saturate(1.16);
+      radial-gradient(ellipse 40% 36% at 22% 56%, rgba(52, 211, 153, 0.12), transparent 58%),
+      radial-gradient(ellipse 44% 40% at 78% 36%, rgba(34, 211, 238, 0.1), transparent 56%),
+      radial-gradient(ellipse 52% 46% at 16% 32%, rgba(59, 130, 246, 0.12), transparent 58%),
+      radial-gradient(circle at 75% 35%, rgba(2, 6, 23, 0.82), transparent 22rem),
+      radial-gradient(circle at 25% 65%, rgba(1, 4, 12, 0.72), transparent 20rem);
+    opacity: 0.5;
+    filter: blur(56px) saturate(1.1);
   }
 }
 
