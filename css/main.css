@@ -107,11 +107,12 @@ html {
 
 /* Dark Mode Adjustments */
 @media (prefers-color-scheme: dark) {
-  .hero-aurora,
-  .hero-aurora-2 {
+  /* Only apply system-dark styles when the user hasn't forced Light. */
+  html:not([data-theme="light"]) .hero-aurora,
+  html:not([data-theme="light"]) .hero-aurora-2 {
     opacity: 0.25;
   }
-  .hero-mesh {
+  html:not([data-theme="light"]) .hero-mesh {
     opacity: 0.2;
   }
 }
@@ -237,20 +238,20 @@ body {
 }
 
 html[data-theme="dark"] body {
-  /* Minimal + professional: deep black with two subtle blue/green blooms. */
+  /* Dark: professional + clear (no haze/shades, no soft bloom overlays). */
   background:
-    radial-gradient(1200px 900px at 16% 12%, rgba(59, 130, 246, 0.09), transparent 68%),
-    radial-gradient(1150px 900px at 86% 16%, rgba(16, 185, 129, 0.075), transparent 70%),
-    linear-gradient(188deg, #000109 0%, #00020d 52%, #000000 100%);
+    linear-gradient(188deg, #000000 0%, #00030d 52%, #000000 100%),
+    linear-gradient(128deg, rgba(59, 130, 246, 0.055) 0%, rgba(59, 130, 246, 0.02) 28%, transparent 58%),
+    linear-gradient(320deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.018) 30%, transparent 60%);
   background-attachment: fixed;
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) body {
     background:
-      radial-gradient(1200px 900px at 16% 12%, rgba(59, 130, 246, 0.09), transparent 68%),
-      radial-gradient(1150px 900px at 86% 16%, rgba(16, 185, 129, 0.075), transparent 70%),
-      linear-gradient(188deg, #000109 0%, #00020d 52%, #000000 100%);
+      linear-gradient(188deg, #000000 0%, #00030d 52%, #000000 100%),
+      linear-gradient(128deg, rgba(59, 130, 246, 0.055) 0%, rgba(59, 130, 246, 0.02) 28%, transparent 58%),
+      linear-gradient(320deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.018) 30%, transparent 60%);
     background-attachment: fixed;
   }
 }
@@ -295,36 +296,27 @@ body::after {
 }
 
 html[data-theme="dark"] body::before {
-  /* Dark mode: keep the same subtle motion as before, but very clean (only 2 blooms). */
-  background:
-    radial-gradient(1200px 900px at 16% 12%, rgba(59, 130, 246, 0.08), transparent 70%),
-    radial-gradient(1150px 900px at 86% 16%, rgba(16, 185, 129, 0.06), transparent 72%);
-  opacity: 0.22;
+  /* Remove hazy shade layers in dark mode (keep background crisp/flat). */
+  background: none;
+  opacity: 0;
 }
 
 html[data-theme="dark"] body::after {
-  /* Second drifting layer: diffuse, low-contrast (no bubbles, no white). */
-  background:
-    radial-gradient(900px 820px at 26% 64%, rgba(59, 130, 246, 0.05), transparent 72%),
-    radial-gradient(900px 820px at 76% 34%, rgba(16, 185, 129, 0.045), transparent 74%);
-  opacity: 0.12;
-  filter: blur(70px) saturate(1.02);
+  background: none;
+  opacity: 0;
+  filter: none;
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) body::before {
-    background:
-      radial-gradient(1200px 900px at 16% 12%, rgba(59, 130, 246, 0.08), transparent 70%),
-      radial-gradient(1150px 900px at 86% 16%, rgba(16, 185, 129, 0.06), transparent 72%);
-    opacity: 0.22;
+    background: none;
+    opacity: 0;
   }
 
   html:not([data-theme="light"]) body::after {
-    background:
-      radial-gradient(900px 820px at 26% 64%, rgba(59, 130, 246, 0.05), transparent 72%),
-      radial-gradient(900px 820px at 76% 34%, rgba(16, 185, 129, 0.045), transparent 74%);
-    opacity: 0.12;
-    filter: blur(70px) saturate(1.02);
+    background: none;
+    opacity: 0;
+    filter: none;
   }
 }
 
@@ -360,21 +352,17 @@ html[data-theme="dark"] body::after {
 }
 
 html[data-theme="dark"] #main::before {
-  /* Keep animations, but keep the look clean: only a faint drift over the same 2 blooms. */
-  background:
-    radial-gradient(1200px 900px at 16% 12%, rgba(59, 130, 246, 0.06), transparent 72%),
-    radial-gradient(1150px 900px at 86% 16%, rgba(16, 185, 129, 0.05), transparent 74%);
-  opacity: 0.12;
-  filter: blur(64px) saturate(1.03);
+  /* Dark mode: no extra blurred overlays (keep it crisp/clear, no “shades”). */
+  background: none;
+  opacity: 0;
+  filter: none;
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) #main::before {
-    background:
-      radial-gradient(1200px 900px at 16% 12%, rgba(59, 130, 246, 0.06), transparent 72%),
-      radial-gradient(1150px 900px at 86% 16%, rgba(16, 185, 129, 0.05), transparent 74%);
-    opacity: 0.12;
-    filter: blur(64px) saturate(1.03);
+    background: none;
+    opacity: 0;
+    filter: none;
   }
 }
 
@@ -400,20 +388,19 @@ html[data-theme="dark"] #main::before {
 }
 
 html[data-theme="dark"] #main::after {
+  /* Disable the extra dark overlay layer to keep the gradient clean. */
   mix-blend-mode: normal;
-  opacity: 0.05;
-  filter: blur(38px) saturate(1.03);
-  background:
-    radial-gradient(circle min(22vw, 12rem) at 62% 78%, rgba(16, 185, 129, 0.05), transparent 68%);
+  opacity: 0;
+  background: none;
+  filter: none;
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) #main::after {
     mix-blend-mode: normal;
-    opacity: 0.05;
-    filter: blur(38px) saturate(1.03);
-    background:
-      radial-gradient(circle min(22vw, 12rem) at 62% 78%, rgba(16, 185, 129, 0.05), transparent 68%);
+    opacity: 0;
+    background: none;
+    filter: none;
   }
 }
 
@@ -1171,7 +1158,7 @@ html[data-theme="dark"] .home-hero__ribbon {
 .home-hero__pulse-ring {
   position: absolute;
   left: 50%;
-  top: 40%;
+  top: 30%;
   z-index: 0;
   width: min(118vw, 54rem);
   height: min(118vw, 54rem);
