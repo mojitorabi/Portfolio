@@ -238,20 +238,20 @@ body {
 }
 
 html[data-theme="dark"] body {
-  /* Dark: professional + clear (no haze/shades, no soft bloom overlays). */
+  /* Dark: blue + black gradient, crisp and professional. */
   background:
-    linear-gradient(188deg, #000000 0%, #00030d 52%, #000000 100%),
-    linear-gradient(128deg, rgba(59, 130, 246, 0.055) 0%, rgba(59, 130, 246, 0.02) 28%, transparent 58%),
-    linear-gradient(320deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.018) 30%, transparent 60%);
+    linear-gradient(190deg, #000000 0%, #010a20 54%, #000000 100%),
+    linear-gradient(138deg, rgba(59, 130, 246, 0.14) 0%, rgba(37, 99, 235, 0.085) 34%, transparent 66%),
+    linear-gradient(312deg, rgba(30, 64, 175, 0.11) 0%, rgba(30, 64, 175, 0.055) 36%, transparent 68%);
   background-attachment: fixed;
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) body {
     background:
-      linear-gradient(188deg, #000000 0%, #00030d 52%, #000000 100%),
-      linear-gradient(128deg, rgba(59, 130, 246, 0.055) 0%, rgba(59, 130, 246, 0.02) 28%, transparent 58%),
-      linear-gradient(320deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.018) 30%, transparent 60%);
+      linear-gradient(190deg, #000000 0%, #010a20 54%, #000000 100%),
+      linear-gradient(138deg, rgba(59, 130, 246, 0.14) 0%, rgba(37, 99, 235, 0.085) 34%, transparent 66%),
+      linear-gradient(312deg, rgba(30, 64, 175, 0.11) 0%, rgba(30, 64, 175, 0.055) 36%, transparent 68%);
     background-attachment: fixed;
   }
 }
