@@ -15,7 +15,8 @@
         root.dataset.theme = stored;
         root.dataset.themePreference = stored;
       } else {
-        root.removeAttribute("data-theme");
+        var systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        root.dataset.theme = systemTheme;
         root.dataset.themePreference = "auto";
       }
       var link = document.querySelector("link[data-dynamic-favicon]");

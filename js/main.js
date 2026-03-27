@@ -38,14 +38,11 @@
     var pref = theme === "light" || theme === "dark" ? theme : "auto";
     root.dataset.themePreference = pref;
 
-    if (theme === "light" || theme === "dark") {
-      root.dataset.theme = theme;
-    } else {
-      root.removeAttribute("data-theme");
-    }
-
-    syncFavicon(theme);
+    // Always set the resolved theme so Auto matches the full dark/light styling.
     var resolved = theme === "light" || theme === "dark" ? theme : getSystemTheme();
+    root.dataset.theme = resolved;
+
+    syncFavicon(pref);
     syncBottomTabLogos(resolved);
   }
 
