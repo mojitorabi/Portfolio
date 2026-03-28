@@ -14,6 +14,7 @@
   var moreBackdrop = document.getElementById("more-sheet-backdrop");
   var roadmapNodes = document.querySelectorAll(".roadmap-node");
   var favicon = document.querySelector('link[data-dynamic-favicon]');
+  var themeColorMeta = document.querySelector('meta[name="theme-color"]');
   var themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
   var lastScrollY = window.scrollY;
   var scrollStopTimer;
@@ -44,6 +45,7 @@
 
     syncFavicon(pref);
     syncBottomTabLogos(resolved);
+    syncThemeColor(resolved);
   }
 
   function syncFavicon(theme) {
@@ -62,6 +64,16 @@
     var darkImgs  = bottomTabBar.querySelectorAll(".bottom-tab-logo-dark");
     lightImgs.forEach(function (img) { img.style.display = actual === "dark" ? "none" : "block"; });
     darkImgs.forEach(function  (img) { img.style.display = actual === "dark" ? "block" : "none"; });
+  }
+
+  function syncThemeColor(resolvedTheme) {
+    var actual = resolvedTheme === "light" || resolvedTheme === "dark" ? resolvedTheme : getSystemTheme();
+    if (!themeColorMeta) {
+      themeColorMeta = document.createElement("meta");
+      themeColorMeta.setAttribute("name", "theme-color");
+      document.head.appendChild(themeColorMeta);
+    }
+    themeColorMeta.setAttribute("content", actual === "dark" ? "#000000" : "#f8fafc");
   }
 
   function themeMeta(theme) {

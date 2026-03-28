@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#f8fafc">
   <title>UX Notes - Mojtaba Torabi</title>
   <meta name="description" content="UX notes and case studies by Mojtaba Torabi.">
   <meta name="color-scheme" content="light dark">
@@ -18,6 +19,10 @@
         var systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
         root.dataset.theme = systemTheme;
         root.dataset.themePreference = "auto";
+      }
+      var themeColor = document.querySelector('meta[name="theme-color"]');
+      if (themeColor) {
+        themeColor.setAttribute("content", root.dataset.theme === "dark" ? "#000000" : "#f8fafc");
       }
       var link = document.querySelector("link[data-dynamic-favicon]");
       if (link && stored !== "light" && stored !== "dark") {

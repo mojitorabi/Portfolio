@@ -1174,8 +1174,22 @@ html[data-theme="dark"] .home-hero__ribbon {
   animation: heroPulseRing 14s ease-in-out infinite;
 }
 
+html[data-theme="light"] .home-hero__pulse-ring {
+  border-color: rgba(59, 130, 246, 0.42);
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.2);
+  animation-name: heroPulseRingLight;
+}
+
 html[data-theme="dark"] .home-hero__pulse-ring {
   border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+@media (prefers-color-scheme: light) {
+  html:not([data-theme="dark"]) .home-hero__pulse-ring {
+    border-color: rgba(59, 130, 246, 0.42);
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.2);
+    animation-name: heroPulseRingLight;
+  }
 }
 
 @keyframes heroRibbonDrift {
@@ -1213,6 +1227,28 @@ html[data-theme="dark"] .home-hero__pulse-ring {
   }
 }
 
+@keyframes heroPulseRingLight {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0) scale(0.88);
+  }
+
+  10% {
+    opacity: 0.5;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+
+  24% {
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0) scale(1.06);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0) scale(0.88);
+  }
+}
+
 /* Constellation motes: insight / connection metaphor */
 .home-hero__mote {
   position: absolute;
@@ -1230,9 +1266,21 @@ html[data-theme="dark"] .home-hero__pulse-ring {
   animation: heroMoteDrift 11s ease-in-out infinite;
 }
 
+html[data-theme="light"] .home-hero__mote {
+  background: rgba(59, 130, 246, 0.85);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.45);
+}
+
 html[data-theme="dark"] .home-hero__mote {
   background: color-mix(in srgb, var(--accent) 75%, #c4d9ff);
   box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 48%, transparent);
+}
+
+@media (prefers-color-scheme: light) {
+  html:not([data-theme="dark"]) .home-hero__mote {
+    background: rgba(59, 130, 246, 0.85);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.45);
+  }
 }
 
 .home-hero__mote--1 {
@@ -1311,9 +1359,21 @@ html[data-theme="dark"] .home-hero__mote {
   animation: heroMoteDrift 9s ease-in-out infinite;
 }
 
+html[data-theme="light"] .site-mote {
+  background: rgba(59, 130, 246, 0.8);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.5);
+}
+
 html[data-theme="dark"] .site-mote {
   background: color-mix(in srgb, var(--accent) 75%, #c4d9ff);
   box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 48%, transparent);
+}
+
+@media (prefers-color-scheme: light) {
+  html:not([data-theme="dark"]) .site-mote {
+    background: rgba(59, 130, 246, 0.8);
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.5);
+  }
 }
 
 .site-mote--1 {
@@ -2018,6 +2078,7 @@ html[data-theme="dark"] .page-hero--sub .page-intro::before {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: var(--text);
+  will-change: background-position;
 }
 
 /* Full-line title: same gradient, size tuned to stay one line on typical phones+ */
@@ -2072,26 +2133,22 @@ html[data-theme="dark"] .page-hero--sub .page-intro::before {
 
 @media (prefers-reduced-motion: no-preference) {
   .hero-title-highlight {
-    animation: heroTitleHighlightFlow 11s ease-in-out infinite;
+    animation: heroTitleHighlightFlow 7.5s linear infinite;
   }
 }
 
-/* Begins at center of sentence, sweeps toward edges, returns to center (no alternate jump) */
+/* Stronger left-right sweep so the highlight reads clearly like before. */
 @keyframes heroTitleHighlightFlow {
   0% {
-    background-position: 50% 50%;
-  }
-
-  33% {
     background-position: 0% 50%;
   }
 
-  66% {
+  50% {
     background-position: 100% 50%;
   }
 
   100% {
-    background-position: 50% 50%;
+    background-position: 0% 50%;
   }
 }
 
